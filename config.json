@@ -1,0 +1,29 @@
+{
+  "_comment": "Список монет: лише тикер. Пари на біржах бот знаходить сам (Binance <TICKER>USDT, Kraken <TICKER>USD, Coinbase <TICKER>-USD). Додати/прибрати: Actions → indicators → Run workflow → поля add / remove, або попросити Claude.",
+  "assets": [
+    "BTC",
+    "ETH",
+    "SOL",
+    "BNB",
+    "AVAX",
+    "ATOM",
+    "NEAR",
+    "ADA",
+    "ALGO",
+    "TRX",
+    "JUP",
+    "EGLD",
+    "INJ",
+    "DOT",
+    "VET",
+    "PUMP",
+    "APT",
+    "HBAR",
+    "ONDO",
+    "SUI",
+    "FIL",
+    "RSR",
+    "ZIL",
+    "LINK"
+  ]
+}

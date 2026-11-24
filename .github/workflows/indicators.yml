@@ -1,0 +1,53 @@
+name: indicators
+
+# Тричі на добу приблизно за 70 хв до перевірок Claude (07:07, 15:07, 23:07 Київ).
+# GitHub може запускати розклад із затримкою до ~1 год — тому запас.
+on:
+  schedule:
+    - cron: "57 3,11,19 * * *"   # UTC
+  workflow_dispatch:               # ручний запуск: Actions → indicators → Run workflow
+    inputs:
+      add:
+        description: "Додати монети (тикери через кому, напр. TAO,LINK)"
+        required: false
+        default: ""
+      remove:
+        description: "Прибрати монети (тикери через кому)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write                  # лише запис результатів у цей самий репозиторій
+
+concurrency:
+  group: indicators
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest         # стандартний раннер: у публічному репозиторії безкоштовний
+    timeout-minutes: 15            # запобіжник від «зависання» (23 монети ≈ 2–4 хв)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install matplotlib
+        run: pip install --quiet matplotlib==3.9.2
+      - name: Update coin list (only on manual run with add/remove)
+        if: ${{ github.event_name == 'workflow_dispatch' && (inputs.add != '' || inputs.remove != '') }}
+        env:
+          ADD: ${{ inputs.add }}
+          REMOVE: ${{ inputs.remove }}
+        run: node src/manage.js "add=$ADD" "remove=$REMOVE"
+      - name: Compute indicators (public market data, no keys)
+        run: node src/compute.js
+      - name: Draw charts
+        run: python src/plot.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data charts config.json
+          git diff --cached --quiet || git commit -m "indicators $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
