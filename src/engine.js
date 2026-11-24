@@ -26,9 +26,19 @@ const mfv=c.map((x,i)=>h[i]===l[i]?0:((x-l[i])-(h[i]-x))/(h[i]-l[i])*v[i]);R.cmf
 R.force=ema(c.map((x,i)=>i?(x-c[i-1])*v[i]:NaN),13);
 const rmf=tp.map((x,i)=>x*v[i]);R.mfi=c.map((_,i)=>{if(i<14)return NaN;let p=0,n=0;for(let j=i-13;j<=i;j++){if(tp[j]>tp[j-1])p+=rmf[j];else if(tp[j]<tp[j-1])n+=rmf[j]}return n?100-100/(1+p/n):100});
 R.vwap20=c.map((_,i)=>i<19?NaN:tp.slice(i-19,i+1).reduce((s,y,j)=>s+y*v[i-19+j],0)/v.slice(i-19,i+1).reduce((s,y)=>s+y,0));
-R.volRatio=v.map((x,i)=>x/sma(v,20)[i]);
+const vs20=sma(v,20);R.volRatio=v.map((x,i)=>x/vs20[i]);
 const at=rma(tr,10);let fu=[],fl=[],dir=[];for(let i=0;i<N;i++){const m=(h[i]+l[i])/2,bu=m+3*at[i],bl=m-3*at[i];if(isNaN(at[i])){fu.push(NaN);fl.push(NaN);dir.push(1);continue}const pu=isNaN(fu[i-1])?bu:fu[i-1],pl=isNaN(fl[i-1])?bl:fl[i-1];const U=(bu<pu||c[i-1]>pu)?bu:pu,L=(bl>pl||c[i-1]<pl)?bl:pl;let d=dir[i-1]||1;if(d===1&&c[i]<L)d=-1;else if(d===-1&&c[i]>U)d=1;fu.push(U);fl.push(L);dir.push(d)}R.stDir=dir;R.supertrend=dir.map((d,i)=>d===1?fl[i]:fu[i]);
-R.donHi=hh(h,20);R.donLo=ll(l,20);R.roc=c.map((x,i)=>i<14?NaN:(x/c[i-14]-1)*100);R.mayer=c.map((x,i)=>x/R.sma200[i]);
+R.donHi=hh(h,20);R.donLo=ll(l,20);
+// --- Нові (2026-11-24): часовий імпульс, Z-score, показник Херста ---
+const ret=(k)=>c.map((x,i)=>i<k?NaN:x/c[i-k]-1);
+const r7=ret(7),r28=ret(28),r84=ret(84);
+R.tsmom=c.map((_,i)=>isNaN(r84[i])?NaN:Math.sign(r7[i])+Math.sign(r28[i])+Math.sign(r84[i])); // -3..+3
+R.z20=c.map((x,i)=>(x-m20[i])/s20[i]);
+const lrH=c.map((x,i)=>i?Math.log(x/c[i-1]):NaN);
+const rs_=(a)=>{const m=a.reduce((s,y)=>s+y,0)/a.length;let cum=0,mx=-Infinity,mn=Infinity,ss=0;for(const y of a){cum+=y-m;mx=Math.max(mx,cum);mn=Math.min(mn,cum);ss+=(y-m)**2}const sd=Math.sqrt(ss/a.length);return sd>0?(mx-mn)/sd:NaN};
+const HW=128,SZ=[8,16,32,64,128];
+R.hurst=c.map((_,i)=>{if(i<HW)return NaN;const w=lrH.slice(i-HW+1,i+1);const xs=[],ys=[];for(const n of SZ){const k=HW/n;let s=0,cnt=0;for(let j=0;j<k;j++){const v_=rs_(w.slice(j*n,(j+1)*n));if(isFinite(v_)&&v_>0){s+=v_;cnt++}}if(cnt){xs.push(Math.log(n));ys.push(Math.log(s/cnt))}}if(xs.length<3)return NaN;const mx=xs.reduce((a,b)=>a+b)/xs.length,my=ys.reduce((a,b)=>a+b)/ys.length;let nu=0,de=0;xs.forEach((x,j)=>{nu+=(x-mx)*(ys[j]-my);de+=(x-mx)**2});return nu/de});
+R.roc=c.map((x,i)=>i<14?NaN:(x/c[i-14]-1)*100);R.mayer=c.map((x,i)=>x/R.sma200[i]);
 const lr=c.map((x,i)=>i?Math.log(x/c[i-1]):NaN);R.rvol=std(lr,30).map(x=>x*Math.sqrt(365)*100);
 const W=90,s0=N-W,hi=Math.max(...h.slice(s0)),lo=Math.min(...l.slice(s0));R.fib={hi,lo,f382:hi-(hi-lo)*.382,f5:hi-(hi-lo)*.5,f618:hi-(hi-lo)*.618};
 const P=(h[N-2]+l[N-2]+c[N-2])/3;R.pivot={P,R1:2*P-l[N-2],S1:2*P-h[N-2],R2:P+(h[N-2]-l[N-2]),S2:P-(h[N-2]-l[N-2])};

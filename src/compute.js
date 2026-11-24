@@ -67,6 +67,7 @@ function states(R, d, i) {
     bb_squeeze: pctl(R.bbWidth, i, 90) <= 10 ? "стиснення" : "ні",
     ttm_squeeze: R.squeeze[i] ? "так" : "ні",
     cmf: R.cmf[i] > 0.05 ? "приплив" : R.cmf[i] < -0.05 ? "відплив" : "нейтрально",
+    tsmom: R.tsmom[i] === 3 ? "+3" : R.tsmom[i] === -3 ? "−3" : "змішаний",
     ichimoku: c > Math.max(R.spanA[i], R.spanB[i]) ? "над хмарою" : c < Math.min(R.spanA[i], R.spanB[i]) ? "під хмарою" : "у хмарі",
   };
 }
@@ -80,6 +81,7 @@ function values(R, d, i) {
     atr14: r(R.atr[i]), atr_pct: r(R.atrPct[i], 2), rvol30: r(R.rvol[i], 1),
     adx: r(R.adx[i], 1), di_plus: r(R.diP[i], 1), di_minus: r(R.diN[i], 1), psar: r(R.psar[i]), supertrend: r(R.supertrend[i]), donchian_low: r(R.donLo[i]), donchian_high: r(R.donHi[i]),
     tenkan: r(R.tenkan[i]), kijun: r(R.kijun[i]), span_a: r(R.spanA[i]), span_b: r(R.spanB[i]),
+    tsmom: R.tsmom[i], z20: r(R.z20[i], 2), hurst128: r(R.hurst[i], 3),
     obv_change_20d: r(R.obv[i] - R.obv[i - 20], 0), cmf20: r(R.cmf[i], 3), mfi14: r(R.mfi[i], 1), vwap20: r(R.vwap20[i]), vol_ratio20: r(R.volRatio[i], 2),
   };
 }
