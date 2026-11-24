@@ -1,0 +1,46 @@
+name: setups
+
+# Щогодини: живі входи/виходи за правилами strategy.js на 1h / 4h / 1d по всіх монетах.
+# Результат — гілка setups (перезаписується). Лише публічні дані Binance, без ключів і без торгівлі.
+on:
+  schedule:
+    - cron: "7 * * * *"            # UTC, щогодини о :07 (після закриття годинної свічки)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: setups
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest         # стандартний раннер: у публічному репозиторії безкоштовний
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Restore state, journal and backtest stats
+        run: |
+          mkdir -p data
+          if git fetch --depth=1 origin +setups:refs/remotes/origin/setups 2>/dev/null; then
+            git show origin/setups:data/setups_state.json > data/setups_state.json || rm -f data/setups_state.json
+            git show origin/setups:data/setups_journal.csv > data/setups_journal.csv || rm -f data/setups_journal.csv
+          fi
+          if git fetch --depth=1 origin +backtest:refs/remotes/origin/backtest 2>/dev/null; then
+            git show origin/backtest:strategy.json > data/strategy_bt.json || rm -f data/strategy_bt.json
+          fi
+      - name: Live setups (public market data, no keys)
+        run: node src/setups.js
+      - name: Publish setups branch
+        run: |
+          cd "$RUNNER_TEMP" && rm -rf out && mkdir -p out/data && cd out
+          git init -q -b setups
+          cp "$GITHUB_WORKSPACE"/data/setups* data/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "setups $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" setups
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
