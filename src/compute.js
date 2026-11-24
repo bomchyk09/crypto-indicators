@@ -68,6 +68,7 @@ function states(R, d, i) {
     ttm_squeeze: R.squeeze[i] ? "так" : "ні",
     cmf: R.cmf[i] > 0.05 ? "приплив" : R.cmf[i] < -0.05 ? "відплив" : "нейтрально",
     tsmom: R.tsmom[i] === 3 ? "+3" : R.tsmom[i] === -3 ? "−3" : "змішаний",
+    composite: R.compState[i],
     ichimoku: c > Math.max(R.spanA[i], R.spanB[i]) ? "над хмарою" : c < Math.min(R.spanA[i], R.spanB[i]) ? "під хмарою" : "у хмарі",
   };
 }
@@ -81,7 +82,7 @@ function values(R, d, i) {
     atr14: r(R.atr[i]), atr_pct: r(R.atrPct[i], 2), rvol30: r(R.rvol[i], 1),
     adx: r(R.adx[i], 1), di_plus: r(R.diP[i], 1), di_minus: r(R.diN[i], 1), psar: r(R.psar[i]), supertrend: r(R.supertrend[i]), donchian_low: r(R.donLo[i]), donchian_high: r(R.donHi[i]),
     tenkan: r(R.tenkan[i]), kijun: r(R.kijun[i]), span_a: r(R.spanA[i]), span_b: r(R.spanB[i]),
-    tsmom: R.tsmom[i], z20: r(R.z20[i], 2), hurst128: r(R.hurst[i], 3),
+    composite_score: R.comp[i], tsmom: R.tsmom[i], z20: r(R.z20[i], 2), hurst128: r(R.hurst[i], 3),
     obv_change_20d: r(R.obv[i] - R.obv[i - 20], 0), cmf20: r(R.cmf[i], 3), mfi14: r(R.mfi[i], 1), vwap20: r(R.vwap20[i]), vol_ratio20: r(R.volRatio[i], 2),
   };
 }
@@ -92,6 +93,7 @@ function values(R, d, i) {
   const out = { generated_utc: new Date().toISOString(), note: "Остання (поточна) денна свічка ще формується; сигнали рахуються по закритих свічках.", assets: {}, signals: [], errors: [] };
   const next = {};
   const journal = [];
+  const closes = {}; // для табло ефективності: закриті свічки кожної монети
   for (const a of CFG.assets.map(x => (typeof x === "string" ? pairs(x) : x))) {
     try {
       const d = await candles(a);
@@ -99,11 +101,12 @@ function values(R, d, i) {
       const N = d.c.length - 1, iClosed = N - 1; // N — поточна свічка, iClosed — остання закрита
       const st = states(R, d, iClosed);
       next[a.symbol] = st;
+      closes[a.symbol] = { t: d.t.slice(0, N), c: d.c.slice(0, N) };
       const was = prev[a.symbol];
       if (was) for (const k of Object.keys(st)) if (was[k] !== undefined && was[k] !== st[k]) {
         const s = { asset: a.symbol, type: k, from: was[k], to: st[k], close: r(d.c[iClosed], 4), candle_utc: new Date(d.t[iClosed]).toISOString().slice(0, 10) };
         out.signals.push(s);
-        journal.push([out.generated_utc, a.symbol, k, was[k], st[k], s.close].join(";"));
+        journal.push([out.generated_utc, a.symbol, k, was[k], st[k], s.close, s.candle_utc].join(";"));
       }
       out.assets[a.symbol] = {
         source: d.src, candles: d.c.length, last_closed_utc: new Date(d.t[iClosed]).toISOString().slice(0, 10),
@@ -125,8 +128,49 @@ function values(R, d, i) {
   fs.writeFileSync(path.join(DATA, "latest.json"), JSON.stringify(out, null, 1));
   fs.writeFileSync(statePath, JSON.stringify(next, null, 1));
   const jp = path.join(DATA, "journal.csv");
-  if (!fs.existsSync(jp)) fs.writeFileSync(jp, "run_utc;asset;type;from;to;close\n");
+  const HEAD = "run_utc;asset;type;from;to;close;candle_utc";
+  if (!fs.existsSync(jp)) fs.writeFileSync(jp, HEAD + "\n");
+  else { const lines = fs.readFileSync(jp, "utf8").split("\n"); if (lines[0] !== HEAD) { lines[0] = HEAD; fs.writeFileSync(jp, lines.join("\n")); } }
   if (journal.length) fs.appendFileSync(jp, journal.join("\n") + "\n");
+
+  // ТАБЛО ЕФЕКТИВНОСТІ: що реально сталося через 1 і 7 днів після кожного ЖИВОГО сигналу з журналу,
+  // порівняно зі звичайною зміною тієї ж монети за останні 365 днів. Очікуваний бік — за результатами бектесту (30 §5а).
+  const DIR = {
+    composite: { "бичачий": 1, "ведмежий": -1 }, rsi_zone: { "перекупленість": 1, "перепроданість": 1 },
+    price_vs_sma200: { "вище": 1, "нижче": -1 }, sma50_vs_sma200: { "золотий хрест": 1, "хрест смерті": -1 },
+    supertrend: { "лонг": 1, "шорт": -1 }, donchian: { "пробій вгору": 1, "пробій вниз": -1 }, tsmom: { "+3": 1, "−3": -1 },
+    cmf: { "приплив": 1, "відплив": -1 }, ichimoku: { "над хмарою": 1, "під хмарою": -1 }, macd_hist: { "+": 1, "−": -1 },
+  };
+  const base = {};
+  for (const [s, x] of Object.entries(closes)) for (const hz of [1, 7]) {
+    const n = x.c.length, rs = []; for (let i = Math.max(0, n - 365 - hz); i + hz < n; i++) rs.push(x.c[i + hz] / x.c[i] - 1);
+    (base[s] ??= {})[hz] = { mean: rs.reduce((a, b) => a + b, 0) / rs.length, up: rs.filter(v => v > 0).length / rs.length };
+  }
+  const rowsJ = fs.readFileSync(jp, "utf8").trim().split("\n").slice(1).map(l => l.split(";")).filter(r => r.length >= 7 && r[6]);
+  const card = {}; let pending = 0;
+  for (const [, asset, type, , to, , cd] of rowsJ) {
+    const dir = DIR[type]?.[to]; if (!dir || !closes[asset]) continue;
+    const x = closes[asset], i = x.t.findIndex(tt => new Date(tt).toISOString().slice(0, 10) === cd); if (i < 0) continue;
+    const key = `${type}: ${to}`;
+    for (const hz of [1, 7]) {
+      if (i + hz >= x.c.length) { if (hz === 7) pending++; continue; }
+      const f = x.c[i + hz] / x.c[i] - 1, b = base[asset][hz];
+      for (const k of [key, dir > 0 ? "УСІ БИЧАЧІ" : "УСІ ВЕДМЕЖІ"]) {
+        const c_ = ((card[k] ??= {})[hz] ??= { n: 0, hit: 0, baseHit: 0, excess: 0 });
+        c_.n++; c_.hit += Math.sign(f) === dir; c_.baseHit += dir > 0 ? b.up : 1 - b.up; c_.excess += dir * (f - b.mean);
+      }
+    }
+  }
+  const sc = { generated_utc: out.generated_utc, pending_7d: pending, note: "Живі сигнали бота. Влучання — частка випадків, коли ціна пішла в очікуваний бік; поруч — те саме для звичайного дня цієї монети (365 д). Перевага — п.п. Висновок — від 30 випадків.", rows: [] };
+  for (const [k, v] of Object.entries(card)) {
+    const row = { signal: k };
+    for (const hz of [1, 7]) if (v[hz]) row[`d${hz}`] = { n: v[hz].n, hit: +(v[hz].hit / v[hz].n * 100).toFixed(1), base_hit: +(v[hz].baseHit / v[hz].n * 100).toFixed(1), edge: +(v[hz].excess / v[hz].n * 100).toFixed(2), enough: v[hz].n >= 30 };
+    sc.rows.push(row);
+  }
+  sc.rows.sort((a, b) => (b.d7?.n || 0) - (a.d7?.n || 0));
+  fs.writeFileSync(path.join(DATA, "scorecard.json"), JSON.stringify(sc, null, 1));
+  out.scorecard = { pending_7d: pending, summary: sc.rows.filter(r => r.signal.startsWith("УСІ")) };
+  fs.writeFileSync(path.join(DATA, "latest.json"), JSON.stringify(out, null, 1));
   console.log(`assets ok: ${Object.keys(out.assets).join(",")}; signals: ${out.signals.length}; errors: ${out.errors.length}`);
   if (out.errors.length) console.log(out.errors.join("\n"));
   if (!Object.keys(out.assets).length) process.exit(1);

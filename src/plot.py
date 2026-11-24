@@ -56,7 +56,8 @@ for sym, a in latest["assets"].items():
     for A in (a_adx, a_cmf): A.set_xticks(x[::step]); A.set_xticklabels(dates[::step])
     for A in (ax, axv, a_rsi, a_macd): plt.setp(A.get_xticklabels(), visible=False)
     L, st = a["live"], a["states"]
-    title = f"{sym}: {fmt(L['close'])} $ · RSI {fmt(L['rsi14'],1)} · ADX {fmt(L['adx'],1)} · Mayer {fmt(L['mayer'],3)} · ATR {fmt(L['atr_pct'],2)} %"
+    cs = L.get("composite_score"); comp = st.get("composite", "—")
+    title = f"{sym}: {fmt(L['close'])} $ · ЗВЕДЕНО: {comp.upper()} ({'+' if (cs or 0) > 0 else ''}{cs if cs is not None else '–'} з ±6) · RSI {fmt(L['rsi14'],1)} · ADX {fmt(L['adx'],1)} · Mayer {fmt(L['mayer'],3)}"
     fig.text(0.02, 0.965, title, fontsize=16, weight="bold", color=INK)
     sub = (f"Стани (закрита свічка {a['last_closed_utc']}): тренд {st['supertrend']} · {st['adx_regime']} · ціна {st['price_vs_sma200']} SMA200 · {st['sma50_vs_sma200']} · "
            f"Mayer {st['mayer_zone']} · RSI {st['rsi_zone']} · CMF {st['cmf']} · Ішимоку {st['ichimoku']} · стиснення BB {st['bb_squeeze']}")

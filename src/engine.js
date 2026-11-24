@@ -44,6 +44,13 @@ const W=90,s0=N-W,hi=Math.max(...h.slice(s0)),lo=Math.min(...l.slice(s0));R.fib=
 const P=(h[N-2]+l[N-2]+c[N-2])/3;R.pivot={P,R1:2*P-l[N-2],S1:2*P-h[N-2],R2:P+(h[N-2]-l[N-2]),S2:P-(h[N-2]-l[N-2])};
 const bins=40,pmin=Math.min(...l.slice(s0)),pmax=Math.max(...h.slice(s0)),bw=(pmax-pmin)/bins,vp=Array(bins).fill(0);for(let i=s0;i<N;i++){const b=Math.min(bins-1,Math.floor((tp[i]-pmin)/bw));vp[b]+=v[i]}const pb=vp.indexOf(Math.max(...vp));R.vp={bins:vp,pmin,bw,poc:pmin+bw*(pb+.5)};
 const win=30,lowIdx=(a,from,to)=>{let m=from;for(let i=from;i<=to;i++)if(a[i]<a[m])m=i;return m};const a1=lowIdx(l,N-win,N-1),a0=lowIdx(l,N-2*win,N-win-1);R.div=(l[a1]<l[a0]&&R.rsi[a1]>R.rsi[a0])?"бичача":((()=>{const hi1=h.slice(N-win).indexOf(Math.max(...h.slice(N-win)))+N-win,hi0=h.slice(N-2*win,N-win).indexOf(Math.max(...h.slice(N-2*win,N-win)))+N-2*win;return h[hi1]>h[hi0]&&R.rsi[hi1]<R.rsi[hi0]?"ведмежа":"немає"})());
+// --- Зведена оцінка (2026-11-24): 6 незалежних складових, кожна −1/0/+1, сума −6…+6.
+// Тренд: ціна vs SMA200; Supertrend. Імпульс: бал TSMOM (≥2 / ≤−2); RSI у «трендовому» прочитанні (>55 / <45 — за бектестом
+// RSI>70 означає силу, а не розворот). Положення в 20-денному каналі (верхні/нижні 20 %). Обсяг: CMF (±0,05).
+R.comp=c.map((x,i)=>{if(!isFinite(R.sma200[i])||!isFinite(R.tsmom[i])||!isFinite(R.cmf[i]))return NaN;
+ const ch=(x-R.donLo[i])/(R.donHi[i]-R.donLo[i]);
+ return Math.sign(x-R.sma200[i])+(R.stDir[i]>0?1:-1)+(R.tsmom[i]>=2?1:R.tsmom[i]<=-2?-1:0)+(R.rsi[i]>55?1:R.rsi[i]<45?-1:0)+(ch>0.8?1:ch<0.2?-1:0)+(R.cmf[i]>0.05?1:R.cmf[i]<-0.05?-1:0)});
+R.compState=R.comp.map(s=>!isFinite(s)?"—":s>=4?"бичачий":s<=-4?"ведмежий":"нейтральний");
 return R}
 return{all}})();
 module.exports=IND;
