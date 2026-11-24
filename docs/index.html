@@ -13,10 +13,10 @@
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Archivo",system-ui,sans-serif;overflow-x:clip}
 header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;padding:14px max(2vw,12px) 6px}
-h1{font:800 26px/1.05 "Archivo";font-stretch:112%;margin:0}
+h1{font:800 26px/1.05 "Archivo",system-ui,sans-serif;font-stretch:112%;margin:0}
 .stat{color:var(--mute);font-size:13px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mute);margin-right:6px;vertical-align:1px}.dot.on{background:var(--grn);box-shadow:0 0 0 3px color-mix(in srgb,var(--grn) 25%,transparent)}
 .bar{display:flex;gap:6px;overflow-x:auto;padding:6px max(2vw,12px);scrollbar-width:thin}
-.bar button,.tf button,.tog button{flex:none;font:600 14px "Archivo";min-height:40px;padding:0 12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;cursor:pointer}
+.bar button,.tf button,.tog button{flex:none;font:600 14px "Archivo",system-ui,sans-serif;min-height:40px;padding:0 12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;cursor:pointer}
 .bar button[aria-pressed=true],.tf button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tog button[aria-pressed=false]{opacity:.45}
 button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
@@ -25,10 +25,10 @@ main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:12px;padding:6px
 .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}
 .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}.tf,.tog{display:flex;gap:4px;flex-wrap:wrap}
 #chart{position:relative;height:min(78vh,760px);min-height:480px}
-.big{font:800 34px/1 "Archivo";font-stretch:110%;white-space:nowrap}
-.setup h2{font:800 18px/1.2 "Archivo";margin:0 0 6px}.setup.long{border-left:5px solid var(--grn)}.setup.short{border-left:5px solid var(--red)}.setup.wait{border-left:5px solid var(--line)}
+.big{font:800 34px/1 "Archivo",system-ui,sans-serif;font-stretch:110%;white-space:nowrap}
+.setup h2{font:800 18px/1.2 "Archivo",system-ui,sans-serif;margin:0 0 6px}.setup.long{border-left:5px solid var(--grn)}.setup.short{border-left:5px solid var(--red)}.setup.wait{border-left:5px solid var(--line)}
 .setup ul,.ta ul{margin:6px 0 0;padding-left:18px}.setup li,.ta li{margin:3px 0}
-.ta h3{font:700 15px "Archivo";margin:12px 0 4px}.ta p{margin:4px 0}
+.ta h3{font:700 15px "Archivo",system-ui,sans-serif;margin:12px 0 4px}.ta p{margin:4px 0}
 table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px 4px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mute);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .note{color:var(--mute);font-size:12.5px}
 aside{display:flex;flex-direction:column;gap:12px}
@@ -48,7 +48,7 @@ aside{display:flex;flex-direction:column;gap:12px}
  </section>
  <aside>
   <div class="card setup wait" id="setup"><h2>Завантаження…</h2></div>
-  <div class="card"><h3 style="margin:0 0 6px;font:700 15px Archivo">Статистика правил на цій монеті і ТФ</h3><div id="stats" class="note">–</div><div id="trades"></div></div>
+  <div class="card"><h3 style="margin:0 0 6px;font:700 15px Archivo,system-ui,sans-serif">Статистика правил на цій монеті і ТФ</h3><div id="stats" class="note">–</div><div id="trades"></div></div>
   <div class="card ta" id="ta"><p class="note">Технічний аналіз з'явиться після завантаження свічок.</p></div>
   <div class="card note" id="overall">Загальна перевірка правил на всіх монетах — завантаження…</div>
  </aside>
@@ -85,7 +85,7 @@ const L=(color,w,style,pane=0)=>chart.addSeries(LC.LineSeries,{color,lineWidth:w
 S.sma50=L(css("--blu"),2);S.sma200=L(css("--ink"),2);S.ema21=L(css("--blu"),1,2);S.bbU=L(css("--gold"),1,2);S.bbL=L(css("--gold"),1,2);S.st=L(css("--grn"),2);
 S.rsi=L(css("--ink"),2,0,1);S.rsi30=L(css("--mute"),1,2,1);S.rsi70=L(css("--mute"),1,2,1);
 S.mh=chart.addSeries(LC.HistogramSeries,{lastValueVisible:false,priceLineVisible:false},2);S.macd=L(css("--blu"),1.5,0,2);S.sig=L(css("--gold"),1.5,0,2);
-try{const p=chart.panes();p[0].setHeight(Math.round(el.clientHeight*.62));p[1].setHeight(Math.round(el.clientHeight*.17));p[2].setHeight(Math.round(el.clientHeight*.17))}catch{}
+function paneH(){try{const H=el.clientHeight,p=chart.panes();if(p.length>2){p[1].setHeight(Math.round(H*.18));p[2].setHeight(Math.round(H*.18))}}catch{}}
 const markers=LC.createSeriesMarkers(S.c,[]);let pLines=[];
 
 const ts=t=>Math.floor(t/1000);
@@ -119,7 +119,7 @@ function compute(){
  let htf=null;if(st.h){st.Rh=IND.all(st.h);htf=STRAT.alignHTF(d.t,tfx[2],{t:st.h.t,comp:st.Rh.comp,ms:TFS.find(x=>x[0]===tfx[3])[2]})}
  st.htf=htf;st.res=STRAT.run(d,st.R,htf,N-1);st.cur=STRAT.current(d,st.R,htf,st.res,N-1);
  st.ta=TA.analyze(st.coin,st.R,d,N,st.BT);
- renderSide();draw();
+ renderSide();draw();paneH();
  st.lastCalc=Date.now();
 }
 function renderSide(){
