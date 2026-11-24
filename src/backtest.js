@@ -135,28 +135,38 @@ const periodOf = t => [t < SPLIT ? "train" : "test", ...(t >= LAST365 ? ["last36
     }
     rows.push(r);
   }
-  // Вердикт за 7 днями: «працює» — якщо і на навчанні, і на перевірці перевага в очікуваному напрямі, n ≥ MIN_N і |t| ≥ 2 на перевірці
+  // Вердикт за 7 днями. «Працює»: на навчанні й перевірці надлишок в очікуваний бік, |t| ≥ 2 на перевірці,
+  // і частка влучань на перевірці вища, ніж у звичайний день (захист від кількох великих стрибків, що тягнуть середнє).
+  // «Працює навпаки»: те саме, але стабільно в протилежний бік. Останні 365 днів — окрема позначка стабільності.
   const get = (k, p) => rows.find(r => r.key === k && r.period === p);
   const verdicts = (SIG || []).map(([key, name, dir]) => {
     const tr = get(key, "train")?.h7, te = get(key, "test")?.h7, l1 = get(key, "last365")?.h7;
-    let v = "мало даних";
-    if (tr && te && te.n >= MIN_N) {
+    let v = "мало даних", recent = "—";
+    if (tr && te && te.n >= MIN_N && tr.n >= MIN_N) {
       if (dir === 0) v = te.vol_excess > 0 && tr.vol_excess > 0 ? "працює (рух після сигналу більший)" : "не підтверджено";
       else {
-        const good = s => s && Math.sign(s.excess) === dir;
-        v = good(tr) && good(te) && Math.abs(te.t) >= 2 ? "працює" : good(tr) && good(te) ? "слабко (в потрібний бік, але статистично не значуще)" : good(te) ? "лише на перевірці (нестабільно)" : "не працює / протилежно";
+        const sTr = Math.sign(tr.excess), sTe = Math.sign(te.excess), sig = Math.abs(te.t) >= 2;
+        if (sTr === dir && sTe === dir && sig && te.hit > te.base_hit) v = "працює";
+        else if (sTr === -dir && sTe === -dir && sig && te.hit < te.base_hit) v = "працює навпаки";
+        else if (sTr === dir && sTe === dir) v = "слабко";
+        else if (sTr !== sTe) v = "нестабільно";
+        else v = "не працює";
+      }
+      if (l1 && l1.n >= 20) {
+        const want = v === "працює навпаки" ? -dir : dir;
+        recent = dir === 0 ? (l1.vol_excess > 0 ? "так" : "ні") : (Math.sign(l1.excess) === want ? "так" : "ні");
       }
     }
-    return { key, name, dir, verdict: v, train7: tr || null, test7: te || null, last365_7: l1 || null };
+    return { key, name, dir, verdict: v, last365_same_side: recent, train7: tr || null, test7: te || null, last365_7: l1 || null };
   });
   fs.writeFileSync(path.join(OUT, "report.json"), JSON.stringify({ meta, verdicts, rows }, null, 1));
   // Markdown-звіт
   const f = x => (x == null ? "—" : String(x).replace(".", ","));
   const dirTxt = d => (d > 0 ? "↑" : d < 0 ? "↓" : "±");
-  let md = `# Перевірка сигналів на історії\n\nЗгенеровано ${meta.generated_utc.slice(0, 16).replace("T", " ")} UTC. Дані: Binance, денні свічки, ${Object.keys(meta.assets).length} монет. Навчання — до ${meta.split}, перевірка — після. Горизонт вердикту — 7 днів. Повтори сигналу ближче 5 днів відкинуто.\n\n`;
+  let md = `# Перевірка сигналів на історії\n\nЗгенеровано ${meta.generated_utc.slice(0, 16).replace("T", " ")} UTC. Дані: Binance, денні свічки, ${Object.keys(meta.assets).length} монет. Навчання — до ${meta.split}, перевірка — після. Горизонт вердикту — 7 днів. «Працює» = надлишок в очікуваний бік і на навчанні, і на перевірці, t ≥ 2 на перевірці, частка влучань вища за звичайний день; «працює навпаки» = те саме стабільно в протилежний бік. Повтори сигналу ближче 5 днів відкинуто.\n\n`;
   md += `**Як читати.** «Надлишок» — середня зміна ціни за 7 днів після сигналу мінус звичайна зміна за 7 днів для тієї ж монети в тому ж періоді (п.п.). «Влучання» — частка випадків, коли ціна пішла в очікуваний бік; поруч — те саме для звичайного дня. t ≥ 2 — різниця навряд чи випадкова (випадки однієї монети перекриваються в часі, тож t завищене — вимога суворіша, ніж виглядає). Стан ринку, не прогноз і не порада.\n\n`;
-  md += `| Сигнал | Бік | Вердикт | Перевірка: n | Надлишок 7 д, п.п. | t | Влучання / звичайний, % | Навчання: надлишок | Останні 365 д: надлишок |\n|---|---|---|---|---|---|---|---|---|\n`;
-  for (const v of verdicts) md += `| ${v.name} | ${dirTxt(v.dir)} | ${v.verdict} | ${f(v.test7?.n)} | ${f(v.dir === 0 ? v.test7?.vol_excess : v.test7?.excess)} | ${f(v.test7?.t)} | ${v.dir ? `${f(v.test7?.hit)} / ${f(v.test7?.base_hit)}` : "—"} | ${f(v.dir === 0 ? v.train7?.vol_excess : v.train7?.excess)} | ${f(v.dir === 0 ? v.last365_7?.vol_excess : v.last365_7?.excess)} |\n`;
+  md += `| Сигнал | Бік | Вердикт | Останній рік так само? | Перевірка: n | Надлишок 7 д, п.п. | t | Влучання / звичайний, % | Навчання: надлишок | Останні 365 д: надлишок |\n|---|---|---|---|---|---|---|---|---|---|\n`;
+  for (const v of verdicts) md += `| ${v.name} | ${dirTxt(v.dir)} | ${v.verdict} | ${v.last365_same_side} | ${f(v.test7?.n)} | ${f(v.dir === 0 ? v.test7?.vol_excess : v.test7?.excess)} | ${f(v.test7?.t)} | ${v.dir ? `${f(v.test7?.hit)} / ${f(v.test7?.base_hit)}` : "—"} | ${f(v.dir === 0 ? v.train7?.vol_excess : v.train7?.excess)} | ${f(v.dir === 0 ? v.last365_7?.vol_excess : v.last365_7?.excess)} |\n`;
   md += `\nДля сигналів волатильності (±) «надлишок» — наскільки модуль руху за 7 днів більший, ніж звичайно.\n\nПомилки: ${meta.errors.length ? meta.errors.join("; ") : "немає"}.\n`;
   fs.writeFileSync(path.join(OUT, "report.md"), md);
   console.log(`assets: ${Object.keys(meta.assets).length}; signals: ${verdicts.length}; errors: ${meta.errors.length}`);
