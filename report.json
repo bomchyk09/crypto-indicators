@@ -1,0 +1,4702 @@
+{
+ "meta": {
+  "generated_utc": "2026-11-24T20:00:45.735Z",
+  "split": "2024-01-01",
+  "horizons": [
+   1,
+   7,
+   30
+  ],
+  "min_n": 30,
+  "assets": {
+   "BTC": {
+    "days": 3386,
+    "from": "2017-08-17"
+   },
+   "ETH": {
+    "days": 3386,
+    "from": "2017-08-17"
+   },
+   "SOL": {
+    "days": 2296,
+    "from": "2020-08-11"
+   },
+   "BNB": {
+    "days": 3305,
+    "from": "2017-11-06"
+   },
+   "AVAX": {
+    "days": 2254,
+    "from": "2020-09-22"
+   },
+   "ATOM": {
+    "days": 2766,
+    "from": "2019-04-29"
+   },
+   "NEAR": {
+    "days": 2232,
+    "from": "2020-10-14"
+   },
+   "ADA": {
+    "days": 3143,
+    "from": "2018-04-17"
+   },
+   "ALGO": {
+    "days": 2712,
+    "from": "2019-06-22"
+   },
+   "TRX": {
+    "days": 3088,
+    "from": "2018-06-11"
+   },
+   "JUP": {
+    "days": 1028,
+    "from": "2024-01-31"
+   },
+   "EGLD": {
+    "days": 2273,
+    "from": "2020-09-03"
+   },
+   "INJ": {
+    "days": 2225,
+    "from": "2020-10-21"
+   },
+   "DOT": {
+    "days": 2289,
+    "from": "2020-08-18"
+   },
+   "VET": {
+    "days": 3044,
+    "from": "2018-07-25"
+   },
+   "PUMP": {
+    "days": 439,
+    "from": "2025-09-11"
+   },
+   "APT": {
+    "days": 1497,
+    "from": "2022-10-19"
+   },
+   "HBAR": {
+    "days": 2613,
+    "from": "2019-09-29"
+   },
+   "ONDO": {
+    "days": 592,
+    "from": "2025-04-11"
+   },
+   "SUI": {
+    "days": 1301,
+    "from": "2023-05-03"
+   },
+   "FIL": {
+    "days": 2231,
+    "from": "2020-10-15"
+   },
+   "RSR": {
+    "days": 2280,
+    "from": "2020-08-27"
+   },
+   "ZIL": {
+    "days": 2835,
+    "from": "2019-02-19"
+   },
+   "LINK": {
+    "days": 2869,
+    "from": "2019-01-16"
+   }
+  },
+  "errors": []
+ },
+ "verdicts": [
+  {
+   "key": "rsi_exit_oversold",
+   "name": "RSI виходить вгору з перепроданості (<30)",
+   "dir": 1,
+   "verdict": "не працює",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 268,
+    "mean": 0.62,
+    "excess": -0.58,
+    "t": -0.68,
+    "hit": 48.5,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 268,
+    "mean": -0.49,
+    "excess": -0.26,
+    "t": -0.46,
+    "hit": 43.7,
+    "base_hit": 44.1,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 115,
+    "mean": -2.51,
+    "excess": -1.41,
+    "t": -1.77,
+    "hit": 36.5,
+    "base_hit": 41.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_oversold",
+   "name": "RSI входить у перепроданість (<30)",
+   "dir": 1,
+   "verdict": "працює",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 280,
+    "mean": 1.91,
+    "excess": 0.72,
+    "t": 0.82,
+    "hit": 56.1,
+    "base_hit": 49.6,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 278,
+    "mean": 1.43,
+    "excess": 1.67,
+    "t": 2.4,
+    "hit": 52.5,
+    "base_hit": 44,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 126,
+    "mean": -3.43,
+    "excess": -2.27,
+    "t": -2.48,
+    "hit": 33.3,
+    "base_hit": 40.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_overbought",
+   "name": "RSI виходить униз з перекупленості (>70)",
+   "dir": -1,
+   "verdict": "працює навпаки",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 462,
+    "mean": 4.84,
+    "excess": 3.45,
+    "t": 4.29,
+    "hit": 42.9,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 295,
+    "mean": 3.28,
+    "excess": 3.16,
+    "t": 3.05,
+    "hit": 52.9,
+    "base_hit": 54.1,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 89,
+    "mean": -0.81,
+    "excess": -0.44,
+    "t": -0.33,
+    "hit": 65.2,
+    "base_hit": 56.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_overbought",
+   "name": "RSI входить у перекупленість (>70)",
+   "dir": -1,
+   "verdict": "працює навпаки",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 464,
+    "mean": 6.05,
+    "excess": 4.65,
+    "t": 5.21,
+    "hit": 40.5,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 293,
+    "mean": 3.22,
+    "excess": 3.1,
+    "t": 2.88,
+    "hit": 50.2,
+    "base_hit": 54.2,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 89,
+    "mean": -0.2,
+    "excess": 0.06,
+    "t": 0.04,
+    "hit": 60.7,
+    "base_hit": 56.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_up",
+   "name": "MACD: гістограма стає «+»",
+   "dir": 1,
+   "verdict": "нестабільно",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 957,
+    "mean": 1.8,
+    "excess": 0.44,
+    "t": 0.94,
+    "hit": 50.9,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 851,
+    "mean": -0.76,
+    "excess": -0.7,
+    "t": -1.88,
+    "hit": 42.7,
+    "base_hit": 45,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 293,
+    "mean": 0.8,
+    "excess": 1.54,
+    "t": 2.53,
+    "hit": 46.8,
+    "base_hit": 42.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_down",
+   "name": "MACD: гістограма стає «−»",
+   "dir": -1,
+   "verdict": "нестабільно",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 954,
+    "mean": 1.03,
+    "excess": -0.33,
+    "t": -0.72,
+    "hit": 48,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 853,
+    "mean": 0.59,
+    "excess": 0.64,
+    "t": 1.54,
+    "hit": 55.9,
+    "base_hit": 55,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 289,
+    "mean": 0.61,
+    "excess": 1.38,
+    "t": 2.33,
+    "hit": 55.4,
+    "base_hit": 57.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_up",
+   "name": "Ціна перетинає SMA200 вгору",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 321,
+    "mean": 1.79,
+    "excess": 0.4,
+    "t": 0.45,
+    "hit": 51.7,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 271,
+    "mean": 0.43,
+    "excess": 0.41,
+    "t": 0.44,
+    "hit": 47.2,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 76,
+    "mean": 1.67,
+    "excess": 2.23,
+    "t": 1.28,
+    "hit": 48.7,
+    "base_hit": 43,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_down",
+   "name": "Ціна перетинає SMA200 вниз",
+   "dir": -1,
+   "verdict": "нестабільно",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 323,
+    "mean": 0.41,
+    "excess": -0.95,
+    "t": -1.16,
+    "hit": 49.2,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 282,
+    "mean": 0.5,
+    "excess": 0.5,
+    "t": 0.68,
+    "hit": 57.1,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 74,
+    "mean": -0.54,
+    "excess": 0.08,
+    "t": 0.05,
+    "hit": 62.2,
+    "base_hit": 57.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "golden_cross",
+   "name": "Золотий хрест SMA50 > SMA200",
+   "dir": 1,
+   "verdict": "нестабільно",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 92,
+    "mean": -0.99,
+    "excess": -2.51,
+    "t": -1.56,
+    "hit": 44.6,
+    "base_hit": 50.9,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 63,
+    "mean": 3.6,
+    "excess": 3.54,
+    "t": 1.19,
+    "hit": 39.7,
+    "base_hit": 45,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 24,
+    "mean": -2.66,
+    "excess": -2.07,
+    "t": -0.82,
+    "hit": 37.5,
+    "base_hit": 42.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "death_cross",
+   "name": "Хрест смерті SMA50 < SMA200",
+   "dir": -1,
+   "verdict": "нестабільно",
+   "last365_same_side": "—",
+   "train7": {
+    "n": 85,
+    "mean": 1.11,
+    "excess": -0.33,
+    "t": -0.22,
+    "hit": 44.7,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 63,
+    "mean": 0.18,
+    "excess": 0.16,
+    "t": 0.16,
+    "hit": 49.2,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 5,
+    "mean": 0.47,
+    "excess": 1,
+    "t": 0.51,
+    "hit": 40,
+    "base_hit": 53.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_below_08",
+   "name": "Mayer опускається нижче 0,8",
+   "dir": 1,
+   "verdict": "не працює",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 311,
+    "mean": 0.37,
+    "excess": -0.95,
+    "t": -1.25,
+    "hit": 50.5,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 291,
+    "mean": -1.14,
+    "excess": -1.01,
+    "t": -1.42,
+    "hit": 41.2,
+    "base_hit": 44,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 81,
+    "mean": -1.63,
+    "excess": -0.9,
+    "t": -0.78,
+    "hit": 40.7,
+    "base_hit": 41.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_08",
+   "name": "Mayer піднімається вище 0,8",
+   "dir": 1,
+   "verdict": "не працює",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 310,
+    "mean": 1.23,
+    "excess": -0.08,
+    "t": -0.09,
+    "hit": 52.6,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 295,
+    "mean": -0.24,
+    "excess": -0.11,
+    "t": -0.13,
+    "hit": 43.4,
+    "base_hit": 43.9,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 95,
+    "mean": -0.6,
+    "excess": 0.13,
+    "t": 0.1,
+    "hit": 41.1,
+    "base_hit": 41.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_24",
+   "name": "Mayer піднімається вище 2,4",
+   "dir": -1,
+   "verdict": "не працює",
+   "last365_same_side": "—",
+   "train7": {
+    "n": 91,
+    "mean": 8.52,
+    "excess": 6.91,
+    "t": 2.7,
+    "hit": 46.2,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 36,
+    "mean": 2.08,
+    "excess": 1.28,
+    "t": 0.32,
+    "hit": 44.4,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 6,
+    "mean": 0.83,
+    "excess": -1.61,
+    "t": -0.28,
+    "hit": 33.3,
+    "base_hit": 52.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long",
+   "name": "Supertrend перемикається в лонг",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 276,
+    "mean": 2,
+    "excess": 0.64,
+    "t": 0.5,
+    "hit": 50.4,
+    "base_hit": 50.3,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 268,
+    "mean": 0.97,
+    "excess": 0.98,
+    "t": 1.22,
+    "hit": 48.1,
+    "base_hit": 45.2,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 93,
+    "mean": -1.98,
+    "excess": -1.28,
+    "t": -1.09,
+    "hit": 32.3,
+    "base_hit": 42.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_short",
+   "name": "Supertrend перемикається в шорт",
+   "dir": -1,
+   "verdict": "працює навпаки",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 267,
+    "mean": 1.66,
+    "excess": 0.29,
+    "t": 0.39,
+    "hit": 46.1,
+    "base_hit": 49.6,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 287,
+    "mean": 1.36,
+    "excess": 1.37,
+    "t": 2.1,
+    "hit": 48.8,
+    "base_hit": 54.8,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 92,
+    "mean": -0.17,
+    "excess": 0.55,
+    "t": 0.56,
+    "hit": 55.4,
+    "base_hit": 57.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_hurst",
+   "name": "Supertrend у лонг + Херст вище річної медіани",
+   "dir": 1,
+   "verdict": "нестабільно",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 130,
+    "mean": -1.5,
+    "excess": -2.88,
+    "t": -2.47,
+    "hit": 42.3,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 121,
+    "mean": 0.59,
+    "excess": 0.57,
+    "t": 0.5,
+    "hit": 47.1,
+    "base_hit": 45.3,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 64,
+    "mean": -0.46,
+    "excess": 0.26,
+    "t": 0.19,
+    "hit": 39.1,
+    "base_hit": 42.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_nohurst",
+   "name": "Supertrend у лонг + Херст нижче медіани",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 141,
+    "mean": 5.06,
+    "excess": 3.72,
+    "t": 1.7,
+    "hit": 58.2,
+    "base_hit": 50.3,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 146,
+    "mean": 1.36,
+    "excess": 1.41,
+    "t": 1.26,
+    "hit": 49.3,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 28,
+    "mean": -5.15,
+    "excess": -4.36,
+    "t": -2.01,
+    "hit": 17.9,
+    "base_hit": 42.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_up",
+   "name": "Пробій 20-денного максимуму",
+   "dir": 1,
+   "verdict": "працює",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 821,
+    "mean": 4.29,
+    "excess": 2.86,
+    "t": 4.55,
+    "hit": 54.8,
+    "base_hit": 50.6,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 606,
+    "mean": 1.95,
+    "excess": 1.88,
+    "t": 2.85,
+    "hit": 50.3,
+    "base_hit": 45.8,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 203,
+    "mean": -0.83,
+    "excess": -0.41,
+    "t": -0.48,
+    "hit": 36.9,
+    "base_hit": 43.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_down",
+   "name": "Пробій 20-денного мінімуму",
+   "dir": -1,
+   "verdict": "нестабільно",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 660,
+    "mean": -0.2,
+    "excess": -1.5,
+    "t": -2.79,
+    "hit": 47.3,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 693,
+    "mean": 0.12,
+    "excess": 0.26,
+    "t": 0.57,
+    "hit": 51.8,
+    "base_hit": 55.6,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 272,
+    "mean": -2.24,
+    "excess": -1.34,
+    "t": -2.01,
+    "hit": 59.2,
+    "base_hit": 58.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_up",
+   "name": "ADX > 25, DI+ > DI− (початок висхідного тренду)",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 234,
+    "mean": 4.68,
+    "excess": 3.29,
+    "t": 2.65,
+    "hit": 53.4,
+    "base_hit": 50.6,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 186,
+    "mean": 1.61,
+    "excess": 1.55,
+    "t": 0.97,
+    "hit": 46.2,
+    "base_hit": 45.6,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 72,
+    "mean": -2.12,
+    "excess": -1.35,
+    "t": -1,
+    "hit": 37.5,
+    "base_hit": 42.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_down",
+   "name": "ADX > 25, DI− > DI+ (початок низхідного тренду)",
+   "dir": -1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 255,
+    "mean": -0.81,
+    "excess": -2.11,
+    "t": -2.65,
+    "hit": 49.8,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 217,
+    "mean": -0.59,
+    "excess": -0.5,
+    "t": -0.56,
+    "hit": 53.9,
+    "base_hit": 55.5,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 71,
+    "mean": -6.28,
+    "excess": -5.37,
+    "t": -4.16,
+    "hit": 70.4,
+    "base_hit": 58.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_above",
+   "name": "Ціна виходить над хмару Ішимоку",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 451,
+    "mean": 1.42,
+    "excess": 0.05,
+    "t": 0.07,
+    "hit": 51.2,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 440,
+    "mean": 0.89,
+    "excess": 0.95,
+    "t": 1.36,
+    "hit": 45.2,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 112,
+    "mean": 2.3,
+    "excess": 2.84,
+    "t": 2.28,
+    "hit": 52.7,
+    "base_hit": 43,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_below",
+   "name": "Ціна виходить під хмару Ішимоку",
+   "dir": -1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 530,
+    "mean": 0.66,
+    "excess": -0.73,
+    "t": -1.18,
+    "hit": 50.2,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 576,
+    "mean": -0.91,
+    "excess": -0.81,
+    "t": -1.95,
+    "hit": 55.9,
+    "base_hit": 55.3,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 196,
+    "mean": -1.53,
+    "excess": -0.79,
+    "t": -1.11,
+    "hit": 58.7,
+    "base_hit": 57.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "bb_squeeze",
+   "name": "Стиснення Боллінджера (ширина ≤ 10-го процентиля 90 д)",
+   "dir": 0,
+   "verdict": "не підтверджено",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 564,
+    "mean": 0.78,
+    "excess": -0.59,
+    "t": -1.04,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.7
+   },
+   "test7": {
+    "n": 501,
+    "mean": -0.06,
+    "excess": 0,
+    "t": 0,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.02
+   },
+   "last365_7": {
+    "n": 172,
+    "mean": 0.24,
+    "excess": 0.93,
+    "t": 1.13,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.33
+   }
+  },
+  {
+   "key": "ttm_squeeze",
+   "name": "TTM-стиснення (Bollinger усередині Keltner)",
+   "dir": 0,
+   "verdict": "не підтверджено",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 978,
+    "mean": 0.9,
+    "excess": -0.48,
+    "t": -1.04,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.19
+   },
+   "test7": {
+    "n": 893,
+    "mean": -0.97,
+    "excess": -0.9,
+    "t": -2.31,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.33
+   },
+   "last365_7": {
+    "n": 303,
+    "mean": -0.46,
+    "excess": 0.24,
+    "t": 0.39,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.22
+   }
+  },
+  {
+   "key": "tsmom_p3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «+» (бал +3)",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 910,
+    "mean": 2.94,
+    "excess": 1.5,
+    "t": 2.67,
+    "hit": 51.8,
+    "base_hit": 50.7,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 693,
+    "mean": 1.13,
+    "excess": 1.03,
+    "t": 1.64,
+    "hit": 46.2,
+    "base_hit": 46,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 194,
+    "mean": 1.96,
+    "excess": 2.38,
+    "t": 2.27,
+    "hit": 46.9,
+    "base_hit": 43.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_m3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «−» (бал −3)",
+   "dir": -1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 1049,
+    "mean": -1.04,
+    "excess": -2.29,
+    "t": -5.73,
+    "hit": 55,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 1051,
+    "mean": -0.91,
+    "excess": -0.72,
+    "t": -2.05,
+    "hit": 54.3,
+    "base_hit": 55.7,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 422,
+    "mean": -1.43,
+    "excess": -0.56,
+    "t": -1.15,
+    "hit": 54,
+    "base_hit": 58.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_below_m2",
+   "name": "Z-score < −2 (ціна далеко під SMA20)",
+   "dir": 1,
+   "verdict": "нестабільно",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 577,
+    "mean": -0.12,
+    "excess": -1.43,
+    "t": -2.51,
+    "hit": 52.7,
+    "base_hit": 50.1,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 621,
+    "mean": 0.72,
+    "excess": 0.85,
+    "t": 1.85,
+    "hit": 48.1,
+    "base_hit": 44.5,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 216,
+    "mean": -1.9,
+    "excess": -1.04,
+    "t": -1.6,
+    "hit": 40.7,
+    "base_hit": 41.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_above_p2",
+   "name": "Z-score > +2 (ціна далеко над SMA20)",
+   "dir": -1,
+   "verdict": "працює навпаки",
+   "last365_same_side": "ні",
+   "train7": {
+    "n": 804,
+    "mean": 3.64,
+    "excess": 2.23,
+    "t": 3.44,
+    "hit": 49.6,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 595,
+    "mean": 1.76,
+    "excess": 1.74,
+    "t": 2.77,
+    "hit": 49.9,
+    "base_hit": 54.5,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 214,
+    "mean": -0.65,
+    "excess": -0.13,
+    "t": -0.16,
+    "hit": 59.3,
+    "base_hit": 56.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bull",
+   "name": "ЗВЕДЕНИЙ БИЧАЧИЙ сигнал (оцінка ≥ +4 з 6)",
+   "dir": 1,
+   "verdict": "працює",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 707,
+    "mean": 3.93,
+    "excess": 2.44,
+    "t": 3.65,
+    "hit": 54,
+    "base_hit": 50.8,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 491,
+    "mean": 1.9,
+    "excess": 1.77,
+    "t": 2.41,
+    "hit": 48.9,
+    "base_hit": 46.2,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 124,
+    "mean": 2.82,
+    "excess": 3.07,
+    "t": 2.18,
+    "hit": 47.6,
+    "base_hit": 44.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bear",
+   "name": "ЗВЕДЕНИЙ ВЕДМЕЖИЙ сигнал (оцінка ≤ −4 з 6)",
+   "dir": -1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 882,
+    "mean": -0.58,
+    "excess": -1.82,
+    "t": -4.25,
+    "hit": 50.9,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 896,
+    "mean": -0.3,
+    "excess": -0.08,
+    "t": -0.23,
+    "hit": 50.9,
+    "base_hit": 55.9,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 326,
+    "mean": -1.04,
+    "excess": -0.1,
+    "t": -0.19,
+    "hit": 53.7,
+    "base_hit": 58.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_pos",
+   "name": "CMF стає > +0,05 (приплив)",
+   "dir": 1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 1196,
+    "mean": 1.67,
+    "excess": 0.33,
+    "t": 0.74,
+    "hit": 47.5,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 993,
+    "mean": 0.18,
+    "excess": 0.26,
+    "t": 0.65,
+    "hit": 45.2,
+    "base_hit": 45.3,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 283,
+    "mean": 0.44,
+    "excess": 1.15,
+    "t": 1.8,
+    "hit": 44.5,
+    "base_hit": 42.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_neg",
+   "name": "CMF стає < −0,05 (відплив)",
+   "dir": -1,
+   "verdict": "слабко",
+   "last365_same_side": "так",
+   "train7": {
+    "n": 1040,
+    "mean": 0.38,
+    "excess": -0.95,
+    "t": -2.03,
+    "hit": 49.9,
+    "base_hit": 50.1,
+    "vol_excess": null
+   },
+   "test7": {
+    "n": 1063,
+    "mean": -0.6,
+    "excess": -0.56,
+    "t": -1.51,
+    "hit": 54.4,
+    "base_hit": 55.4,
+    "vol_excess": null
+   },
+   "last365_7": {
+    "n": 411,
+    "mean": -1.51,
+    "excess": -0.79,
+    "t": -1.39,
+    "hit": 59.9,
+    "base_hit": 58,
+    "vol_excess": null
+   }
+  }
+ ],
+ "rows": [
+  {
+   "key": "rsi_exit_oversold",
+   "name": "RSI виходить вгору з перепроданості (<30)",
+   "dir": 1,
+   "period": "train",
+   "n": 268,
+   "assets": 20,
+   "h1": {
+    "n": 268,
+    "mean": -1.13,
+    "excess": -1.31,
+    "t": -3.32,
+    "hit": 44,
+    "base_hit": 50.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 268,
+    "mean": 0.62,
+    "excess": -0.58,
+    "t": -0.68,
+    "hit": 48.5,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 268,
+    "mean": 2.1,
+    "excess": -3.99,
+    "t": -2.01,
+    "hit": 44.4,
+    "base_hit": 47.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_oversold",
+   "name": "RSI виходить вгору з перепроданості (<30)",
+   "dir": 1,
+   "period": "test",
+   "n": 278,
+   "assets": 24,
+   "h1": {
+    "n": 274,
+    "mean": -0.26,
+    "excess": -0.22,
+    "t": -0.92,
+    "hit": 44.5,
+    "base_hit": 47.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 268,
+    "mean": -0.49,
+    "excess": -0.26,
+    "t": -0.46,
+    "hit": 43.7,
+    "base_hit": 44.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 249,
+    "mean": -0.54,
+    "excess": -0.49,
+    "t": -0.2,
+    "hit": 38.2,
+    "base_hit": 41.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_oversold",
+   "name": "RSI виходить вгору з перепроданості (<30)",
+   "dir": 1,
+   "period": "last365",
+   "n": 125,
+   "assets": 24,
+   "h1": {
+    "n": 121,
+    "mean": -0.04,
+    "excess": 0.11,
+    "t": 0.36,
+    "hit": 48.8,
+    "base_hit": 44.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 115,
+    "mean": -2.51,
+    "excess": -1.41,
+    "t": -1.77,
+    "hit": 36.5,
+    "base_hit": 41.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 96,
+    "mean": -2.12,
+    "excess": 0.69,
+    "t": 0.63,
+    "hit": 44.8,
+    "base_hit": 41.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_oversold",
+   "name": "RSI входить у перепроданість (<30)",
+   "dir": 1,
+   "period": "train",
+   "n": 280,
+   "assets": 20,
+   "h1": {
+    "n": 280,
+    "mean": 1.75,
+    "excess": 1.57,
+    "t": 3.27,
+    "hit": 61.1,
+    "base_hit": 50.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 280,
+    "mean": 1.91,
+    "excess": 0.72,
+    "t": 0.82,
+    "hit": 56.1,
+    "base_hit": 49.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 280,
+    "mean": 4.24,
+    "excess": -1.8,
+    "t": -0.94,
+    "hit": 48.6,
+    "base_hit": 47.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_oversold",
+   "name": "RSI входить у перепроданість (<30)",
+   "dir": 1,
+   "period": "test",
+   "n": 284,
+   "assets": 24,
+   "h1": {
+    "n": 284,
+    "mean": 0.62,
+    "excess": 0.65,
+    "t": 1.75,
+    "hit": 53.5,
+    "base_hit": 47.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 278,
+    "mean": 1.43,
+    "excess": 1.67,
+    "t": 2.4,
+    "hit": 52.5,
+    "base_hit": 44,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 251,
+    "mean": 3.97,
+    "excess": 4.02,
+    "t": 1.54,
+    "hit": 47,
+    "base_hit": 40.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_oversold",
+   "name": "RSI входить у перепроданість (<30)",
+   "dir": 1,
+   "period": "last365",
+   "n": 132,
+   "assets": 24,
+   "h1": {
+    "n": 132,
+    "mean": 0.48,
+    "excess": 0.64,
+    "t": 1.13,
+    "hit": 50,
+    "base_hit": 44.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 126,
+    "mean": -3.43,
+    "excess": -2.27,
+    "t": -2.48,
+    "hit": 33.3,
+    "base_hit": 40.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 99,
+    "mean": -2.13,
+    "excess": 0.88,
+    "t": 0.6,
+    "hit": 45.5,
+    "base_hit": 41.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_overbought",
+   "name": "RSI виходить униз з перекупленості (>70)",
+   "dir": -1,
+   "period": "train",
+   "n": 462,
+   "assets": 21,
+   "h1": {
+    "n": 462,
+    "mean": 1.55,
+    "excess": 1.34,
+    "t": 4.51,
+    "hit": 37.9,
+    "base_hit": 48.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 462,
+    "mean": 4.84,
+    "excess": 3.45,
+    "t": 4.29,
+    "hit": 42.9,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 462,
+    "mean": 16.51,
+    "excess": 9.5,
+    "t": 4.5,
+    "hit": 40.7,
+    "base_hit": 50.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_overbought",
+   "name": "RSI виходить униз з перекупленості (>70)",
+   "dir": -1,
+   "period": "test",
+   "n": 295,
+   "assets": 24,
+   "h1": {
+    "n": 295,
+    "mean": 0.34,
+    "excess": 0.32,
+    "t": 1.05,
+    "hit": 53.6,
+    "base_hit": 51.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 295,
+    "mean": 3.28,
+    "excess": 3.16,
+    "t": 3.05,
+    "hit": 52.9,
+    "base_hit": 54.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 294,
+    "mean": 6.95,
+    "excess": 5.46,
+    "t": 2.1,
+    "hit": 54.4,
+    "base_hit": 55.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_exit_overbought",
+   "name": "RSI виходить униз з перекупленості (>70)",
+   "dir": -1,
+   "period": "last365",
+   "n": 89,
+   "assets": 24,
+   "h1": {
+    "n": 89,
+    "mean": -0.66,
+    "excess": -0.61,
+    "t": -1.42,
+    "hit": 57.3,
+    "base_hit": 53.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 89,
+    "mean": -0.81,
+    "excess": -0.44,
+    "t": -0.33,
+    "hit": 65.2,
+    "base_hit": 56.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 88,
+    "mean": 0.95,
+    "excess": 0.55,
+    "t": 0.19,
+    "hit": 51.1,
+    "base_hit": 53.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_overbought",
+   "name": "RSI входить у перекупленість (>70)",
+   "dir": -1,
+   "period": "train",
+   "n": 464,
+   "assets": 21,
+   "h1": {
+    "n": 464,
+    "mean": 0.12,
+    "excess": -0.09,
+    "t": -0.28,
+    "hit": 52.8,
+    "base_hit": 49,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 464,
+    "mean": 6.05,
+    "excess": 4.65,
+    "t": 5.21,
+    "hit": 40.5,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 464,
+    "mean": 16.33,
+    "excess": 9.26,
+    "t": 4.41,
+    "hit": 40.3,
+    "base_hit": 50.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_overbought",
+   "name": "RSI входить у перекупленість (>70)",
+   "dir": -1,
+   "period": "test",
+   "n": 293,
+   "assets": 24,
+   "h1": {
+    "n": 293,
+    "mean": 0.02,
+    "excess": 0.01,
+    "t": 0.01,
+    "hit": 59.4,
+    "base_hit": 51.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 293,
+    "mean": 3.22,
+    "excess": 3.1,
+    "t": 2.88,
+    "hit": 50.2,
+    "base_hit": 54.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 292,
+    "mean": 7.93,
+    "excess": 6.4,
+    "t": 2.65,
+    "hit": 48.6,
+    "base_hit": 55.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "rsi_enter_overbought",
+   "name": "RSI входить у перекупленість (>70)",
+   "dir": -1,
+   "period": "last365",
+   "n": 89,
+   "assets": 24,
+   "h1": {
+    "n": 89,
+    "mean": -0.5,
+    "excess": -0.46,
+    "t": -0.68,
+    "hit": 66.3,
+    "base_hit": 53.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 89,
+    "mean": -0.2,
+    "excess": 0.06,
+    "t": 0.04,
+    "hit": 60.7,
+    "base_hit": 56.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 88,
+    "mean": 1.91,
+    "excess": 0.95,
+    "t": 0.33,
+    "hit": 47.7,
+    "base_hit": 53.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_up",
+   "name": "MACD: гістограма стає «+»",
+   "dir": 1,
+   "period": "train",
+   "n": 957,
+   "assets": 21,
+   "h1": {
+    "n": 957,
+    "mean": 0.12,
+    "excess": -0.08,
+    "t": -0.47,
+    "hit": 49.2,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 957,
+    "mean": 1.8,
+    "excess": 0.44,
+    "t": 0.94,
+    "hit": 50.9,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 957,
+    "mean": 8.42,
+    "excess": 1.62,
+    "t": 1.25,
+    "hit": 49.9,
+    "base_hit": 48.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_up",
+   "name": "MACD: гістограма стає «+»",
+   "dir": 1,
+   "period": "test",
+   "n": 854,
+   "assets": 24,
+   "h1": {
+    "n": 851,
+    "mean": 0.4,
+    "excess": 0.41,
+    "t": 1.95,
+    "hit": 47.1,
+    "base_hit": 47.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 851,
+    "mean": -0.76,
+    "excess": -0.7,
+    "t": -1.88,
+    "hit": 42.7,
+    "base_hit": 45,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 840,
+    "mean": 3.41,
+    "excess": 2.65,
+    "t": 2.02,
+    "hit": 45.4,
+    "base_hit": 43,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_up",
+   "name": "MACD: гістограма стає «+»",
+   "dir": 1,
+   "period": "last365",
+   "n": 296,
+   "assets": 24,
+   "h1": {
+    "n": 293,
+    "mean": 0.63,
+    "excess": 0.74,
+    "t": 2.81,
+    "hit": 49.1,
+    "base_hit": 45.7,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 293,
+    "mean": 0.8,
+    "excess": 1.54,
+    "t": 2.53,
+    "hit": 46.8,
+    "base_hit": 42.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 282,
+    "mean": 2.82,
+    "excess": 3.95,
+    "t": 3.48,
+    "hit": 52.8,
+    "base_hit": 44.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_down",
+   "name": "MACD: гістограма стає «−»",
+   "dir": -1,
+   "period": "train",
+   "n": 954,
+   "assets": 21,
+   "h1": {
+    "n": 954,
+    "mean": 0.68,
+    "excess": 0.48,
+    "t": 2.53,
+    "hit": 41.5,
+    "base_hit": 49,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 954,
+    "mean": 1.03,
+    "excess": -0.33,
+    "t": -0.72,
+    "hit": 48,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 954,
+    "mean": 7.42,
+    "excess": 0.65,
+    "t": 0.5,
+    "hit": 53.2,
+    "base_hit": 51.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_down",
+   "name": "MACD: гістограма стає «−»",
+   "dir": -1,
+   "period": "test",
+   "n": 855,
+   "assets": 24,
+   "h1": {
+    "n": 855,
+    "mean": -0.01,
+    "excess": 0,
+    "t": -0.03,
+    "hit": 51.7,
+    "base_hit": 52.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 853,
+    "mean": 0.59,
+    "excess": 0.64,
+    "t": 1.54,
+    "hit": 55.9,
+    "base_hit": 55,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 843,
+    "mean": 0.94,
+    "excess": 0.17,
+    "t": 0.16,
+    "hit": 55.3,
+    "base_hit": 57.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "macd_down",
+   "name": "MACD: гістограма стає «−»",
+   "dir": -1,
+   "period": "last365",
+   "n": 291,
+   "assets": 24,
+   "h1": {
+    "n": 291,
+    "mean": -0.21,
+    "excess": -0.1,
+    "t": -0.48,
+    "hit": 54,
+    "base_hit": 54.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 289,
+    "mean": 0.61,
+    "excess": 1.38,
+    "t": 2.33,
+    "hit": 55.4,
+    "base_hit": 57.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 279,
+    "mean": 2.67,
+    "excess": 3.84,
+    "t": 2.71,
+    "hit": 48,
+    "base_hit": 56.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_up",
+   "name": "Ціна перетинає SMA200 вгору",
+   "dir": 1,
+   "period": "train",
+   "n": 321,
+   "assets": 21,
+   "h1": {
+    "n": 321,
+    "mean": -0.28,
+    "excess": -0.49,
+    "t": -1.59,
+    "hit": 44.5,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 321,
+    "mean": 1.79,
+    "excess": 0.4,
+    "t": 0.45,
+    "hit": 51.7,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 321,
+    "mean": 4.08,
+    "excess": -2.9,
+    "t": -1.55,
+    "hit": 48.6,
+    "base_hit": 48.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_up",
+   "name": "Ціна перетинає SMA200 вгору",
+   "dir": 1,
+   "period": "test",
+   "n": 272,
+   "assets": 24,
+   "h1": {
+    "n": 271,
+    "mean": 0.22,
+    "excess": 0.22,
+    "t": 0.66,
+    "hit": 53.1,
+    "base_hit": 47.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 271,
+    "mean": 0.43,
+    "excess": 0.41,
+    "t": 0.44,
+    "hit": 47.2,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 265,
+    "mean": 4.9,
+    "excess": 3.91,
+    "t": 1.6,
+    "hit": 44.9,
+    "base_hit": 43.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_up",
+   "name": "Ціна перетинає SMA200 вгору",
+   "dir": 1,
+   "period": "last365",
+   "n": 77,
+   "assets": 24,
+   "h1": {
+    "n": 76,
+    "mean": 0.94,
+    "excess": 1.02,
+    "t": 1.91,
+    "hit": 57.9,
+    "base_hit": 45.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 76,
+    "mean": 1.67,
+    "excess": 2.23,
+    "t": 1.28,
+    "hit": 48.7,
+    "base_hit": 43,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 70,
+    "mean": 6.73,
+    "excess": 7.08,
+    "t": 2.15,
+    "hit": 54.3,
+    "base_hit": 45.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_down",
+   "name": "Ціна перетинає SMA200 вниз",
+   "dir": -1,
+   "period": "train",
+   "n": 323,
+   "assets": 21,
+   "h1": {
+    "n": 323,
+    "mean": 0.88,
+    "excess": 0.68,
+    "t": 1.71,
+    "hit": 41.2,
+    "base_hit": 48.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 323,
+    "mean": 0.41,
+    "excess": -0.95,
+    "t": -1.16,
+    "hit": 49.2,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 323,
+    "mean": 1.31,
+    "excess": -5.51,
+    "t": -3.45,
+    "hit": 55.1,
+    "base_hit": 51.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_down",
+   "name": "Ціна перетинає SMA200 вниз",
+   "dir": -1,
+   "period": "test",
+   "n": 283,
+   "assets": 24,
+   "h1": {
+    "n": 283,
+    "mean": 0.29,
+    "excess": 0.29,
+    "t": 1.11,
+    "hit": 46.6,
+    "base_hit": 52.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 282,
+    "mean": 0.5,
+    "excess": 0.5,
+    "t": 0.68,
+    "hit": 57.1,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 263,
+    "mean": 0.71,
+    "excess": -0.16,
+    "t": -0.09,
+    "hit": 55.5,
+    "base_hit": 56.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "sma200_down",
+   "name": "Ціна перетинає SMA200 вниз",
+   "dir": -1,
+   "period": "last365",
+   "n": 75,
+   "assets": 24,
+   "h1": {
+    "n": 75,
+    "mean": 0.03,
+    "excess": 0.12,
+    "t": 0.23,
+    "hit": 50.7,
+    "base_hit": 54.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 74,
+    "mean": -0.54,
+    "excess": 0.08,
+    "t": 0.05,
+    "hit": 62.2,
+    "base_hit": 57.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 55,
+    "mean": 6.45,
+    "excess": 7.02,
+    "t": 1.41,
+    "hit": 43.6,
+    "base_hit": 55.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "golden_cross",
+   "name": "Золотий хрест SMA50 > SMA200",
+   "dir": 1,
+   "period": "train",
+   "n": 92,
+   "assets": 21,
+   "h1": {
+    "n": 92,
+    "mean": -0.86,
+    "excess": -1.09,
+    "t": -1.48,
+    "hit": 42.4,
+    "base_hit": 51.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 92,
+    "mean": -0.99,
+    "excess": -2.51,
+    "t": -1.56,
+    "hit": 44.6,
+    "base_hit": 50.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 92,
+    "mean": 12.95,
+    "excess": 5.2,
+    "t": 1.09,
+    "hit": 54.3,
+    "base_hit": 49.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "golden_cross",
+   "name": "Золотий хрест SMA50 > SMA200",
+   "dir": 1,
+   "period": "test",
+   "n": 63,
+   "assets": 24,
+   "h1": {
+    "n": 63,
+    "mean": 1.56,
+    "excess": 1.56,
+    "t": 2.62,
+    "hit": 58.7,
+    "base_hit": 47.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 63,
+    "mean": 3.6,
+    "excess": 3.54,
+    "t": 1.19,
+    "hit": 39.7,
+    "base_hit": 45,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 63,
+    "mean": -2.48,
+    "excess": -3.76,
+    "t": -1.17,
+    "hit": 42.9,
+    "base_hit": 43.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "golden_cross",
+   "name": "Золотий хрест SMA50 > SMA200",
+   "dir": 1,
+   "period": "last365",
+   "n": 24,
+   "assets": 23,
+   "h1": {
+    "n": 24,
+    "mean": 0.99,
+    "excess": 1.08,
+    "t": 1.55,
+    "hit": 62.5,
+    "base_hit": 45.7,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 24,
+    "mean": -2.66,
+    "excess": -2.07,
+    "t": -0.82,
+    "hit": 37.5,
+    "base_hit": 42.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 24,
+    "mean": -12.1,
+    "excess": -11.58,
+    "t": -2.97,
+    "hit": 33.3,
+    "base_hit": 45,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "death_cross",
+   "name": "Хрест смерті SMA50 < SMA200",
+   "dir": -1,
+   "period": "train",
+   "n": 85,
+   "assets": 20,
+   "h1": {
+    "n": 85,
+    "mean": -0.02,
+    "excess": -0.23,
+    "t": -0.47,
+    "hit": 41.2,
+    "base_hit": 48.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 85,
+    "mean": 1.11,
+    "excess": -0.33,
+    "t": -0.22,
+    "hit": 44.7,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 85,
+    "mean": 11.11,
+    "excess": 3.89,
+    "t": 1.24,
+    "hit": 43.5,
+    "base_hit": 50.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "death_cross",
+   "name": "Хрест смерті SMA50 < SMA200",
+   "dir": -1,
+   "period": "test",
+   "n": 68,
+   "assets": 22,
+   "h1": {
+    "n": 67,
+    "mean": -0.01,
+    "excess": 0,
+    "t": 0,
+    "hit": 56.7,
+    "base_hit": 52.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 63,
+    "mean": 0.18,
+    "excess": 0.16,
+    "t": 0.16,
+    "hit": 49.2,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 61,
+    "mean": -6.19,
+    "excess": -7.2,
+    "t": -2.98,
+    "hit": 70.5,
+    "base_hit": 56.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "death_cross",
+   "name": "Хрест смерті SMA50 < SMA200",
+   "dir": -1,
+   "period": "last365",
+   "n": 10,
+   "assets": 10,
+   "h1": {
+    "n": 9,
+    "mean": -1.62,
+    "excess": -1.45,
+    "t": -1.28,
+    "hit": 55.6,
+    "base_hit": 54,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 5,
+    "mean": 0.47,
+    "excess": 1,
+    "t": 0.51,
+    "hit": 40,
+    "base_hit": 53.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 3,
+    "mean": 0.37,
+    "excess": 1.89,
+    "t": 0.76,
+    "hit": 66.7,
+    "base_hit": 50.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_below_08",
+   "name": "Mayer опускається нижче 0,8",
+   "dir": 1,
+   "period": "train",
+   "n": 311,
+   "assets": 21,
+   "h1": {
+    "n": 311,
+    "mean": 0.9,
+    "excess": 0.7,
+    "t": 1.66,
+    "hit": 53.4,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 311,
+    "mean": 0.37,
+    "excess": -0.95,
+    "t": -1.25,
+    "hit": 50.5,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 311,
+    "mean": 4.05,
+    "excess": -2.51,
+    "t": -1.43,
+    "hit": 51.1,
+    "base_hit": 48.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_below_08",
+   "name": "Mayer опускається нижче 0,8",
+   "dir": 1,
+   "period": "test",
+   "n": 295,
+   "assets": 23,
+   "h1": {
+    "n": 295,
+    "mean": 0.32,
+    "excess": 0.34,
+    "t": 1.34,
+    "hit": 51.2,
+    "base_hit": 47.5,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 291,
+    "mean": -1.14,
+    "excess": -1.01,
+    "t": -1.42,
+    "hit": 41.2,
+    "base_hit": 44,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 279,
+    "mean": 1.48,
+    "excess": 0.92,
+    "t": 0.46,
+    "hit": 39.4,
+    "base_hit": 41.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_below_08",
+   "name": "Mayer опускається нижче 0,8",
+   "dir": 1,
+   "period": "last365",
+   "n": 85,
+   "assets": 23,
+   "h1": {
+    "n": 85,
+    "mean": 0.96,
+    "excess": 1.06,
+    "t": 2.66,
+    "hit": 55.3,
+    "base_hit": 46.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 81,
+    "mean": -1.63,
+    "excess": -0.9,
+    "t": -0.78,
+    "hit": 40.7,
+    "base_hit": 41.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 69,
+    "mean": -2.11,
+    "excess": -1.53,
+    "t": -0.53,
+    "hit": 39.1,
+    "base_hit": 45.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_08",
+   "name": "Mayer піднімається вище 0,8",
+   "dir": 1,
+   "period": "train",
+   "n": 310,
+   "assets": 21,
+   "h1": {
+    "n": 310,
+    "mean": 0.04,
+    "excess": -0.16,
+    "t": -0.59,
+    "hit": 47.4,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 310,
+    "mean": 1.23,
+    "excess": -0.08,
+    "t": -0.09,
+    "hit": 52.6,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 310,
+    "mean": 7.68,
+    "excess": 1.13,
+    "t": 0.56,
+    "hit": 51.6,
+    "base_hit": 48.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_08",
+   "name": "Mayer піднімається вище 0,8",
+   "dir": 1,
+   "period": "test",
+   "n": 300,
+   "assets": 23,
+   "h1": {
+    "n": 298,
+    "mean": 0.22,
+    "excess": 0.24,
+    "t": 0.83,
+    "hit": 47,
+    "base_hit": 47.4,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 295,
+    "mean": -0.24,
+    "excess": -0.11,
+    "t": -0.13,
+    "hit": 43.4,
+    "base_hit": 43.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 288,
+    "mean": 4.57,
+    "excess": 3.96,
+    "t": 1.49,
+    "hit": 43.8,
+    "base_hit": 41.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_08",
+   "name": "Mayer піднімається вище 0,8",
+   "dir": 1,
+   "period": "last365",
+   "n": 100,
+   "assets": 23,
+   "h1": {
+    "n": 98,
+    "mean": 0.36,
+    "excess": 0.46,
+    "t": 1.29,
+    "hit": 45.9,
+    "base_hit": 46,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 95,
+    "mean": -0.6,
+    "excess": 0.13,
+    "t": 0.1,
+    "hit": 41.1,
+    "base_hit": 41.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 88,
+    "mean": -0.55,
+    "excess": 0.35,
+    "t": 0.13,
+    "hit": 50,
+    "base_hit": 44.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_24",
+   "name": "Mayer піднімається вище 2,4",
+   "dir": -1,
+   "period": "train",
+   "n": 91,
+   "assets": 18,
+   "h1": {
+    "n": 91,
+    "mean": -0.2,
+    "excess": -0.44,
+    "t": -0.57,
+    "hit": 54.9,
+    "base_hit": 49.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 91,
+    "mean": 8.52,
+    "excess": 6.91,
+    "t": 2.7,
+    "hit": 46.2,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 91,
+    "mean": 20.53,
+    "excess": 12.21,
+    "t": 1.97,
+    "hit": 44,
+    "base_hit": 51.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_24",
+   "name": "Mayer піднімається вище 2,4",
+   "dir": -1,
+   "period": "test",
+   "n": 36,
+   "assets": 11,
+   "h1": {
+    "n": 36,
+    "mean": -1.35,
+    "excess": -1.46,
+    "t": -1,
+    "hit": 55.6,
+    "base_hit": 52.4,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 36,
+    "mean": 2.08,
+    "excess": 1.28,
+    "t": 0.32,
+    "hit": 44.4,
+    "base_hit": 54.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 36,
+    "mean": -9.3,
+    "excess": -14.13,
+    "t": -3.31,
+    "hit": 69.4,
+    "base_hit": 54,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "mayer_above_24",
+   "name": "Mayer піднімається вище 2,4",
+   "dir": -1,
+   "period": "last365",
+   "n": 6,
+   "assets": 2,
+   "h1": {
+    "n": 6,
+    "mean": 1.86,
+    "excess": 1.54,
+    "t": 0.5,
+    "hit": 33.3,
+    "base_hit": 52.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 6,
+    "mean": 0.83,
+    "excess": -1.61,
+    "t": -0.28,
+    "hit": 33.3,
+    "base_hit": 52.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 6,
+    "mean": -15.1,
+    "excess": -31.22,
+    "t": -4.89,
+    "hit": 83.3,
+    "base_hit": 43.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long",
+   "name": "Supertrend перемикається в лонг",
+   "dir": 1,
+   "period": "train",
+   "n": 276,
+   "assets": 20,
+   "h1": {
+    "n": 276,
+    "mean": -0.31,
+    "excess": -0.52,
+    "t": -1.59,
+    "hit": 44.9,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 276,
+    "mean": 2,
+    "excess": 0.64,
+    "t": 0.5,
+    "hit": 50.4,
+    "base_hit": 50.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 276,
+    "mean": 9.78,
+    "excess": 2.98,
+    "t": 1.28,
+    "hit": 55.1,
+    "base_hit": 48.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long",
+   "name": "Supertrend перемикається в лонг",
+   "dir": 1,
+   "period": "test",
+   "n": 268,
+   "assets": 24,
+   "h1": {
+    "n": 268,
+    "mean": 1.08,
+    "excess": 1.08,
+    "t": 2.56,
+    "hit": 54.9,
+    "base_hit": 47.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 268,
+    "mean": 0.97,
+    "excess": 0.98,
+    "t": 1.22,
+    "hit": 48.1,
+    "base_hit": 45.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 267,
+    "mean": 8.3,
+    "excess": 7.36,
+    "t": 2.33,
+    "hit": 50.9,
+    "base_hit": 43.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long",
+   "name": "Supertrend перемикається в лонг",
+   "dir": 1,
+   "period": "last365",
+   "n": 93,
+   "assets": 24,
+   "h1": {
+    "n": 93,
+    "mean": 0.55,
+    "excess": 0.65,
+    "t": 1.35,
+    "hit": 46.2,
+    "base_hit": 45.7,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 93,
+    "mean": -1.98,
+    "excess": -1.28,
+    "t": -1.09,
+    "hit": 32.3,
+    "base_hit": 42.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 92,
+    "mean": -4.72,
+    "excess": -3.76,
+    "t": -1.33,
+    "hit": 37,
+    "base_hit": 44.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_short",
+   "name": "Supertrend перемикається в шорт",
+   "dir": -1,
+   "period": "train",
+   "n": 267,
+   "assets": 19,
+   "h1": {
+    "n": 267,
+    "mean": 0.81,
+    "excess": 0.6,
+    "t": 1.21,
+    "hit": 40.8,
+    "base_hit": 48.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 267,
+    "mean": 1.66,
+    "excess": 0.29,
+    "t": 0.39,
+    "hit": 46.1,
+    "base_hit": 49.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 267,
+    "mean": -3.49,
+    "excess": -10.33,
+    "t": -6.02,
+    "hit": 62.5,
+    "base_hit": 51.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_short",
+   "name": "Supertrend перемикається в шорт",
+   "dir": -1,
+   "period": "test",
+   "n": 288,
+   "assets": 24,
+   "h1": {
+    "n": 288,
+    "mean": -0.08,
+    "excess": -0.07,
+    "t": -0.25,
+    "hit": 45.5,
+    "base_hit": 52.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 287,
+    "mean": 1.36,
+    "excess": 1.37,
+    "t": 2.1,
+    "hit": 48.8,
+    "base_hit": 54.8,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 277,
+    "mean": -0.58,
+    "excess": -1.52,
+    "t": -0.8,
+    "hit": 60.6,
+    "base_hit": 56.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_short",
+   "name": "Supertrend перемикається в шорт",
+   "dir": -1,
+   "period": "last365",
+   "n": 93,
+   "assets": 24,
+   "h1": {
+    "n": 93,
+    "mean": 0.65,
+    "excess": 0.76,
+    "t": 2.31,
+    "hit": 35.5,
+    "base_hit": 54.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 92,
+    "mean": -0.17,
+    "excess": 0.55,
+    "t": 0.56,
+    "hit": 55.4,
+    "base_hit": 57.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 82,
+    "mean": -11.2,
+    "excess": -10.12,
+    "t": -4.3,
+    "hit": 73.2,
+    "base_hit": 55.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_hurst",
+   "name": "Supertrend у лонг + Херст вище річної медіани",
+   "dir": 1,
+   "period": "train",
+   "n": 130,
+   "assets": 19,
+   "h1": {
+    "n": 130,
+    "mean": -0.8,
+    "excess": -1,
+    "t": -2.07,
+    "hit": 43.1,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 130,
+    "mean": -1.5,
+    "excess": -2.88,
+    "t": -2.47,
+    "hit": 42.3,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 130,
+    "mean": 6.68,
+    "excess": -0.19,
+    "t": -0.06,
+    "hit": 51.5,
+    "base_hit": 49,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_hurst",
+   "name": "Supertrend у лонг + Херст вище річної медіани",
+   "dir": 1,
+   "period": "test",
+   "n": 121,
+   "assets": 24,
+   "h1": {
+    "n": 121,
+    "mean": 0.86,
+    "excess": 0.86,
+    "t": 1.7,
+    "hit": 48.8,
+    "base_hit": 47.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 121,
+    "mean": 0.59,
+    "excess": 0.57,
+    "t": 0.5,
+    "hit": 47.1,
+    "base_hit": 45.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 121,
+    "mean": 5.33,
+    "excess": 4.32,
+    "t": 1.35,
+    "hit": 52.1,
+    "base_hit": 44,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_hurst",
+   "name": "Supertrend у лонг + Херст вище річної медіани",
+   "dir": 1,
+   "period": "last365",
+   "n": 64,
+   "assets": 24,
+   "h1": {
+    "n": 64,
+    "mean": 1.16,
+    "excess": 1.27,
+    "t": 2.03,
+    "hit": 46.9,
+    "base_hit": 45.7,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 64,
+    "mean": -0.46,
+    "excess": 0.26,
+    "t": 0.19,
+    "hit": 39.1,
+    "base_hit": 42.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 64,
+    "mean": 0.39,
+    "excess": 1.37,
+    "t": 0.4,
+    "hit": 43.8,
+    "base_hit": 44.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_nohurst",
+   "name": "Supertrend у лонг + Херст нижче медіани",
+   "dir": 1,
+   "period": "train",
+   "n": 141,
+   "assets": 20,
+   "h1": {
+    "n": 141,
+    "mean": 0.21,
+    "excess": 0,
+    "t": 0.01,
+    "hit": 46.8,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 141,
+    "mean": 5.06,
+    "excess": 3.72,
+    "t": 1.7,
+    "hit": 58.2,
+    "base_hit": 50.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 141,
+    "mean": 12.84,
+    "excess": 6.1,
+    "t": 1.75,
+    "hit": 57.4,
+    "base_hit": 48.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_nohurst",
+   "name": "Supertrend у лонг + Херст нижче медіани",
+   "dir": 1,
+   "period": "test",
+   "n": 146,
+   "assets": 24,
+   "h1": {
+    "n": 146,
+    "mean": 1.27,
+    "excess": 1.28,
+    "t": 1.96,
+    "hit": 60.3,
+    "base_hit": 47.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 146,
+    "mean": 1.36,
+    "excess": 1.41,
+    "t": 1.26,
+    "hit": 49.3,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 145,
+    "mean": 10.93,
+    "excess": 10.16,
+    "t": 1.97,
+    "hit": 50.3,
+    "base_hit": 42.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "supertrend_long_nohurst",
+   "name": "Supertrend у лонг + Херст нижче медіани",
+   "dir": 1,
+   "period": "last365",
+   "n": 28,
+   "assets": 18,
+   "h1": {
+    "n": 28,
+    "mean": -0.8,
+    "excess": -0.69,
+    "t": -1.05,
+    "hit": 46.4,
+    "base_hit": 45.6,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 28,
+    "mean": -5.15,
+    "excess": -4.36,
+    "t": -2.01,
+    "hit": 17.9,
+    "base_hit": 42.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 27,
+    "mean": -16.51,
+    "excess": -14.91,
+    "t": -3.44,
+    "hit": 22.2,
+    "base_hit": 43.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_up",
+   "name": "Пробій 20-денного максимуму",
+   "dir": 1,
+   "period": "train",
+   "n": 821,
+   "assets": 21,
+   "h1": {
+    "n": 821,
+    "mean": 0.52,
+    "excess": 0.3,
+    "t": 1.33,
+    "hit": 46.7,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 821,
+    "mean": 4.29,
+    "excess": 2.86,
+    "t": 4.55,
+    "hit": 54.8,
+    "base_hit": 50.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 821,
+    "mean": 14.19,
+    "excess": 6.99,
+    "t": 4.36,
+    "hit": 56.5,
+    "base_hit": 49.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_up",
+   "name": "Пробій 20-денного максимуму",
+   "dir": 1,
+   "period": "test",
+   "n": 606,
+   "assets": 24,
+   "h1": {
+    "n": 606,
+    "mean": 0.89,
+    "excess": 0.88,
+    "t": 3.23,
+    "hit": 52.6,
+    "base_hit": 48.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 606,
+    "mean": 1.95,
+    "excess": 1.88,
+    "t": 2.85,
+    "hit": 50.3,
+    "base_hit": 45.8,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 605,
+    "mean": 5.58,
+    "excess": 4.33,
+    "t": 2.78,
+    "hit": 48.9,
+    "base_hit": 44.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_up",
+   "name": "Пробій 20-денного максимуму",
+   "dir": 1,
+   "period": "last365",
+   "n": 203,
+   "assets": 24,
+   "h1": {
+    "n": 203,
+    "mean": 0.42,
+    "excess": 0.48,
+    "t": 1.26,
+    "hit": 44.8,
+    "base_hit": 46.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 203,
+    "mean": -0.83,
+    "excess": -0.41,
+    "t": -0.48,
+    "hit": 36.9,
+    "base_hit": 43.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 202,
+    "mean": -2.48,
+    "excess": -2.78,
+    "t": -1.45,
+    "hit": 41.6,
+    "base_hit": 46.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_down",
+   "name": "Пробій 20-денного мінімуму",
+   "dir": -1,
+   "period": "train",
+   "n": 660,
+   "assets": 20,
+   "h1": {
+    "n": 660,
+    "mean": 0.24,
+    "excess": 0.04,
+    "t": 0.14,
+    "hit": 45.5,
+    "base_hit": 49.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 660,
+    "mean": -0.2,
+    "excess": -1.5,
+    "t": -2.79,
+    "hit": 47.3,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 660,
+    "mean": 1.55,
+    "excess": -4.98,
+    "t": -3.84,
+    "hit": 56.8,
+    "base_hit": 51.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_down",
+   "name": "Пробій 20-денного мінімуму",
+   "dir": -1,
+   "period": "test",
+   "n": 712,
+   "assets": 24,
+   "h1": {
+    "n": 712,
+    "mean": 0.27,
+    "excess": 0.29,
+    "t": 1.53,
+    "hit": 45.2,
+    "base_hit": 52.5,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 693,
+    "mean": 0.12,
+    "excess": 0.26,
+    "t": 0.57,
+    "hit": 51.8,
+    "base_hit": 55.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 637,
+    "mean": 3.77,
+    "excess": 3.38,
+    "t": 2.03,
+    "hit": 54.5,
+    "base_hit": 58.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "donchian_down",
+   "name": "Пробій 20-денного мінімуму",
+   "dir": -1,
+   "period": "last365",
+   "n": 291,
+   "assets": 24,
+   "h1": {
+    "n": 291,
+    "mean": 1.46,
+    "excess": 1.59,
+    "t": 5.41,
+    "hit": 38.5,
+    "base_hit": 54.8,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 272,
+    "mean": -2.24,
+    "excess": -1.34,
+    "t": -2.01,
+    "hit": 59.2,
+    "base_hit": 58.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 216,
+    "mean": -1.83,
+    "excess": 0.05,
+    "t": 0.04,
+    "hit": 50.5,
+    "base_hit": 57.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_up",
+   "name": "ADX > 25, DI+ > DI− (початок висхідного тренду)",
+   "dir": 1,
+   "period": "train",
+   "n": 234,
+   "assets": 21,
+   "h1": {
+    "n": 234,
+    "mean": 0.96,
+    "excess": 0.75,
+    "t": 1.7,
+    "hit": 56.4,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 234,
+    "mean": 4.68,
+    "excess": 3.29,
+    "t": 2.65,
+    "hit": 53.4,
+    "base_hit": 50.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 234,
+    "mean": 17.3,
+    "excess": 10.31,
+    "t": 3.02,
+    "hit": 53.8,
+    "base_hit": 49.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_up",
+   "name": "ADX > 25, DI+ > DI− (початок висхідного тренду)",
+   "dir": 1,
+   "period": "test",
+   "n": 186,
+   "assets": 24,
+   "h1": {
+    "n": 186,
+    "mean": -0.34,
+    "excess": -0.35,
+    "t": -1.05,
+    "hit": 47.3,
+    "base_hit": 48,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 186,
+    "mean": 1.61,
+    "excess": 1.55,
+    "t": 0.97,
+    "hit": 46.2,
+    "base_hit": 45.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 186,
+    "mean": 7.4,
+    "excess": 6.16,
+    "t": 1.8,
+    "hit": 49.5,
+    "base_hit": 44.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_up",
+   "name": "ADX > 25, DI+ > DI− (початок висхідного тренду)",
+   "dir": 1,
+   "period": "last365",
+   "n": 72,
+   "assets": 24,
+   "h1": {
+    "n": 72,
+    "mean": -0.52,
+    "excess": -0.41,
+    "t": -0.78,
+    "hit": 40.3,
+    "base_hit": 45.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 72,
+    "mean": -2.12,
+    "excess": -1.35,
+    "t": -1,
+    "hit": 37.5,
+    "base_hit": 42.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 72,
+    "mean": 2.97,
+    "excess": 4.08,
+    "t": 1,
+    "hit": 48.6,
+    "base_hit": 44.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_down",
+   "name": "ADX > 25, DI− > DI+ (початок низхідного тренду)",
+   "dir": -1,
+   "period": "train",
+   "n": 255,
+   "assets": 20,
+   "h1": {
+    "n": 255,
+    "mean": -0.01,
+    "excess": -0.2,
+    "t": -0.45,
+    "hit": 45.5,
+    "base_hit": 49.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 255,
+    "mean": -0.81,
+    "excess": -2.11,
+    "t": -2.65,
+    "hit": 49.8,
+    "base_hit": 50,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 255,
+    "mean": 1.85,
+    "excess": -4.66,
+    "t": -2.16,
+    "hit": 56.9,
+    "base_hit": 51.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_down",
+   "name": "ADX > 25, DI− > DI+ (початок низхідного тренду)",
+   "dir": -1,
+   "period": "test",
+   "n": 218,
+   "assets": 24,
+   "h1": {
+    "n": 218,
+    "mean": 0.46,
+    "excess": 0.48,
+    "t": 1.29,
+    "hit": 49.1,
+    "base_hit": 52.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 217,
+    "mean": -0.59,
+    "excess": -0.5,
+    "t": -0.56,
+    "hit": 53.9,
+    "base_hit": 55.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 200,
+    "mean": -0.38,
+    "excess": -0.98,
+    "t": -0.66,
+    "hit": 55.5,
+    "base_hit": 58,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "adx_trend_down",
+   "name": "ADX > 25, DI− > DI+ (початок низхідного тренду)",
+   "dir": -1,
+   "period": "last365",
+   "n": 72,
+   "assets": 23,
+   "h1": {
+    "n": 72,
+    "mean": -0.51,
+    "excess": -0.38,
+    "t": -0.58,
+    "hit": 52.8,
+    "base_hit": 54.7,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 71,
+    "mean": -6.28,
+    "excess": -5.37,
+    "t": -4.16,
+    "hit": 70.4,
+    "base_hit": 58.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 54,
+    "mean": -7.1,
+    "excess": -4.8,
+    "t": -2.27,
+    "hit": 68.5,
+    "base_hit": 57.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_above",
+   "name": "Ціна виходить над хмару Ішимоку",
+   "dir": 1,
+   "period": "train",
+   "n": 451,
+   "assets": 20,
+   "h1": {
+    "n": 451,
+    "mean": 0.13,
+    "excess": -0.08,
+    "t": -0.32,
+    "hit": 46.1,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 451,
+    "mean": 1.42,
+    "excess": 0.05,
+    "t": 0.07,
+    "hit": 51.2,
+    "base_hit": 50.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 451,
+    "mean": 8.1,
+    "excess": 1.25,
+    "t": 0.7,
+    "hit": 52.1,
+    "base_hit": 49,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_above",
+   "name": "Ціна виходить над хмару Ішимоку",
+   "dir": 1,
+   "period": "test",
+   "n": 440,
+   "assets": 24,
+   "h1": {
+    "n": 440,
+    "mean": 0.35,
+    "excess": 0.36,
+    "t": 1.24,
+    "hit": 47.7,
+    "base_hit": 47.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 440,
+    "mean": 0.89,
+    "excess": 0.95,
+    "t": 1.36,
+    "hit": 45.2,
+    "base_hit": 45.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 437,
+    "mean": 7.1,
+    "excess": 6.4,
+    "t": 3.17,
+    "hit": 46.2,
+    "base_hit": 43.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_above",
+   "name": "Ціна виходить над хмару Ішимоку",
+   "dir": 1,
+   "period": "last365",
+   "n": 112,
+   "assets": 24,
+   "h1": {
+    "n": 112,
+    "mean": 0.31,
+    "excess": 0.39,
+    "t": 0.91,
+    "hit": 44.6,
+    "base_hit": 46,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 112,
+    "mean": 2.3,
+    "excess": 2.84,
+    "t": 2.28,
+    "hit": 52.7,
+    "base_hit": 43,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 109,
+    "mean": 7.03,
+    "excess": 7.44,
+    "t": 2.77,
+    "hit": 58.7,
+    "base_hit": 45.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_below",
+   "name": "Ціна виходить під хмару Ішимоку",
+   "dir": -1,
+   "period": "train",
+   "n": 530,
+   "assets": 20,
+   "h1": {
+    "n": 530,
+    "mean": 0.56,
+    "excess": 0.36,
+    "t": 1.3,
+    "hit": 42.6,
+    "base_hit": 49,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 530,
+    "mean": 0.66,
+    "excess": -0.73,
+    "t": -1.18,
+    "hit": 50.2,
+    "base_hit": 49.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 530,
+    "mean": 1.53,
+    "excess": -5.37,
+    "t": -3.92,
+    "hit": 54,
+    "base_hit": 51.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_below",
+   "name": "Ціна виходить під хмару Ішимоку",
+   "dir": -1,
+   "period": "test",
+   "n": 577,
+   "assets": 24,
+   "h1": {
+    "n": 577,
+    "mean": -0.44,
+    "excess": -0.42,
+    "t": -2.49,
+    "hit": 51.3,
+    "base_hit": 52.3,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 576,
+    "mean": -0.91,
+    "excess": -0.81,
+    "t": -1.95,
+    "hit": 55.9,
+    "base_hit": 55.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 559,
+    "mean": 0.3,
+    "excess": -0.23,
+    "t": -0.18,
+    "hit": 57.8,
+    "base_hit": 57.6,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "ichimoku_below",
+   "name": "Ціна виходить під хмару Ішимоку",
+   "dir": -1,
+   "period": "last365",
+   "n": 197,
+   "assets": 24,
+   "h1": {
+    "n": 197,
+    "mean": -0.26,
+    "excess": -0.16,
+    "t": -0.69,
+    "hit": 49.2,
+    "base_hit": 54.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 196,
+    "mean": -1.53,
+    "excess": -0.79,
+    "t": -1.11,
+    "hit": 58.7,
+    "base_hit": 57.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 179,
+    "mean": -1.47,
+    "excess": -0.12,
+    "t": -0.06,
+    "hit": 56.4,
+    "base_hit": 56,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "bb_squeeze",
+   "name": "Стиснення Боллінджера (ширина ≤ 10-го процентиля 90 д)",
+   "dir": 0,
+   "period": "train",
+   "n": 564,
+   "assets": 20,
+   "h1": {
+    "n": 564,
+    "mean": -0.09,
+    "excess": -0.29,
+    "t": -1.45,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.71
+   },
+   "h7": {
+    "n": 564,
+    "mean": 0.78,
+    "excess": -0.59,
+    "t": -1.04,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.7
+   },
+   "h30": {
+    "n": 564,
+    "mean": 5.17,
+    "excess": -1.68,
+    "t": -1.17,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -2.07
+   }
+  },
+  {
+   "key": "bb_squeeze",
+   "name": "Стиснення Боллінджера (ширина ≤ 10-го процентиля 90 д)",
+   "dir": 0,
+   "period": "test",
+   "n": 501,
+   "assets": 24,
+   "h1": {
+    "n": 501,
+    "mean": -0.33,
+    "excess": -0.32,
+    "t": -1.6,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.07
+   },
+   "h7": {
+    "n": 501,
+    "mean": -0.06,
+    "excess": 0,
+    "t": 0,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.02
+   },
+   "h30": {
+    "n": 495,
+    "mean": 4.41,
+    "excess": 3.74,
+    "t": 2.69,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.26
+   }
+  },
+  {
+   "key": "bb_squeeze",
+   "name": "Стиснення Боллінджера (ширина ≤ 10-го процентиля 90 д)",
+   "dir": 0,
+   "period": "last365",
+   "n": 172,
+   "assets": 24,
+   "h1": {
+    "n": 172,
+    "mean": -0.13,
+    "excess": -0.03,
+    "t": -0.1,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.18
+   },
+   "h7": {
+    "n": 172,
+    "mean": 0.24,
+    "excess": 0.93,
+    "t": 1.13,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.33
+   },
+   "h30": {
+    "n": 166,
+    "mean": 1.35,
+    "excess": 2.48,
+    "t": 1.64,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -2.78
+   }
+  },
+  {
+   "key": "ttm_squeeze",
+   "name": "TTM-стиснення (Bollinger усередині Keltner)",
+   "dir": 0,
+   "period": "train",
+   "n": 978,
+   "assets": 20,
+   "h1": {
+    "n": 978,
+    "mean": 0.14,
+    "excess": -0.07,
+    "t": -0.39,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.09
+   },
+   "h7": {
+    "n": 978,
+    "mean": 0.9,
+    "excess": -0.48,
+    "t": -1.04,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.19
+   },
+   "h30": {
+    "n": 978,
+    "mean": 6.34,
+    "excess": -0.58,
+    "t": -0.48,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.64
+   }
+  },
+  {
+   "key": "ttm_squeeze",
+   "name": "TTM-стиснення (Bollinger усередині Keltner)",
+   "dir": 0,
+   "period": "test",
+   "n": 898,
+   "assets": 24,
+   "h1": {
+    "n": 895,
+    "mean": 0.04,
+    "excess": 0.05,
+    "t": 0.36,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.08
+   },
+   "h7": {
+    "n": 893,
+    "mean": -0.97,
+    "excess": -0.9,
+    "t": -2.31,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.33
+   },
+   "h30": {
+    "n": 877,
+    "mean": 0.22,
+    "excess": -0.45,
+    "t": -0.49,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.68
+   }
+  },
+  {
+   "key": "ttm_squeeze",
+   "name": "TTM-стиснення (Bollinger усередині Keltner)",
+   "dir": 0,
+   "period": "last365",
+   "n": 308,
+   "assets": 24,
+   "h1": {
+    "n": 305,
+    "mean": 0.28,
+    "excess": 0.38,
+    "t": 1.57,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.29
+   },
+   "h7": {
+    "n": 303,
+    "mean": -0.46,
+    "excess": 0.24,
+    "t": 0.39,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": 0.22
+   },
+   "h30": {
+    "n": 287,
+    "mean": 0.05,
+    "excess": 1,
+    "t": 0.74,
+    "hit": null,
+    "base_hit": null,
+    "vol_excess": -0.5
+   }
+  },
+  {
+   "key": "tsmom_p3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «+» (бал +3)",
+   "dir": 1,
+   "period": "train",
+   "n": 910,
+   "assets": 21,
+   "h1": {
+    "n": 910,
+    "mean": 0.25,
+    "excess": 0.03,
+    "t": 0.16,
+    "hit": 48,
+    "base_hit": 51.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 910,
+    "mean": 2.94,
+    "excess": 1.5,
+    "t": 2.67,
+    "hit": 51.8,
+    "base_hit": 50.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 910,
+    "mean": 12.49,
+    "excess": 5.26,
+    "t": 3.24,
+    "hit": 53.4,
+    "base_hit": 49.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_p3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «+» (бал +3)",
+   "dir": 1,
+   "period": "test",
+   "n": 693,
+   "assets": 24,
+   "h1": {
+    "n": 693,
+    "mean": 0.21,
+    "excess": 0.2,
+    "t": 0.83,
+    "hit": 49.2,
+    "base_hit": 48.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 693,
+    "mean": 1.13,
+    "excess": 1.03,
+    "t": 1.64,
+    "hit": 46.2,
+    "base_hit": 46,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 691,
+    "mean": 3.22,
+    "excess": 1.87,
+    "t": 1.2,
+    "hit": 42.4,
+    "base_hit": 44.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_p3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «+» (бал +3)",
+   "dir": 1,
+   "period": "last365",
+   "n": 194,
+   "assets": 24,
+   "h1": {
+    "n": 194,
+    "mean": 0.41,
+    "excess": 0.47,
+    "t": 1.14,
+    "hit": 46.9,
+    "base_hit": 46.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 194,
+    "mean": 1.96,
+    "excess": 2.38,
+    "t": 2.27,
+    "hit": 46.9,
+    "base_hit": 43.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 192,
+    "mean": -0.4,
+    "excess": -0.76,
+    "t": -0.36,
+    "hit": 41.1,
+    "base_hit": 46.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_m3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «−» (бал −3)",
+   "dir": -1,
+   "period": "train",
+   "n": 1049,
+   "assets": 20,
+   "h1": {
+    "n": 1049,
+    "mean": 0.35,
+    "excess": 0.16,
+    "t": 0.97,
+    "hit": 46.6,
+    "base_hit": 49.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 1049,
+    "mean": -1.04,
+    "excess": -2.29,
+    "t": -5.73,
+    "hit": 55,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 1049,
+    "mean": -0.25,
+    "excess": -6.54,
+    "t": -6.92,
+    "hit": 58.2,
+    "base_hit": 52.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_m3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «−» (бал −3)",
+   "dir": -1,
+   "period": "test",
+   "n": 1054,
+   "assets": 24,
+   "h1": {
+    "n": 1054,
+    "mean": -0.04,
+    "excess": -0.01,
+    "t": -0.04,
+    "hit": 47.7,
+    "base_hit": 52.5,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 1051,
+    "mean": -0.91,
+    "excess": -0.72,
+    "t": -2.05,
+    "hit": 54.3,
+    "base_hit": 55.7,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 1026,
+    "mean": 0.86,
+    "excess": 0.66,
+    "t": 0.77,
+    "hit": 56.1,
+    "base_hit": 58.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "tsmom_m3",
+   "name": "Імпульс 1/4/12 тижнів: усі три «−» (бал −3)",
+   "dir": -1,
+   "period": "last365",
+   "n": 425,
+   "assets": 24,
+   "h1": {
+    "n": 425,
+    "mean": 0.23,
+    "excess": 0.35,
+    "t": 1.84,
+    "hit": 48,
+    "base_hit": 54.5,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 422,
+    "mean": -1.43,
+    "excess": -0.56,
+    "t": -1.15,
+    "hit": 54,
+    "base_hit": 58.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 397,
+    "mean": 0.03,
+    "excess": 1.73,
+    "t": 1.66,
+    "hit": 54.2,
+    "base_hit": 56.7,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_below_m2",
+   "name": "Z-score < −2 (ціна далеко під SMA20)",
+   "dir": 1,
+   "period": "train",
+   "n": 577,
+   "assets": 20,
+   "h1": {
+    "n": 577,
+    "mean": 0.61,
+    "excess": 0.41,
+    "t": 1.31,
+    "hit": 57.4,
+    "base_hit": 50.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 577,
+    "mean": -0.12,
+    "excess": -1.43,
+    "t": -2.51,
+    "hit": 52.7,
+    "base_hit": 50.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 577,
+    "mean": 0.91,
+    "excess": -5.67,
+    "t": -4.1,
+    "hit": 43.2,
+    "base_hit": 48.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_below_m2",
+   "name": "Z-score < −2 (ціна далеко під SMA20)",
+   "dir": 1,
+   "period": "test",
+   "n": 630,
+   "assets": 24,
+   "h1": {
+    "n": 630,
+    "mean": 0.37,
+    "excess": 0.39,
+    "t": 2.02,
+    "hit": 56.8,
+    "base_hit": 47.6,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 621,
+    "mean": 0.72,
+    "excess": 0.85,
+    "t": 1.85,
+    "hit": 48.1,
+    "base_hit": 44.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 585,
+    "mean": 3.96,
+    "excess": 3.47,
+    "t": 1.96,
+    "hit": 45.1,
+    "base_hit": 41.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_below_m2",
+   "name": "Z-score < −2 (ціна далеко під SMA20)",
+   "dir": 1,
+   "period": "last365",
+   "n": 225,
+   "assets": 24,
+   "h1": {
+    "n": 225,
+    "mean": 1.43,
+    "excess": 1.55,
+    "t": 5.07,
+    "hit": 63.1,
+    "base_hit": 45.5,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 216,
+    "mean": -1.9,
+    "excess": -1.04,
+    "t": -1.6,
+    "hit": 40.7,
+    "base_hit": 41.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 180,
+    "mean": -0.27,
+    "excess": 1.26,
+    "t": 0.83,
+    "hit": 51.7,
+    "base_hit": 43.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_above_p2",
+   "name": "Z-score > +2 (ціна далеко над SMA20)",
+   "dir": -1,
+   "period": "train",
+   "n": 804,
+   "assets": 21,
+   "h1": {
+    "n": 804,
+    "mean": 0.57,
+    "excess": 0.36,
+    "t": 1.52,
+    "hit": 52.1,
+    "base_hit": 48.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 804,
+    "mean": 3.64,
+    "excess": 2.23,
+    "t": 3.44,
+    "hit": 49.6,
+    "base_hit": 49.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 804,
+    "mean": 13.55,
+    "excess": 6.45,
+    "t": 4.11,
+    "hit": 46.1,
+    "base_hit": 50.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_above_p2",
+   "name": "Z-score > +2 (ціна далеко над SMA20)",
+   "dir": -1,
+   "period": "test",
+   "n": 595,
+   "assets": 24,
+   "h1": {
+    "n": 595,
+    "mean": 0.94,
+    "excess": 0.94,
+    "t": 2.98,
+    "hit": 47.2,
+    "base_hit": 52,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 595,
+    "mean": 1.76,
+    "excess": 1.74,
+    "t": 2.77,
+    "hit": 49.9,
+    "base_hit": 54.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 593,
+    "mean": 5.31,
+    "excess": 4.26,
+    "t": 2.76,
+    "hit": 51.9,
+    "base_hit": 56.2,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "z_above_p2",
+   "name": "Z-score > +2 (ціна далеко над SMA20)",
+   "dir": -1,
+   "period": "last365",
+   "n": 214,
+   "assets": 24,
+   "h1": {
+    "n": 214,
+    "mean": 0.03,
+    "excess": 0.11,
+    "t": 0.33,
+    "hit": 56.1,
+    "base_hit": 53.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 214,
+    "mean": -0.65,
+    "excess": -0.13,
+    "t": -0.16,
+    "hit": 59.3,
+    "base_hit": 56.8,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 212,
+    "mean": -2.13,
+    "excess": -1.97,
+    "t": -1.15,
+    "hit": 59.9,
+    "base_hit": 54.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bull",
+   "name": "ЗВЕДЕНИЙ БИЧАЧИЙ сигнал (оцінка ≥ +4 з 6)",
+   "dir": 1,
+   "period": "train",
+   "n": 707,
+   "assets": 21,
+   "h1": {
+    "n": 707,
+    "mean": -0.12,
+    "excess": -0.34,
+    "t": -1.59,
+    "hit": 45.1,
+    "base_hit": 51.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 707,
+    "mean": 3.93,
+    "excess": 2.44,
+    "t": 3.65,
+    "hit": 54,
+    "base_hit": 50.8,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 707,
+    "mean": 16.13,
+    "excess": 8.62,
+    "t": 4.41,
+    "hit": 56.3,
+    "base_hit": 49.9,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bull",
+   "name": "ЗВЕДЕНИЙ БИЧАЧИЙ сигнал (оцінка ≥ +4 з 6)",
+   "dir": 1,
+   "period": "test",
+   "n": 491,
+   "assets": 24,
+   "h1": {
+    "n": 491,
+    "mean": 0.46,
+    "excess": 0.44,
+    "t": 1.64,
+    "hit": 51.3,
+    "base_hit": 48.2,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 491,
+    "mean": 1.9,
+    "excess": 1.77,
+    "t": 2.41,
+    "hit": 48.9,
+    "base_hit": 46.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 490,
+    "mean": 6.56,
+    "excess": 5.11,
+    "t": 2.62,
+    "hit": 46.9,
+    "base_hit": 45.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bull",
+   "name": "ЗВЕДЕНИЙ БИЧАЧИЙ сигнал (оцінка ≥ +4 з 6)",
+   "dir": 1,
+   "period": "last365",
+   "n": 124,
+   "assets": 24,
+   "h1": {
+    "n": 124,
+    "mean": 0.59,
+    "excess": 0.63,
+    "t": 1.24,
+    "hit": 49.2,
+    "base_hit": 46.4,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 124,
+    "mean": 2.82,
+    "excess": 3.07,
+    "t": 2.18,
+    "hit": 47.6,
+    "base_hit": 44.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 123,
+    "mean": 6.1,
+    "excess": 5,
+    "t": 1.69,
+    "hit": 50.4,
+    "base_hit": 47.4,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bear",
+   "name": "ЗВЕДЕНИЙ ВЕДМЕЖИЙ сигнал (оцінка ≤ −4 з 6)",
+   "dir": -1,
+   "period": "train",
+   "n": 882,
+   "assets": 20,
+   "h1": {
+    "n": 882,
+    "mean": 0.1,
+    "excess": -0.09,
+    "t": -0.47,
+    "hit": 45.2,
+    "base_hit": 49.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 882,
+    "mean": -0.58,
+    "excess": -1.82,
+    "t": -4.25,
+    "hit": 50.9,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 882,
+    "mean": 1.48,
+    "excess": -4.74,
+    "t": -4.6,
+    "hit": 52.8,
+    "base_hit": 52.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bear",
+   "name": "ЗВЕДЕНИЙ ВЕДМЕЖИЙ сигнал (оцінка ≤ −4 з 6)",
+   "dir": -1,
+   "period": "test",
+   "n": 897,
+   "assets": 24,
+   "h1": {
+    "n": 897,
+    "mean": 0.02,
+    "excess": 0.05,
+    "t": 0.36,
+    "hit": 46.5,
+    "base_hit": 52.6,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 896,
+    "mean": -0.3,
+    "excess": -0.08,
+    "t": -0.23,
+    "hit": 50.9,
+    "base_hit": 55.9,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 866,
+    "mean": 2.27,
+    "excess": 2.19,
+    "t": 1.97,
+    "hit": 54.3,
+    "base_hit": 58.8,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "composite_bear",
+   "name": "ЗВЕДЕНИЙ ВЕДМЕЖИЙ сигнал (оцінка ≤ −4 з 6)",
+   "dir": -1,
+   "period": "last365",
+   "n": 327,
+   "assets": 24,
+   "h1": {
+    "n": 327,
+    "mean": 0.2,
+    "excess": 0.34,
+    "t": 1.68,
+    "hit": 47.7,
+    "base_hit": 54.6,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 326,
+    "mean": -1.04,
+    "excess": -0.1,
+    "t": -0.19,
+    "hit": 53.7,
+    "base_hit": 58.6,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 296,
+    "mean": 0.31,
+    "excess": 2.27,
+    "t": 1.92,
+    "hit": 50.7,
+    "base_hit": 57.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_pos",
+   "name": "CMF стає > +0,05 (приплив)",
+   "dir": 1,
+   "period": "train",
+   "n": 1196,
+   "assets": 21,
+   "h1": {
+    "n": 1196,
+    "mean": -0.06,
+    "excess": -0.26,
+    "t": -1.7,
+    "hit": 46.6,
+    "base_hit": 51,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 1196,
+    "mean": 1.67,
+    "excess": 0.33,
+    "t": 0.74,
+    "hit": 47.5,
+    "base_hit": 50.2,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 1196,
+    "mean": 6.68,
+    "excess": 0.04,
+    "t": 0.04,
+    "hit": 47.5,
+    "base_hit": 48.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_pos",
+   "name": "CMF стає > +0,05 (приплив)",
+   "dir": 1,
+   "period": "test",
+   "n": 996,
+   "assets": 24,
+   "h1": {
+    "n": 995,
+    "mean": 0.3,
+    "excess": 0.31,
+    "t": 1.84,
+    "hit": 47.7,
+    "base_hit": 48,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 993,
+    "mean": 0.18,
+    "excess": 0.26,
+    "t": 0.65,
+    "hit": 45.2,
+    "base_hit": 45.3,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 979,
+    "mean": 4.02,
+    "excess": 3.49,
+    "t": 2.86,
+    "hit": 44.4,
+    "base_hit": 43.3,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_pos",
+   "name": "CMF стає > +0,05 (приплив)",
+   "dir": 1,
+   "period": "last365",
+   "n": 286,
+   "assets": 24,
+   "h1": {
+    "n": 285,
+    "mean": 0.16,
+    "excess": 0.26,
+    "t": 0.95,
+    "hit": 42.1,
+    "base_hit": 45.9,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 283,
+    "mean": 0.44,
+    "excess": 1.15,
+    "t": 1.8,
+    "hit": 44.5,
+    "base_hit": 42.5,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 269,
+    "mean": 0.48,
+    "excess": 1.59,
+    "t": 0.9,
+    "hit": 42.4,
+    "base_hit": 45,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_neg",
+   "name": "CMF стає < −0,05 (відплив)",
+   "dir": -1,
+   "period": "train",
+   "n": 1040,
+   "assets": 21,
+   "h1": {
+    "n": 1040,
+    "mean": 0.27,
+    "excess": 0.07,
+    "t": 0.4,
+    "hit": 44.7,
+    "base_hit": 49.1,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 1040,
+    "mean": 0.38,
+    "excess": -0.95,
+    "t": -2.03,
+    "hit": 49.9,
+    "base_hit": 50.1,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 1040,
+    "mean": 4.35,
+    "excess": -2.43,
+    "t": -2.21,
+    "hit": 53.6,
+    "base_hit": 52.1,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_neg",
+   "name": "CMF стає < −0,05 (відплив)",
+   "dir": -1,
+   "period": "test",
+   "n": 1079,
+   "assets": 24,
+   "h1": {
+    "n": 1076,
+    "mean": -0.45,
+    "excess": -0.45,
+    "t": -3.22,
+    "hit": 54.7,
+    "base_hit": 52.4,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 1063,
+    "mean": -0.6,
+    "excess": -0.56,
+    "t": -1.51,
+    "hit": 54.4,
+    "base_hit": 55.4,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 1024,
+    "mean": 0.27,
+    "excess": -0.65,
+    "t": -0.68,
+    "hit": 57.5,
+    "base_hit": 57.5,
+    "vol_excess": null
+   }
+  },
+  {
+   "key": "cmf_neg",
+   "name": "CMF стає < −0,05 (відплив)",
+   "dir": -1,
+   "period": "last365",
+   "n": 427,
+   "assets": 24,
+   "h1": {
+    "n": 424,
+    "mean": -0.51,
+    "excess": -0.4,
+    "t": -2.26,
+    "hit": 59.2,
+    "base_hit": 54.4,
+    "vol_excess": null
+   },
+   "h7": {
+    "n": 411,
+    "mean": -1.51,
+    "excess": -0.79,
+    "t": -1.39,
+    "hit": 59.9,
+    "base_hit": 58,
+    "vol_excess": null
+   },
+   "h30": {
+    "n": 372,
+    "mean": -1.65,
+    "excess": -0.63,
+    "t": -0.54,
+    "hit": 54.8,
+    "base_hit": 55.8,
+    "vol_excess": null
+   }
+  }
+ ]
+}
