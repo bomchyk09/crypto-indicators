@@ -30,7 +30,7 @@ function levels(R, d, i) {
   const c = d.c[i], L = [];
   const add = (v, src) => { if (isFinite(v) && v > 0) L.push({ v, src }); };
   const s = swings(d, i);
-  s.hi.forEach(v => add(v, "свінг-максимум")); s.lo.forEach(v => add(v, "свінг-мінімум"));
+  s.hi.forEach(v => add(v, v > c ? "свінг-максимум" : "колишній свінг-максимум")); s.lo.forEach(v => add(v, v < c ? "свінг-мінімум" : "колишній свінг-мінімум"));
   add(R.sma50[i], "SMA50"); add(R.sma200[i], "SMA200"); add(R.ema21[i], "EMA21");
   add(R.donHi[i], "максимум 20 д"); add(R.donLo[i], "мінімум 20 д");
   add(R.fib.f382, "Фібоначчі 38,2 %"); add(R.fib.f5, "Фібоначчі 50 %"); add(R.fib.f618, "Фібоначчі 61,8 %");
@@ -55,10 +55,14 @@ function analyze(sym, R, d, i, bt) {
   // ТРЕНД
   const above200 = c > R.sma200[i], gc = R.sma50[i] > R.sma200[i], st = R.stDir[i] > 0, adx = R.adx[i];
   const strength = adx > 40 ? "дуже сильний" : adx > 25 ? "сильний" : adx > 20 ? "помірний" : "слабкий (боковик)";
-  const tDir = (above200 ? 1 : -1) + (st ? 1 : -1) + (gc ? 1 : -1);
-  const trend = tDir >= 2 ? "висхідний" : tDir <= -2 ? "низхідний" : "невизначений";
-  const cloud = c > Math.max(R.spanA[i], R.spanB[i]) ? "над хмарою Ішимоку" : c < Math.min(R.spanA[i], R.spanB[i]) ? "під хмарою Ішимоку" : "у хмарі Ішимоку";
-  const trendTxt = `${trend}, ${strength} (ADX ${f(adx)}). Ціна ${sgnTxt(pct(c, R.sma200[i]))} від SMA200 (${f(R.sma200[i])}); SMA50 ${gc ? "вище" : "нижче"} SMA200 (${gc ? "золотий хрест" : "хрест смерті"}); Supertrend — ${st ? "лонг" : "шорт"} (лінія ${f(R.supertrend[i])}); ${cloud}.`;
+  const cTop = Math.max(R.spanA[i], R.spanB[i]), cBot = Math.min(R.spanA[i], R.spanB[i]);
+  const cloudS = c > cTop ? 1 : c < cBot ? -1 : 0;
+  // Тренд — за 4 швидшими ознаками (ціна vs SMA200, ціна vs SMA50, Supertrend, хмара); перетин SMA50/200 — лише примітка (запізнюється)
+  const tDir = (above200 ? 1 : -1) + (c > R.sma50[i] ? 1 : -1) + (st ? 1 : -1) + cloudS;
+  const trend = tDir >= 3 ? "висхідний" : tDir <= -3 ? "низхідний" : "невизначений (змішані ознаки)";
+  const cloud = cloudS > 0 ? "над хмарою Ішимоку" : cloudS < 0 ? "під хмарою Ішимоку" : "у хмарі Ішимоку";
+  const crossLag = (gc && tDir <= -3) || (!gc && tDir >= 3) ? " — ще не відреагував, бо запізнюється" : "";
+  const trendTxt = `${trend}, ${strength} (ADX ${f(adx)}). Ціна ${sgnTxt(pct(c, R.sma200[i]))} від SMA200 (${f(R.sma200[i])}); ціна ${c > R.sma50[i] ? "вище" : "нижче"} SMA50 (${f(R.sma50[i])}); SMA50 ${gc ? "вище" : "нижче"} SMA200 (${gc ? "золотий хрест" : "хрест смерті"}${crossLag}); Supertrend — ${st ? "лонг" : "шорт"} (лінія ${f(R.supertrend[i])}); ${cloud}.`;
   // ІМПУЛЬС
   const rsi = R.rsi[i], h = R.macdHist[i], hPrev = R.macdHist[i - 1];
   const rsiTxt = rsi > 70 ? `RSI ${f(rsi)} — перекупленість; на крипторинку це частіше ознака сили, ніж розвороту${rel("rsi_enter_overbought")}`
@@ -87,7 +91,7 @@ function analyze(sym, R, d, i, bt) {
   const bull = r1 ? `закриття дня вище ${f(r1.price)}${r2 ? ` → наступний опір ${f(r2.price)}` : ""}` : "оновлення максимуму 20 днів";
   const bear = s1 ? `закриття дня нижче ${f(s1.price)}${s2 ? ` → наступна підтримка ${f(s2.price)}` : ""}` : "оновлення мінімуму 20 днів";
   const flip = st ? `тренд (Supertrend) зламається при закритті нижче ${f(R.supertrend[i])}` : `тренд (Supertrend) зміниться на висхідний при закритті вище ${f(R.supertrend[i])}`;
-  const summary = `${sym}: ${state.toUpperCase()} стан (зведена оцінка ${comp > 0 ? "+" : ""}${comp} з ±6). Тренд ${trend}, ${strength}; ${rsi > 55 ? "імпульс за покупцями" : rsi < 45 ? "імпульс за продавцями" : "імпульс нейтральний"}; волатильність ${vLevel.split(" ")[0]}.`;
+  const summary = `${sym}: ${state.toUpperCase()} стан (зведена оцінка ${comp > 0 ? "+" : ""}${comp} з ±6). Тренд ${trend.split(" (")[0]}, ${strength}; ${rsi > 55 ? "імпульс за покупцями" : rsi < 45 ? "імпульс за продавцями" : "імпульс нейтральний"}; волатильність ${vLevel.split(" ")[0]}.`;
   return {
     summary, state, composite: comp,
     trend: trendTxt, momentum: momTxt, volume: volTxt, volatility: vTxt,
