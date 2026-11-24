@@ -17,7 +17,7 @@ on:
         default: ""
 
 permissions:
-  contents: write                  # лише запис результатів у цей самий репозиторій
+  contents: write                  # лише запис у цей самий репозиторій
 
 concurrency:
   group: indicators
@@ -26,7 +26,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest         # стандартний раннер: у публічному репозиторії безкоштовний
-    timeout-minutes: 15            # запобіжник від «зависання» (23 монети ≈ 2–4 хв)
+    timeout-minutes: 15            # запобіжник (24 монети ≈ 1–2 хв)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,20 +34,43 @@ jobs:
           python-version: "3.12"
       - name: Install matplotlib
         run: pip install --quiet matplotlib==3.9.2
+
       - name: Update coin list (only on manual run with add/remove)
         if: ${{ github.event_name == 'workflow_dispatch' && (inputs.add != '' || inputs.remove != '') }}
         env:
           ADD: ${{ inputs.add }}
           REMOVE: ${{ inputs.remove }}
-        run: node src/manage.js "add=$ADD" "remove=$REMOVE"
+        run: |
+          node src/manage.js "add=$ADD" "remove=$REMOVE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config.json
+          git diff --cached --quiet || { git commit -m "config: add=$ADD remove=$REMOVE"; git push; }
+
+      # Попередні стани і журнал сигналів — з гілки results (щоб визначати переходи й вести журнал)
+      - name: Restore state and journal
+        run: |
+          mkdir -p data charts
+          if git fetch --depth=1 origin results 2>/dev/null; then
+            git show origin/results:data/state.json   > data/state.json   2>/dev/null || true
+            git show origin/results:data/journal.csv  > data/journal.csv  2>/dev/null || true
+          fi
+
       - name: Compute indicators (public market data, no keys)
         run: node src/compute.js
       - name: Draw charts
         run: python src/plot.py
-      - name: Commit results
+
+      # Результати — одна коміт-версія в гілці results (перезаписується; історія не накопичується)
+      - name: Publish results branch
         run: |
+          cd "$RUNNER_TEMP" && rm -rf out && mkdir out && cd out
+          git init -q -b results
+          cp -r "$GITHUB_WORKSPACE/data" "$GITHUB_WORKSPACE/charts" .
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data charts config.json
-          git diff --cached --quiet || git commit -m "indicators $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push
+          git add -A
+          git commit -q -m "results $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

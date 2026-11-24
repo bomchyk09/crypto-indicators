@@ -4,7 +4,13 @@
 (рушій — `src/engine.js`, той самий, що в проєкті «Мій персональний AI», документ 31), визначає переходи станів
 і малює PNG-графіки. Результати комітяться в цей репозиторій; Claude читає їх у запланованих перевірках.
 
-## Що з'являється після запуску
+## Де результати
+Гілка **`results`** (перезаписується кожним запуском, тому репозиторій не розростається):
+https://github.com/bomchyk09/crypto-indicators/tree/results
+- графік: https://raw.githubusercontent.com/bomchyk09/crypto-indicators/results/charts/BTC.png (замість BTC — будь-який тикер)
+- дані: https://raw.githubusercontent.com/bomchyk09/crypto-indicators/results/data/latest.json
+
+Файли:
 - `data/latest.json` — усі індикатори (поточна і остання закрита свічка), стани, рівні, нові сигнали, помилки.
 - `data/journal.csv` — журнал сигналів (основа для оцінки «чи спрацьовують»).
 - `data/state.json` — попередні стани (для визначення переходів).
