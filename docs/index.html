@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Крипто-аналітик — живий графік</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: робочий термінал аналітика — щільно, точно, без прикрас
+   IDEA: біржовий лист спостереження: великий живий графік, поруч картка угоди і розбір
+   PICTURE: свічки з індикаторами на панелях, мітки входів/виходів, лінії стопу й цілей
+   COLOUR and TYPE: білий/майже чорний, червоний #e4002b — сигнал, зелений лише для росту; Archivo
+   LAYOUT: смуга монет, таймфрейми, графік ліворуч, картка сетапу і ТА праворуч; на телефоні — стовпчиком */
+:root{color-scheme:light dark;--bg:light-dark(#f6f5f2,#0f1011);--panel:light-dark(#fff,#17181a);--ink:light-dark(#111,#eceae6);--mute:light-dark(#6a6862,#9c9a94);--line:light-dark(#dedbd4,#2b2c2f);--red:#e4002b;--grn:light-dark(#0f7a4b,#2fbf7a);--blu:light-dark(#1f5fbf,#6fa3ff);--gold:light-dark(#a06a00,#e0a83a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Archivo",system-ui,sans-serif;overflow-x:clip}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;padding:14px max(2vw,12px) 6px}
+h1{font:800 26px/1.05 "Archivo";font-stretch:112%;margin:0}
+.stat{color:var(--mute);font-size:13px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mute);margin-right:6px;vertical-align:1px}.dot.on{background:var(--grn);box-shadow:0 0 0 3px color-mix(in srgb,var(--grn) 25%,transparent)}
+.bar{display:flex;gap:6px;overflow-x:auto;padding:6px max(2vw,12px);scrollbar-width:thin}
+.bar button,.tf button,.tog button{flex:none;font:600 14px "Archivo";min-height:40px;padding:0 12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;cursor:pointer}
+.bar button[aria-pressed=true],.tf button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tog button[aria-pressed=false]{opacity:.45}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.bar button small{font-weight:700;margin-left:6px}.up{color:var(--grn)}.dn{color:var(--red)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:12px;padding:6px max(2vw,12px) 20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}.tf,.tog{display:flex;gap:4px;flex-wrap:wrap}
+#chart{position:relative;height:min(78vh,760px);min-height:480px}
+.big{font:800 34px/1 "Archivo";font-stretch:110%;white-space:nowrap}
+.setup h2{font:800 18px/1.2 "Archivo";margin:0 0 6px}.setup.long{border-left:5px solid var(--grn)}.setup.short{border-left:5px solid var(--red)}.setup.wait{border-left:5px solid var(--line)}
+.setup ul,.ta ul{margin:6px 0 0;padding-left:18px}.setup li,.ta li{margin:3px 0}
+.ta h3{font:700 15px "Archivo";margin:12px 0 4px}.ta p{margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px 4px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mute);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{color:var(--mute);font-size:12.5px}
+aside{display:flex;flex-direction:column;gap:12px}
+@media(max-width:980px){main{grid-template-columns:minmax(0,1fr)}#chart{height:70vh;min-height:420px}}
+</style></head><body>
+<header><h1>Крипто-аналітик</h1><span class="stat"><span class="dot" id="dot"></span><span id="live">підключення…</span></span><span class="stat" id="src">Binance spot · WebSocket</span></header>
+<nav class="bar" id="coins" aria-label="Монети"></nav>
+<main>
+ <section class="card">
+  <div class="tools">
+   <div class="tf" id="tfs" role="group" aria-label="Таймфрейм"></div>
+   <div class="tog" id="togs" role="group" aria-label="Шари"></div>
+   <span style="margin-left:auto" class="big" id="price">–</span><span id="chg" class="stat"></span>
+  </div>
+  <div id="chart"></div>
+  <p class="note" id="legend">Свічки; SMA50 (синя), SMA200 (чорна/біла), EMA21 (пунктир), смуги Боллінджера (жовті), Supertrend (зелена/червона). Панелі: RSI 14 (30/70), MACD. ▲ — вхід лонг, ▼ — вхід шорт, ● — вихід (з результатом у R). Лінії: зелені — підтримка, червоні — опір; пунктир — стоп і цілі відкритої угоди.</p>
+ </section>
+ <aside>
+  <div class="card setup wait" id="setup"><h2>Завантаження…</h2></div>
+  <div class="card"><h3 style="margin:0 0 6px;font:700 15px Archivo">Статистика правил на цій монеті і ТФ</h3><div id="stats" class="note">–</div><div id="trades"></div></div>
+  <div class="card ta" id="ta"><p class="note">Технічний аналіз з'явиться після завантаження свічок.</p></div>
+  <div class="card note" id="overall">Загальна перевірка правил на всіх монетах — завантаження…</div>
+ </aside>
+</main>
+<p class="note" style="padding:0 max(2vw,12px) 24px">Усе рахується у вашому браузері з публічних даних Binance (WebSocket). Сетапи — правила з перевіркою на історії, не гарантія і не інвестиційна порада. Стоп = 2 ATR (1R), ціль 1 = 1R (половина + беззбиток), ціль 2 = 3R, вихід раніше — розворот Supertrend або оцінка через 0. Комісія 0,1 % на угоду врахована.</p>
+<script src="https://unpkg.com/lightweight-charts@5.3.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="js/engine.js"></script><script src="js/ta.js"></script><script src="js/strategy.js"></script>
+<script>
+{
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LC=window.LightweightCharts;
+const TFS=[["1h","1 година",3600e3,"4h"],["4h","4 години",4*3600e3,"1d"],["1d","1 день",864e5,null]];
+const RAW="https://raw.githubusercontent.com/bomchyk09/crypto-indicators";
+let COINS=["BTC","ETH","SOL","BNB","AVAX","ATOM","NEAR","ADA","ALGO","TRX","JUP","EGLD","INJ","DOT","VET","PUMP","APT","HBAR","ONDO","SUI","FIL","RSR","ZIL","LINK"];
+const st={coin:"BTC",tf:"4h",show:{ma:true,bb:true,st:true,lv:true,mk:true},d:null,h:null,R:null,Rh:null,ws:null,api:null,reqId:1,pend:{},lastCalc:0,BT:null};
+try{const q=new URLSearchParams(location.hash.slice(1));if(q.get("c"))st.coin=q.get("c").toUpperCase();if(q.get("tf"))st.tf=q.get("tf")}catch{}
+const fmt=x=>x==null||!isFinite(x)?"–":(+x).toLocaleString("uk-UA",{maximumFractionDigits:Math.abs(x)>=1000?0:Math.abs(x)>=1?2:6});
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim()||"#888";
+
+// ---------- WebSocket API: історія свічок ----------
+function api(){return new Promise((res,rej)=>{if(st.api&&st.api.readyState===1)return res(st.api);const w=new WebSocket("wss://ws-api.binance.com:443/ws-api/v3");w.onopen=()=>{st.api=w;res(w)};w.onerror=()=>rej(new Error("WebSocket API недоступний"));w.onmessage=e=>{const m=JSON.parse(e.data);const p=st.pend[m.id];if(p){delete st.pend[m.id];m.status===200?p.res(m.result):p.rej(new Error(m.error?.msg||"помилка"))}};w.onclose=()=>{st.api=null}})}
+async function klines(sym,tf,limit=1000){const w=await api();const id=st.reqId++;return new Promise((res,rej)=>{st.pend[id]={res,rej};w.send(JSON.stringify({id,method:"klines",params:{symbol:sym+"USDT",interval:tf,limit}}));setTimeout(()=>{if(st.pend[id]){delete st.pend[id];rej(new Error("тайм-аут"))}},15000)})}
+const toD=k=>({t:k.map(x=>x[0]),o:k.map(x=>+x[1]),h:k.map(x=>+x[2]),l:k.map(x=>+x[3]),c:k.map(x=>+x[4]),v:k.map(x=>+x[7])});
+
+// ---------- графік ----------
+const el=$("chart");
+const chart=LC.createChart(el,{autoSize:true,layout:{background:{color:"transparent"},textColor:css("--mute"),fontFamily:"Archivo",panes:{separatorColor:css("--line")}},grid:{vertLines:{color:css("--line")},horzLines:{color:css("--line")}},rightPriceScale:{borderColor:css("--line")},timeScale:{borderColor:css("--line"),timeVisible:true,secondsVisible:false},crosshair:{mode:0},localization:{locale:"uk-UA"}});
+const S={};
+S.c=chart.addSeries(LC.CandlestickSeries,{upColor:css("--grn"),downColor:css("--red"),wickUpColor:css("--grn"),wickDownColor:css("--red"),borderVisible:false},0);
+S.vol=chart.addSeries(LC.HistogramSeries,{priceScaleId:"vol",priceFormat:{type:"volume"},color:"rgba(140,140,140,.35)",lastValueVisible:false,priceLineVisible:false},0);
+chart.priceScale("vol").applyOptions({scaleMargins:{top:.82,bottom:0}});
+const L=(color,w,style,pane=0)=>chart.addSeries(LC.LineSeries,{color,lineWidth:w,lineStyle:style||0,lastValueVisible:false,priceLineVisible:false,crosshairMarkerVisible:false},pane);
+S.sma50=L(css("--blu"),2);S.sma200=L(css("--ink"),2);S.ema21=L(css("--blu"),1,2);S.bbU=L(css("--gold"),1,2);S.bbL=L(css("--gold"),1,2);S.st=L(css("--grn"),2);
+S.rsi=L(css("--ink"),2,0,1);S.rsi30=L(css("--mute"),1,2,1);S.rsi70=L(css("--mute"),1,2,1);
+S.mh=chart.addSeries(LC.HistogramSeries,{lastValueVisible:false,priceLineVisible:false},2);S.macd=L(css("--blu"),1.5,0,2);S.sig=L(css("--gold"),1.5,0,2);
+try{const p=chart.panes();p[0].setHeight(Math.round(el.clientHeight*.62));p[1].setHeight(Math.round(el.clientHeight*.17));p[2].setHeight(Math.round(el.clientHeight*.17))}catch{}
+const markers=LC.createSeriesMarkers(S.c,[]);let pLines=[];
+
+const ts=t=>Math.floor(t/1000);
+const ser=(arr,d)=>arr.map((v,i)=>isFinite(v)?{time:ts(d.t[i]),value:v}:{time:ts(d.t[i])});
+function draw(){
+ const d=st.d,R=st.R,N=d.c.length-1,sh=st.show;
+ S.c.setData(d.t.map((t,i)=>({time:ts(t),open:d.o[i],high:d.h[i],low:d.l[i],close:d.c[i]})));
+ S.vol.setData(d.t.map((t,i)=>({time:ts(t),value:d.v[i],color:d.c[i]>=d.o[i]?"rgba(15,122,75,.28)":"rgba(228,0,43,.28)"})));
+ const vis=(s,on,data)=>{s.applyOptions({visible:on});if(on)s.setData(data)};
+ vis(S.sma50,sh.ma,ser(R.sma50,d));vis(S.sma200,sh.ma,ser(R.sma200,d));vis(S.ema21,sh.ma,ser(R.ema21,d));
+ vis(S.bbU,sh.bb,ser(R.bbUp,d));vis(S.bbL,sh.bb,ser(R.bbLo,d));
+ vis(S.st,sh.st,d.t.map((t,i)=>isFinite(R.supertrend[i])?{time:ts(t),value:R.supertrend[i],color:R.stDir[i]>0?css("--grn"):css("--red")}:{time:ts(t)}));
+ S.rsi.setData(ser(R.rsi,d));S.rsi30.setData(d.t.map(t=>({time:ts(t),value:30})));S.rsi70.setData(d.t.map(t=>({time:ts(t),value:70})));
+ S.mh.setData(d.t.map((t,i)=>isFinite(R.macdHist[i])?{time:ts(t),value:R.macdHist[i],color:R.macdHist[i]>=0?"rgba(15,122,75,.6)":"rgba(228,0,43,.6)"}:{time:ts(t)}));
+ S.macd.setData(ser(R.macd,d));S.sig.setData(ser(R.macdSig,d));
+ // рівні, стоп/цілі
+ pLines.forEach(p=>S.c.removePriceLine(p));pLines=[];
+ const add=(price,color,title,style)=>pLines.push(S.c.createPriceLine({price,color,lineWidth:1,lineStyle:style??0,axisLabelVisible:true,title}));
+ if(sh.lv&&st.ta){st.ta.supports.slice(0,2).forEach(z=>add(z.price,css("--grn"),"підтр."));st.ta.resistances.slice(0,2).forEach(z=>add(z.price,css("--red"),"опір"))}
+ const o=st.res?.open;if(o){add(o.pIn,css("--ink"),"вхід",2);add(o.stop,css("--red"),"стоп",2);add(o.t1,css("--grn"),"ціль 1",2);add(o.t2,css("--grn"),"ціль 2",2)}
+ // мітки входів/виходів
+ const mk=[];if(sh.mk&&st.res){for(const t of st.res.trades.slice(-60)){mk.push({time:ts(t.tIn),position:t.side>0?"belowBar":"aboveBar",color:t.side>0?css("--grn"):css("--red"),shape:t.side>0?"arrowUp":"arrowDown",text:t.side>0?"Л":"Ш"});mk.push({time:ts(t.tOut),position:t.side>0?"aboveBar":"belowBar",color:t.r>0?css("--grn"):css("--red"),shape:"circle",text:(t.r>0?"+":"")+t.r.toFixed(1)+"R"})}
+  if(o)mk.push({time:ts(o.tIn),position:o.side>0?"belowBar":"aboveBar",color:css("--blu"),shape:o.side>0?"arrowUp":"arrowDown",text:"відкрита"})}
+ mk.sort((a,b)=>a.time-b.time);markers.setMarkers(mk);
+}
+
+// ---------- розрахунок ----------
+function compute(){
+ const d=st.d,N=d.c.length-1,tfx=TFS.find(x=>x[0]===st.tf);
+ st.R=IND.all(d);
+ let htf=null;if(st.h){st.Rh=IND.all(st.h);htf=STRAT.alignHTF(d.t,tfx[2],{t:st.h.t,comp:st.Rh.comp,ms:TFS.find(x=>x[0]===tfx[3])[2]})}
+ st.htf=htf;st.res=STRAT.run(d,st.R,htf,N-1);st.cur=STRAT.current(d,st.R,htf,st.res,N-1);
+ st.ta=TA.analyze(st.coin,st.R,d,N,st.BT);
+ renderSide();draw();
+ st.lastCalc=Date.now();
+}
+function renderSide(){
+ const d=st.d,N=d.c.length-1,c=d.c[N],p0=d.c[Math.max(0,N-1)];
+ $("price").textContent=fmt(c)+" $";const ch=(c/p0-1)*100;$("chg").innerHTML=` <b class="${ch>=0?"up":"dn"}">${ch>=0?"+":""}${ch.toFixed(2).replace(".",",")} %</b> за свічку`;
+ const cu=st.cur,box=$("setup");box.className="card setup "+(cu.side>0?"long":cu.side<0?"short":"wait");
+ const s=st.res.stats;
+ const edge=s.all.n?` Історично на цій монеті й ТФ: ${s.all.n} угод, виграшних ${String(s.all.win).replace(".",",")} %, середній результат ${s.all.avgR>0?"+":""}${String(s.all.avgR).replace(".",",")}R.`:" На цій монеті й ТФ угод за правилами ще не було.";
+ box.innerHTML=`<h2>${esc(cu.title)}</h2><div class="note">${esc(st.coin)} · ${esc(TFS.find(x=>x[0]===st.tf)[1])} · закрита свічка</div><ul>${cu.lines.map(l=>`<li>${esc(l)}</li>`).join("")}</ul><p class="note">${esc(edge)}</p>`;
+ $("stats").innerHTML=s.all.n?`<table><tr><th></th><th class="n">Угод</th><th class="n">Виграш, %</th><th class="n">Сер. R</th><th class="n">Сума R</th><th class="n">Просід., R</th></tr>${["all","long","short"].map(k=>s[k].n?`<tr><td>${{all:"Усі",long:"Лонги",short:"Шорти"}[k]}</td><td class="n">${s[k].n}</td><td class="n">${s[k].win}</td><td class="n ${s[k].avgR>0?"up":"dn"}">${s[k].avgR}</td><td class="n">${s[k].totalR}</td><td class="n">${s[k].maxDDR}</td></tr>`:"").join("")}</table>`:"Угод за правилами на цьому відрізку не було.";
+ const tr=st.res.trades.slice(-8).reverse();
+ $("trades").innerHTML=tr.length?`<table style="margin-top:8px"><tr><th>Вхід</th><th></th><th class="n">Ціна</th><th class="n">Вихід</th><th class="n">R</th></tr>${tr.map(t=>`<tr><td>${new Date(t.tIn).toLocaleString("uk-UA",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}</td><td>${t.side>0?"лонг":"шорт"}</td><td class="n">${fmt(t.pIn)}</td><td class="n">${esc(t.why)}</td><td class="n ${t.r>0?"up":"dn"}">${t.r>0?"+":""}${t.r}</td></tr>`).join("")}</table>`:"";
+ const T=st.ta;
+ $("ta").innerHTML=`<h3 style="margin-top:0">${esc(T.summary)}</h3><ul><li><b>Тренд:</b> ${esc(T.trend)}</li><li><b>Імпульс:</b> ${esc(T.momentum)}</li><li><b>Обсяг:</b> ${esc(T.volume)}</li><li><b>Волатильність:</b> ${esc(T.volatility)}</li><li><b>Підтримка:</b> ${esc(T.levels_text.support)}</li><li><b>Опір:</b> ${esc(T.levels_text.resistance)}</li></ul><h3>Сценарії (умовні)</h3><ul><li>${esc(T.scenarios.bullish)}</li><li>${esc(T.scenarios.bearish)}</li><li>${esc(T.scenarios.trend_flip)}</li><li>${esc(T.scenarios.risk)}</li></ul>${st.h?`<p class="note">Старший таймфрейм (${esc(TFS.find(x=>x[0]===st.tf)[3])}): оцінка ${st.Rh.comp[st.Rh.comp.length-2]>0?"+":""}${st.Rh.comp[st.Rh.comp.length-2]} (${esc(st.Rh.compState[st.Rh.compState.length-2])}).</p>`:""}`;
+}
+
+// ---------- жива стрічка ----------
+function stream(){
+ if(st.ws){st.ws.onclose=null;st.ws.close()}
+ const w=new WebSocket(`wss://data-stream.binance.vision/ws/${st.coin.toLowerCase()}usdt@kline_${st.tf}`);st.ws=w;
+ w.onopen=()=>{$("dot").className="dot on";$("live").textContent="наживо"};
+ w.onclose=()=>{$("dot").className="dot";$("live").textContent="перепідключення…";setTimeout(()=>{if(st.ws===w)stream()},3000)};
+ w.onmessage=e=>{const k=JSON.parse(e.data).k;if(!k||!st.d)return;const d=st.d,N=d.c.length-1;
+  const row=[k.t,+k.o,+k.h,+k.l,+k.c,+k.q];
+  if(k.t===d.t[N]){d.o[N]=row[1];d.h[N]=row[2];d.l[N]=row[3];d.c[N]=row[4];d.v[N]=row[5]}
+  else if(k.t>d.t[N]){["t","o","h","l","c","v"].forEach((f,j)=>{d[f].push(row[j]);d[f].shift()})}
+  S.c.update({time:ts(k.t),open:row[1],high:row[2],low:row[3],close:row[4]});
+  $("price").textContent=fmt(row[4])+" $";$("live").textContent="наживо · "+new Date().toLocaleTimeString("uk-UA");
+  if(k.x||Date.now()-st.lastCalc>15000){if(k.x)loadHTF().then(compute);else compute()}};
+}
+async function loadHTF(){const h=TFS.find(x=>x[0]===st.tf)[3];st.h=h?toD(await klines(st.coin,h,1000)):null}
+async function load(){
+ $("setup").innerHTML="<h2>Завантаження…</h2>";
+ try{st.d=toD(await klines(st.coin,st.tf,1000));await loadHTF();compute();chart.timeScale().setVisibleLogicalRange({from:st.d.c.length-180,to:st.d.c.length+5});stream();
+  location.hash=`c=${st.coin}&tf=${st.tf}`}
+ catch(e){$("setup").innerHTML=`<h2>Немає даних</h2><p class="note">${esc(st.coin)}: ${esc(e.message)}. Монета може не торгуватися на Binance в парі до USDT.</p>`}
+}
+
+// ---------- керування ----------
+function nav(){
+ $("coins").innerHTML=COINS.map(c=>`<button data-c="${esc(c)}" aria-pressed="${c===st.coin}">${esc(c)}</button>`).join("");
+ $("tfs").innerHTML=TFS.map(([k,n])=>`<button data-tf="${k}" aria-pressed="${k===st.tf}">${n}</button>`).join("");
+ $("togs").innerHTML=[["ma","Середні"],["bb","Боллінджер"],["st","Supertrend"],["lv","Рівні"],["mk","Входи/виходи"]].map(([k,n])=>`<button data-t="${k}" aria-pressed="${st.show[k]}">${n}</button>`).join("");
+}
+$("coins").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.coin=b.dataset.c;nav();load()};
+$("tfs").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.tf=b.dataset.tf;nav();load()};
+$("togs").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.show[b.dataset.t]=!st.show[b.dataset.t];nav();if(st.d)draw()};
+
+// загальна перевірка правил і надійність сигналів (з репозиторію)
+fetch(RAW+"/backtest/strategy.json").then(r=>r.json()).then(j=>{const t=j.tf,f=x=>x==null?"–":String(x).replace(".",",");$("overall").innerHTML=`<b>Перевірка правил на всіх монетах</b> (${esc(j.generated_utc.slice(0,10))}):<table style="margin-top:6px"><tr><th>ТФ</th><th class="n">Угод</th><th class="n">Виграш, %</th><th class="n">Сер. R</th><th class="n">PF</th></tr>${["1h","4h","1d"].map(k=>`<tr><td>${k}</td><td class="n">${t[k].all.n}</td><td class="n">${f(t[k].all.win)}</td><td class="n ${t[k].all.avgR>0?"up":"dn"}">${f(t[k].all.avgR)}</td><td class="n">${f(t[k].all.pf)}</td></tr>`).join("")}</table><p>Середній R &gt; 0 після комісій — правила мали перевагу на історії. Повний звіт: <a href="https://github.com/bomchyk09/crypto-indicators/blob/backtest/strategy.md">strategy.md</a></p>`}).catch(()=>{$("overall").textContent="Загальна перевірка правил ще не готова."});
+fetch(RAW+"/backtest/report.json").then(r=>r.json()).then(rep=>{st.BT=Object.fromEntries(rep.verdicts.map(v=>[v.key,`${v.verdict}${v.last365_same_side==="ні"?", за останній рік не підтвердилось":""}`]));if(st.d)compute()}).catch(()=>{});
+fetch(RAW+"/main/config.json").then(r=>r.json()).then(c=>{if(Array.isArray(c.assets)&&c.assets.length){COINS=c.assets.map(x=>typeof x==="string"?x:x.symbol);nav()}}).catch(()=>{});
+
+nav();load();
+}
+</script></body></html>
