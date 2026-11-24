@@ -51,9 +51,10 @@ jobs:
       - name: Restore state and journal
         run: |
           mkdir -p data charts
-          if git fetch --depth=1 origin results 2>/dev/null; then
-            git show origin/results:data/state.json   > data/state.json   2>/dev/null || true
-            git show origin/results:data/journal.csv  > data/journal.csv  2>/dev/null || true
+          if git fetch --depth=1 origin results:refs/remotes/origin/results 2>/dev/null; then
+            git show origin/results:data/state.json > data/state.json || rm -f data/state.json
+            git show origin/results:data/journal.csv > data/journal.csv || rm -f data/journal.csv
+            echo "restored: $(ls data)"
           fi
 
       - name: Compute indicators (public market data, no keys)
