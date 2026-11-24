@@ -142,7 +142,7 @@ function stream(){
  const w=new WebSocket(`wss://data-stream.binance.vision/ws/${st.coin.toLowerCase()}usdt@kline_${st.tf}`);st.ws=w;
  w.onopen=()=>{$("dot").className="dot on";$("live").textContent="наживо"};
  w.onclose=()=>{$("dot").className="dot";$("live").textContent="перепідключення…";setTimeout(()=>{if(st.ws===w)stream()},3000)};
- w.onmessage=e=>{const k=JSON.parse(e.data).k;if(!k||!st.d)return;const d=st.d,N=d.c.length-1;
+ w.onmessage=e=>{const k=JSON.parse(e.data).k;if(!k||!st.d||st.ws!==w||k.s!==st.coin+"USDT"||k.i!==st.tf)return;const d=st.d,N=d.c.length-1;
   const row=[k.t,+k.o,+k.h,+k.l,+k.c,+k.q];
   if(k.t===d.t[N]){d.o[N]=row[1];d.h[N]=row[2];d.l[N]=row[3];d.c[N]=row[4];d.v[N]=row[5]}
   else if(k.t>d.t[N]){["t","o","h","l","c","v"].forEach((f,j)=>{d[f].push(row[j]);d[f].shift()})}
@@ -152,7 +152,7 @@ function stream(){
 }
 async function loadHTF(){const h=TFS.find(x=>x[0]===st.tf)[3];st.h=h?toD(await klines(st.coin,h,1000)):null}
 async function load(){
- $("setup").innerHTML="<h2>Завантаження…</h2>";
+ if(st.ws){st.ws.onclose=null;st.ws.close();st.ws=null}st.d=null; $("setup").innerHTML="<h2>Завантаження…</h2>";
  try{st.d=toD(await klines(st.coin,st.tf,1000));await loadHTF();compute();chart.timeScale().setVisibleLogicalRange({from:st.d.c.length-180,to:st.d.c.length+5});stream();
   location.hash=`c=${st.coin}&tf=${st.tf}`}
  catch(e){$("setup").innerHTML=`<h2>Немає даних</h2><p class="note">${esc(st.coin)}: ${esc(e.message)}. Монета може не торгуватися на Binance в парі до USDT.</p>`}
