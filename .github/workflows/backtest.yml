@@ -26,6 +26,8 @@ jobs:
         run: pip install --quiet matplotlib==3.9.2
       - name: Backtest (public market data, no keys)
         run: node src/backtest.js
+      - name: Strategy backtest 1h/4h/1d (entries & exits)
+        run: node src/strategy_bt.js
       - name: Summary chart
         run: python src/plot_backtest.py
       - name: Publish backtest branch (overwritten each run)
