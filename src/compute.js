@@ -4,6 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const IND = require("./engine.js");
+const { analyze } = require("./ta.js");
 
 const ROOT = path.join(__dirname, "..");
 const CFG = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
@@ -92,6 +93,12 @@ function values(R, d, i) {
   const prev = fs.existsSync(statePath) ? JSON.parse(fs.readFileSync(statePath, "utf8")) : {};
   const out = { generated_utc: new Date().toISOString(), note: "Остання (поточна) денна свічка ще формується; сигнали рахуються по закритих свічках.", assets: {}, signals: [], errors: [] };
   const next = {};
+  // Надійність сигналів із бектесту (якщо workflow підклав data/bt.json)
+  let BT = null;
+  try {
+    const rep = JSON.parse(fs.readFileSync(path.join(DATA, "bt.json"), "utf8"));
+    BT = Object.fromEntries(rep.verdicts.map(v => [v.key, `${v.verdict}${v.last365_same_side === "ні" ? ", за останній рік не підтвердилось" : v.last365_same_side === "так" ? ", останній рік — так само" : ""}`]));
+  } catch { BT = null; }
   const journal = [];
   const closes = {}; // для табло ефективності: закриті свічки кожної монети
   for (const a of CFG.assets.map(x => (typeof x === "string" ? pairs(x) : x))) {
@@ -110,7 +117,7 @@ function values(R, d, i) {
       }
       out.assets[a.symbol] = {
         source: d.src, candles: d.c.length, last_closed_utc: new Date(d.t[iClosed]).toISOString().slice(0, 10),
-        live: values(R, d, N), closed: values(R, d, iClosed), states: st,
+        live: values(R, d, N), closed: values(R, d, iClosed), states: st, ta: analyze(a.symbol, R, d, N, BT),
         levels: { fib90: Object.fromEntries(Object.entries(R.fib).map(([k, v]) => [k, r(v)])), pivot: Object.fromEntries(Object.entries(R.pivot).map(([k, v]) => [k, r(v)])), poc90: r(R.vp.poc), rsi_divergence: R.div },
       };
       const S = 150, s0 = d.c.length - S, sl = x => x.slice(s0).map(v => (isFinite(v) ? +(+v).toPrecision(8) : null));
@@ -169,6 +176,17 @@ function values(R, d, i) {
   }
   sc.rows.sort((a, b) => (b.d7?.n || 0) - (a.d7?.n || 0));
   fs.writeFileSync(path.join(DATA, "scorecard.json"), JSON.stringify(sc, null, 1));
+  // Звіт технічного аналізу всіх монет (Markdown)
+  const kyiv = new Date(out.generated_utc).toLocaleString("uk-UA", { timeZone: "Europe/Kyiv" });
+  let md = `# Технічний аналіз монет\n\nЗгенеровано ${kyiv} (Київ). Денні свічки Binance; поточна свічка ще формується. Сценарії умовні, це не прогноз і не порада.\n\n`;
+  const order = Object.entries(out.assets).sort((x, y) => (y[1].ta?.composite ?? 0) - (x[1].ta?.composite ?? 0));
+  md += `| Монета | Ціна | Стан | Оцінка | Найближча підтримка | Найближчий опір |\n|---|---|---|---|---|---|\n`;
+  for (const [s, a] of order) { const T = a.ta; md += `| ${s} | ${a.live.close} | ${T.state} | ${T.composite > 0 ? "+" : ""}${T.composite} | ${T.supports[0]?.price ?? "—"} | ${T.resistances[0]?.price ?? "—"} |\n`; }
+  for (const [s, a] of order) {
+    const T = a.ta;
+    md += `\n## ${s}\n**${T.summary}**\n\n- **Тренд:** ${T.trend}\n- **Імпульс:** ${T.momentum}\n- **Обсяг:** ${T.volume}\n- **Волатильність:** ${T.volatility}\n- **Підтримка:** ${T.levels_text.support}\n- **Опір:** ${T.levels_text.resistance}\n- ${T.scenarios.bullish}\n- ${T.scenarios.bearish}\n- ${T.scenarios.trend_flip}\n- ${T.scenarios.risk}\n- Графік: charts/${s}.png\n`;
+  }
+  fs.writeFileSync(path.join(DATA, "ta_report.md"), md);
   out.scorecard = { pending_7d: pending, summary: sc.rows.filter(r => r.signal.startsWith("УСІ")) };
   fs.writeFileSync(path.join(DATA, "latest.json"), JSON.stringify(out, null, 1));
   console.log(`assets ok: ${Object.keys(out.assets).join(",")}; signals: ${out.signals.length}; errors: ${out.errors.length}`);

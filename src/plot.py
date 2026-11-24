@@ -40,6 +40,13 @@ for sym, a in latest["assets"].items():
         if s["supertrend"][i - 1] is not None and s["stDir"][i] == s["stDir"][i - 1]:
             ax.plot([i - 1, i], [s["supertrend"][i - 1], s["supertrend"][i]], color=GRN if s["stDir"][i] > 0 else RED, lw=2)
     ax.axhline(s["c"][-1], color=RED, ls=":", lw=0.8)
+    T = a.get("ta") or {}
+    for z in (T.get("supports") or [])[:2]:
+        ax.axhline(z["price"], color=GRN, ls="-", lw=1.0, alpha=0.55)
+        ax.text(1, z["price"], f' підтримка {fmt(z["price"])}', color=GRN, fontsize=7, va="bottom")
+    for z in (T.get("resistances") or [])[:2]:
+        ax.axhline(z["price"], color=RED, ls="-", lw=1.0, alpha=0.55)
+        ax.text(1, z["price"], f' опір {fmt(z["price"])}', color=RED, fontsize=7, va="bottom")
     ax.legend(loc="upper left", fontsize=8, frameon=False)
     a_rsi.plot(x, s["stochRsi"], color=MUTE, lw=0.8); a_rsi.plot(x, s["rsi"], color=INK, lw=1.6)
     for lv in (30, 70): a_rsi.axhline(lv, color=MUTE, ls="--", lw=0.7)

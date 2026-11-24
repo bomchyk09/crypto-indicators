@@ -56,6 +56,9 @@ jobs:
             git show origin/results:data/journal.csv > data/journal.csv || rm -f data/journal.csv
             echo "restored: $(ls data)"
           fi
+          if git fetch --depth=1 origin backtest:refs/remotes/origin/backtest 2>/dev/null; then
+            git show origin/backtest:report.json > data/bt.json || rm -f data/bt.json
+          fi
 
       - name: Compute indicators (public market data, no keys)
         run: node src/compute.js
