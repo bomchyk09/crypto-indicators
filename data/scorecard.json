@@ -1,0 +1,117 @@
+{
+ "generated_utc": "2026-11-28T04:46:41.605Z",
+ "pending_7d": 42,
+ "note": "Живі сигнали бота. Влучання — частка випадків, коли ціна пішла в очікуваний бік; поруч — те саме для звичайного дня цієї монети (365 д). Перевага — п.п. Висновок — від 30 випадків.",
+ "rows": [
+  {
+   "signal": "cmf: відплив",
+   "d1": {
+    "n": 5,
+    "hit": 0,
+    "base_hit": 52.9,
+    "edge": -1.45,
+    "enough": false
+   }
+  },
+  {
+   "signal": "УСІ ВЕДМЕЖІ",
+   "d1": {
+    "n": 13,
+    "hit": 15.4,
+    "base_hit": 53.6,
+    "edge": -1.16,
+    "enough": false
+   }
+  },
+  {
+   "signal": "rsi_zone: перепроданість",
+   "d1": {
+    "n": 4,
+    "hit": 100,
+    "base_hit": 46,
+    "edge": 2.32,
+    "enough": false
+   }
+  },
+  {
+   "signal": "УСІ БИЧАЧІ",
+   "d1": {
+    "n": 19,
+    "hit": 68.4,
+    "base_hit": 45.6,
+    "edge": 0.96,
+    "enough": false
+   }
+  },
+  {
+   "signal": "tsmom: −3",
+   "d1": {
+    "n": 3,
+    "hit": 33.3,
+    "base_hit": 52.4,
+    "edge": -0.18,
+    "enough": false
+   }
+  },
+  {
+   "signal": "macd_hist: +",
+   "d1": {
+    "n": 12,
+    "hit": 50,
+    "base_hit": 45.3,
+    "edge": 0.06,
+    "enough": false
+   }
+  },
+  {
+   "signal": "composite: ведмежий",
+   "d1": {
+    "n": 2,
+    "hit": 50,
+    "base_hit": 55.2,
+    "edge": -0.29,
+    "enough": false
+   }
+  },
+  {
+   "signal": "price_vs_sma200: нижче",
+   "d1": {
+    "n": 2,
+    "hit": 0,
+    "base_hit": 54.1,
+    "edge": -1.74,
+    "enough": false
+   }
+  },
+  {
+   "signal": "price_vs_sma200: вище",
+   "d1": {
+    "n": 2,
+    "hit": 100,
+    "base_hit": 45.9,
+    "edge": 3.56,
+    "enough": false
+   }
+  },
+  {
+   "signal": "sma50_vs_sma200: хрест смерті",
+   "d1": {
+    "n": 1,
+    "hit": 0,
+    "base_hit": 57,
+    "edge": -3.28,
+    "enough": false
+   }
+  },
+  {
+   "signal": "cmf: приплив",
+   "d1": {
+    "n": 1,
+    "hit": 100,
+    "base_hit": 46.8,
+    "edge": 1.08,
+    "enough": false
+   }
+  }
+ ]
+}
