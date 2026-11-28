@@ -1,0 +1,2106 @@
+{
+ "generated_utc": "2026-11-28T10:52:59.757Z",
+ "rules": "вхід: оцінка перетинає ±3 + старший ТФ згоден (1h→4h, 4h→1d); стоп 2 ATR (1R); ціль 1 = 1R (половина, стоп у беззбиток); ціль 2 = 3R; вихід — розворот Supertrend або оцінка через 0",
+ "reliability": "Перевага на історії: 1d — так (невелика), 1h — ≈ 0, 4h — ні. Див. гілку backtest/strategy.md.",
+ "fear_greed": {
+  "now": {
+   "value": 10,
+   "label": "Extreme Fear",
+   "date": "2026-11-28"
+  },
+  "week_ago": {
+   "value": 12,
+   "label": "Extreme Fear",
+   "date": "2026-11-21"
+  },
+  "source": "alternative.me"
+ },
+ "events": [],
+ "open": [
+  {
+   "asset": "ETH",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1646.49,
+   "composite": -5,
+   "htf_composite": -4,
+   "bt_coin": {
+    "n": 23,
+    "win": 43.5,
+    "avgR": 0.023
+   },
+   "side": "шорт",
+   "entry": 1654.84,
+   "stop": 1689.89,
+   "t1": 1619.79,
+   "t2": 1549.68,
+   "half_taken": false,
+   "r_now": 0.05,
+   "entered_utc": "2026-11-27 14:00"
+  },
+  {
+   "asset": "ETH",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1646.49,
+   "composite": -4,
+   "htf_composite": -5,
+   "bt_coin": {
+    "n": 29,
+    "win": 31,
+    "avgR": -0.484
+   },
+   "side": "шорт",
+   "entry": 1697.83,
+   "stop": 1778.48,
+   "t1": 1617.18,
+   "t2": 1455.88,
+   "half_taken": false,
+   "r_now": 0.5,
+   "entered_utc": "2026-11-26 00:00"
+  },
+  {
+   "asset": "ETH",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1646.46,
+   "composite": -5,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 116,
+    "win": 45.7,
+    "avgR": 0.198
+   },
+   "side": "шорт",
+   "entry": 2127.46,
+   "stop": 2127.46,
+   "t1": 1928.81,
+   "t2": 1531.51,
+   "half_taken": true,
+   "r_now": 2.34,
+   "entered_utc": "2026-11-08 00:00"
+  },
+  {
+   "asset": "BNB",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 549.17,
+   "composite": -3,
+   "htf_composite": -1,
+   "bt_coin": {
+    "n": 17,
+    "win": 29.4,
+    "avgR": -0.276
+   },
+   "side": "шорт",
+   "entry": 553.4,
+   "stop": 561.853,
+   "t1": 544.947,
+   "t2": 528.041,
+   "half_taken": false,
+   "r_now": 0.22,
+   "entered_utc": "2026-11-27 20:00"
+  },
+  {
+   "asset": "AVAX",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 6.488,
+   "composite": -5,
+   "htf_composite": -3,
+   "bt_coin": {
+    "n": 24,
+    "win": 41.7,
+    "avgR": -0.038
+   },
+   "side": "шорт",
+   "entry": 6.613,
+   "stop": 6.613,
+   "t1": 6.48734,
+   "t2": 6.23601,
+   "half_taken": true,
+   "r_now": 0.66,
+   "entered_utc": "2026-11-27 21:00"
+  },
+  {
+   "asset": "AVAX",
+   "tf": "4h",
+   "state": "setup",
+   "title": "НОВИЙ СЕТАП: ШОРТ",
+   "price": 6.488,
+   "composite": -3,
+   "htf_composite": -4,
+   "bt_coin": {
+    "n": 32,
+    "win": 28.1,
+    "avgR": -0.423
+   },
+   "side": "шорт",
+   "entry": 6.541,
+   "stop": 6.83227,
+   "t1": 6.24973,
+   "t2": 5.66719,
+   "half_taken": false,
+   "r_now": 0,
+   "entered_utc": "2026-11-28 04:00"
+  },
+  {
+   "asset": "AVAX",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 6.488,
+   "composite": -4,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 84,
+    "win": 42.9,
+    "avgR": -0.021
+   },
+   "side": "шорт",
+   "entry": 9.06,
+   "stop": 9.06,
+   "t1": 7.78837,
+   "t2": 5.2451,
+   "half_taken": true,
+   "r_now": 1.92,
+   "entered_utc": "2026-10-23 00:00"
+  },
+  {
+   "asset": "ATOM",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1.203,
+   "composite": -5,
+   "htf_composite": -5,
+   "bt_coin": {
+    "n": 22,
+    "win": 50,
+    "avgR": 0.121
+   },
+   "side": "шорт",
+   "entry": 1.219,
+   "stop": 1.2453,
+   "t1": 1.1927,
+   "t2": 1.14011,
+   "half_taken": false,
+   "r_now": 0.76,
+   "entered_utc": "2026-11-28 03:00"
+  },
+  {
+   "asset": "ATOM",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1.203,
+   "composite": -5,
+   "htf_composite": -3,
+   "bt_coin": {
+    "n": 23,
+    "win": 43.5,
+    "avgR": 0.081
+   },
+   "side": "шорт",
+   "entry": 1.189,
+   "stop": 1.26144,
+   "t1": 1.11656,
+   "t2": 0.971679,
+   "half_taken": false,
+   "r_now": -0.17,
+   "entered_utc": "2026-11-26 12:00"
+  },
+  {
+   "asset": "ATOM",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 1.203,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 114,
+    "win": 39.5,
+    "avgR": -0.038
+   },
+   "side": "шорт",
+   "entry": 1.502,
+   "stop": 1.502,
+   "t1": 1.29363,
+   "t2": 0.8769,
+   "half_taken": true,
+   "r_now": 1.32,
+   "entered_utc": "2026-10-29 00:00"
+  },
+  {
+   "asset": "NEAR",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 2.988,
+   "composite": -1,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 84,
+    "win": 45.2,
+    "avgR": 0.132
+   },
+   "side": "шорт",
+   "entry": 3.661,
+   "stop": 3.661,
+   "t1": 2.75425,
+   "t2": 0.940742,
+   "half_taken": true,
+   "r_now": 0.71,
+   "entered_utc": "2026-11-05 00:00"
+  },
+  {
+   "asset": "ADA",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.1454,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 114,
+    "win": 44.7,
+    "avgR": 0.113
+   },
+   "side": "шорт",
+   "entry": 0.2196,
+   "stop": 0.2196,
+   "t1": 0.18731,
+   "t2": 0.122729,
+   "half_taken": true,
+   "r_now": 2.2,
+   "entered_utc": "2026-10-17 00:00"
+  },
+  {
+   "asset": "ALGO",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.0785,
+   "composite": -4,
+   "htf_composite": -3,
+   "bt_coin": {
+    "n": 25,
+    "win": 56,
+    "avgR": 0.05
+   },
+   "side": "шорт",
+   "entry": 0.0801,
+   "stop": 0.081683,
+   "t1": 0.078517,
+   "t2": 0.0753509,
+   "half_taken": false,
+   "r_now": 0.88,
+   "entered_utc": "2026-11-28 02:00"
+  },
+  {
+   "asset": "ALGO",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.0785,
+   "composite": -3,
+   "htf_composite": -3,
+   "bt_coin": {
+    "n": 22,
+    "win": 50,
+    "avgR": -0.049
+   },
+   "side": "шорт",
+   "entry": 0.0801,
+   "stop": 0.0841869,
+   "t1": 0.0760131,
+   "t2": 0.0678393,
+   "half_taken": false,
+   "r_now": 0.2,
+   "entered_utc": "2026-11-28 00:00"
+  },
+  {
+   "asset": "ALGO",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.0785,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 112,
+    "win": 43.8,
+    "avgR": -0.012
+   },
+   "side": "шорт",
+   "entry": 0.0933,
+   "stop": 0.0933,
+   "t1": 0.0778398,
+   "t2": 0.0469195,
+   "half_taken": true,
+   "r_now": 0.78,
+   "entered_utc": "2026-10-29 00:00"
+  },
+  {
+   "asset": "TRX",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.3005,
+   "composite": -5,
+   "htf_composite": -6,
+   "bt_coin": {
+    "n": 17,
+    "win": 52.9,
+    "avgR": 0.059
+   },
+   "side": "шорт",
+   "entry": 0.3031,
+   "stop": 0.3031,
+   "t1": 0.301328,
+   "t2": 0.297783,
+   "half_taken": true,
+   "r_now": 1.41,
+   "entered_utc": "2026-11-27 14:00"
+  },
+  {
+   "asset": "TRX",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.3006,
+   "composite": -6,
+   "htf_composite": -6,
+   "bt_coin": {
+    "n": 20,
+    "win": 60,
+    "avgR": 0.107
+   },
+   "side": "шорт",
+   "entry": 0.3035,
+   "stop": 0.3035,
+   "t1": 0.299246,
+   "t2": 0.290739,
+   "half_taken": true,
+   "r_now": 0.63,
+   "entered_utc": "2026-11-25 12:00"
+  },
+  {
+   "asset": "TRX",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.3006,
+   "composite": -6,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 131,
+    "win": 36.6,
+    "avgR": -0.018
+   },
+   "side": "шорт",
+   "entry": 0.3272,
+   "stop": 0.3272,
+   "t1": 0.311299,
+   "t2": 0.279497,
+   "half_taken": true,
+   "r_now": 1.65,
+   "entered_utc": "2026-10-30 00:00"
+  },
+  {
+   "asset": "JUP",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ЛОНГ",
+   "price": 0.242,
+   "composite": 1,
+   "htf_composite": 1,
+   "bt_coin": {
+    "n": 25,
+    "win": 40,
+    "avgR": -0.021
+   },
+   "side": "лонг",
+   "entry": 0.2522,
+   "stop": 0.236724,
+   "t1": 0.267676,
+   "t2": 0.298629,
+   "half_taken": false,
+   "r_now": -0.5,
+   "entered_utc": "2026-11-27 08:00"
+  },
+  {
+   "asset": "EGLD",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 2.22,
+   "composite": -5,
+   "htf_composite": -4,
+   "bt_coin": {
+    "n": 19,
+    "win": 63.2,
+    "avgR": 0.271
+   },
+   "side": "шорт",
+   "entry": 2.271,
+   "stop": 2.31609,
+   "t1": 2.22591,
+   "t2": 2.13573,
+   "half_taken": false,
+   "r_now": 0.71,
+   "entered_utc": "2026-11-27 14:00"
+  },
+  {
+   "asset": "EGLD",
+   "tf": "4h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 2.22,
+   "composite": -4,
+   "htf_composite": -6,
+   "bt_coin": {
+    "n": 22,
+    "win": 36.4,
+    "avgR": -0.126
+   },
+   "side": "шорт",
+   "entry": 2.322,
+   "stop": 2.46886,
+   "t1": 2.17514,
+   "t2": 1.88143,
+   "half_taken": false,
+   "r_now": 0.42,
+   "entered_utc": "2026-11-26 04:00"
+  },
+  {
+   "asset": "EGLD",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 2.22,
+   "composite": -6,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 81,
+    "win": 49.4,
+    "avgR": 0.145
+   },
+   "side": "шорт",
+   "entry": 3.701,
+   "stop": 3.701,
+   "t1": 3.07227,
+   "t2": 1.81482,
+   "half_taken": true,
+   "r_now": 2.25,
+   "entered_utc": "2026-10-12 00:00"
+  },
+  {
+   "asset": "INJ",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 6.173,
+   "composite": -2,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 79,
+    "win": 48.1,
+    "avgR": 0.059
+   },
+   "side": "шорт",
+   "entry": 6.296,
+   "stop": 7.77416,
+   "t1": 4.81784,
+   "t2": 1.86152,
+   "half_taken": false,
+   "r_now": -0.03,
+   "entered_utc": "2026-11-23 00:00"
+  },
+  {
+   "asset": "DOT",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.649,
+   "composite": -6,
+   "htf_composite": -1,
+   "bt_coin": {
+    "n": 32,
+    "win": 43.8,
+    "avgR": -0.004
+   },
+   "side": "шорт",
+   "entry": 0.666,
+   "stop": 0.666,
+   "t1": 0.652642,
+   "t2": 0.625925,
+   "half_taken": true,
+   "r_now": 1.12,
+   "entered_utc": "2026-11-28 00:00"
+  },
+  {
+   "asset": "DOT",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.649,
+   "composite": -5,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 80,
+    "win": 48.8,
+    "avgR": 0.113
+   },
+   "side": "шорт",
+   "entry": 0.909,
+   "stop": 0.909,
+   "t1": 0.749179,
+   "t2": 0.429537,
+   "half_taken": true,
+   "r_now": 1.5,
+   "entered_utc": "2026-10-29 00:00"
+  },
+  {
+   "asset": "VET",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.004823,
+   "composite": -4,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 97,
+    "win": 60.8,
+    "avgR": 0.359
+   },
+   "side": "шорт",
+   "entry": 0.005774,
+   "stop": 0.005774,
+   "t1": 0.00472922,
+   "t2": 0.00263966,
+   "half_taken": true,
+   "r_now": 0.74,
+   "entered_utc": "2026-10-29 00:00"
+  },
+  {
+   "asset": "PUMP",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.002551,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 8,
+    "win": 62.5,
+    "avgR": 0.334
+   },
+   "side": "шорт",
+   "entry": 0.003619,
+   "stop": 0.003619,
+   "t1": 0.00274481,
+   "t2": 0.000996436,
+   "half_taken": true,
+   "r_now": 1.17,
+   "entered_utc": "2026-11-09 00:00"
+  },
+  {
+   "asset": "APT",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.3768,
+   "composite": -4,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 50,
+    "win": 46,
+    "avgR": 0.088
+   },
+   "side": "шорт",
+   "entry": 0.6168,
+   "stop": 0.6168,
+   "t1": 0.484234,
+   "t2": 0.219103,
+   "half_taken": true,
+   "r_now": 1.68,
+   "entered_utc": "2026-10-29 00:00"
+  },
+  {
+   "asset": "HBAR",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.05306,
+   "composite": -2,
+   "htf_composite": 0,
+   "bt_coin": {
+    "n": 25,
+    "win": 44,
+    "avgR": 0.179
+   },
+   "side": "шорт",
+   "entry": 0.05361,
+   "stop": 0.0547957,
+   "t1": 0.0524243,
+   "t2": 0.0500528,
+   "half_taken": false,
+   "r_now": 0.21,
+   "entered_utc": "2026-11-27 22:00"
+  },
+  {
+   "asset": "HBAR",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.05306,
+   "composite": -4,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 89,
+    "win": 55.1,
+    "avgR": 0.172
+   },
+   "side": "шорт",
+   "entry": 0.08544,
+   "stop": 0.08544,
+   "t1": 0.0729389,
+   "t2": 0.0479367,
+   "half_taken": true,
+   "r_now": 2.52,
+   "entered_utc": "2026-10-18 00:00"
+  },
+  {
+   "asset": "ONDO",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.2807,
+   "composite": -5,
+   "htf_composite": 0,
+   "bt_coin": {
+    "n": 27,
+    "win": 40.7,
+    "avgR": -0.041
+   },
+   "side": "шорт",
+   "entry": 0.2823,
+   "stop": 0.287847,
+   "t1": 0.276753,
+   "t2": 0.265659,
+   "half_taken": false,
+   "r_now": 0.13,
+   "entered_utc": "2026-11-28 05:00"
+  },
+  {
+   "asset": "ONDO",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.2807,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 15,
+    "win": 40,
+    "avgR": 0.088
+   },
+   "side": "шорт",
+   "entry": 0.4099,
+   "stop": 0.4099,
+   "t1": 0.340033,
+   "t2": 0.200298,
+   "half_taken": true,
+   "r_now": 1.75,
+   "entered_utc": "2026-10-24 00:00"
+  },
+  {
+   "asset": "SUI",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.6622,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 39,
+    "win": 61.5,
+    "avgR": 0.227
+   },
+   "side": "шорт",
+   "entry": 0.9387,
+   "stop": 0.9387,
+   "t1": 0.796368,
+   "t2": 0.511704,
+   "half_taken": true,
+   "r_now": 1.86,
+   "entered_utc": "2026-10-24 00:00"
+  },
+  {
+   "asset": "FIL",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.5113,
+   "composite": -5,
+   "htf_composite": -3,
+   "bt_coin": {
+    "n": 23,
+    "win": 56.5,
+    "avgR": 0.093
+   },
+   "side": "шорт",
+   "entry": 0.5312,
+   "stop": 0.5312,
+   "t1": 0.518472,
+   "t2": 0.493016,
+   "half_taken": true,
+   "r_now": 1.37,
+   "entered_utc": "2026-11-28 00:00"
+  },
+  {
+   "asset": "FIL",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.5113,
+   "composite": -6,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 77,
+    "win": 54.5,
+    "avgR": 0.108
+   },
+   "side": "шорт",
+   "entry": 0.908,
+   "stop": 0.908,
+   "t1": 0.731538,
+   "t2": 0.378613,
+   "half_taken": true,
+   "r_now": 2.12,
+   "entered_utc": "2026-10-27 00:00"
+  },
+  {
+   "asset": "RSR",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.001247,
+   "composite": -5,
+   "htf_composite": -1,
+   "bt_coin": {
+    "n": 24,
+    "win": 50,
+    "avgR": -0.001
+   },
+   "side": "шорт",
+   "entry": 0.001252,
+   "stop": 0.00127477,
+   "t1": 0.00122923,
+   "t2": 0.00118368,
+   "half_taken": false,
+   "r_now": 0.31,
+   "entered_utc": "2026-11-28 07:00"
+  },
+  {
+   "asset": "RSR",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.001247,
+   "composite": -5,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 84,
+    "win": 47.6,
+    "avgR": -0.068
+   },
+   "side": "шорт",
+   "entry": 0.001486,
+   "stop": 0.00182006,
+   "t1": 0.00115194,
+   "t2": 0.000483828,
+   "half_taken": false,
+   "r_now": 0.61,
+   "entered_utc": "2026-11-12 00:00"
+  },
+  {
+   "asset": "ZIL",
+   "tf": "1h",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 0.000846,
+   "composite": -3,
+   "htf_composite": -1,
+   "bt_coin": {
+    "n": 21,
+    "win": 52.4,
+    "avgR": 0.069
+   },
+   "side": "шорт",
+   "entry": 0.000855,
+   "stop": 0.000885338,
+   "t1": 0.000824662,
+   "t2": 0.000763986,
+   "half_taken": false,
+   "r_now": -0.07,
+   "entered_utc": "2026-11-28 05:00"
+  },
+  {
+   "asset": "LINK",
+   "tf": "1d",
+   "state": "open",
+   "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+   "price": 9.155,
+   "composite": -3,
+   "htf_composite": null,
+   "bt_coin": {
+    "n": 107,
+    "win": 45.8,
+    "avgR": 0.039
+   },
+   "side": "шорт",
+   "entry": 10.411,
+   "stop": 10.411,
+   "t1": 9.04998,
+   "t2": 6.32794,
+   "half_taken": true,
+   "r_now": 0.76,
+   "entered_utc": "2026-11-08 00:00"
+  }
+ ],
+ "coins": {
+  "BTC": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 59203.3,
+    "composite": -5,
+    "htf_composite": -2,
+    "bt_coin": {
+     "n": 26,
+     "win": 42.3,
+     "avgR": -0.005
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 59203.3,
+    "composite": -2,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 29,
+     "win": 27.6,
+     "avgR": -0.322
+    }
+   },
+   "1d": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 59203.3,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 126,
+     "win": 45.2,
+     "avgR": 0.124
+    }
+   }
+  },
+  "ETH": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1646.49,
+    "composite": -5,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 23,
+     "win": 43.5,
+     "avgR": 0.023
+    },
+    "side": "шорт",
+    "entry": 1654.84,
+    "stop": 1689.89,
+    "t1": 1619.79,
+    "t2": 1549.68,
+    "half_taken": false,
+    "r_now": 0.05,
+    "entered_utc": "2026-11-27 14:00"
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1646.49,
+    "composite": -4,
+    "htf_composite": -5,
+    "bt_coin": {
+     "n": 29,
+     "win": 31,
+     "avgR": -0.484
+    },
+    "side": "шорт",
+    "entry": 1697.83,
+    "stop": 1778.48,
+    "t1": 1617.18,
+    "t2": 1455.88,
+    "half_taken": false,
+    "r_now": 0.5,
+    "entered_utc": "2026-11-26 00:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1646.46,
+    "composite": -5,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 116,
+     "win": 45.7,
+     "avgR": 0.198
+    },
+    "side": "шорт",
+    "entry": 2127.46,
+    "stop": 2127.46,
+    "t1": 1928.81,
+    "t2": 1531.51,
+    "half_taken": true,
+    "r_now": 2.34,
+    "entered_utc": "2026-11-08 00:00"
+   }
+  },
+  "SOL": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 70.75,
+    "composite": -2,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 33,
+     "win": 33.3,
+     "avgR": -0.061
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 70.76,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 29,
+     "win": 37.9,
+     "avgR": -0.034
+    }
+   },
+   "1d": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 70.76,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 90,
+     "win": 52.2,
+     "avgR": 0.189
+    }
+   }
+  },
+  "BNB": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 549.17,
+    "composite": -3,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 17,
+     "win": 29.4,
+     "avgR": -0.276
+    },
+    "side": "шорт",
+    "entry": 553.4,
+    "stop": 561.853,
+    "t1": 544.947,
+    "t2": 528.041,
+    "half_taken": false,
+    "r_now": 0.22,
+    "entered_utc": "2026-11-27 20:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 549.17,
+    "composite": -1,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 24,
+     "win": 50,
+     "avgR": 0.173
+    }
+   },
+   "1d": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 549.21,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 130,
+     "win": 40,
+     "avgR": 0.019
+    }
+   }
+  },
+  "AVAX": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 6.488,
+    "composite": -5,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 24,
+     "win": 41.7,
+     "avgR": -0.038
+    },
+    "side": "шорт",
+    "entry": 6.613,
+    "stop": 6.613,
+    "t1": 6.48734,
+    "t2": 6.23601,
+    "half_taken": true,
+    "r_now": 0.66,
+    "entered_utc": "2026-11-27 21:00"
+   },
+   "4h": {
+    "state": "setup",
+    "title": "НОВИЙ СЕТАП: ШОРТ",
+    "price": 6.488,
+    "composite": -3,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 32,
+     "win": 28.1,
+     "avgR": -0.423
+    },
+    "side": "шорт",
+    "entry": 6.541,
+    "stop": 6.83227,
+    "t1": 6.24973,
+    "t2": 5.66719,
+    "half_taken": false,
+    "r_now": 0,
+    "entered_utc": "2026-11-28 04:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 6.488,
+    "composite": -4,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 84,
+     "win": 42.9,
+     "avgR": -0.021
+    },
+    "side": "шорт",
+    "entry": 9.06,
+    "stop": 9.06,
+    "t1": 7.78837,
+    "t2": 5.2451,
+    "half_taken": true,
+    "r_now": 1.92,
+    "entered_utc": "2026-10-23 00:00"
+   }
+  },
+  "ATOM": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1.203,
+    "composite": -5,
+    "htf_composite": -5,
+    "bt_coin": {
+     "n": 22,
+     "win": 50,
+     "avgR": 0.121
+    },
+    "side": "шорт",
+    "entry": 1.219,
+    "stop": 1.2453,
+    "t1": 1.1927,
+    "t2": 1.14011,
+    "half_taken": false,
+    "r_now": 0.76,
+    "entered_utc": "2026-11-28 03:00"
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1.203,
+    "composite": -5,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 23,
+     "win": 43.5,
+     "avgR": 0.081
+    },
+    "side": "шорт",
+    "entry": 1.189,
+    "stop": 1.26144,
+    "t1": 1.11656,
+    "t2": 0.971679,
+    "half_taken": false,
+    "r_now": -0.17,
+    "entered_utc": "2026-11-26 12:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 1.203,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 114,
+     "win": 39.5,
+     "avgR": -0.038
+    },
+    "side": "шорт",
+    "entry": 1.502,
+    "stop": 1.502,
+    "t1": 1.29363,
+    "t2": 0.8769,
+    "half_taken": true,
+    "r_now": 1.32,
+    "entered_utc": "2026-10-29 00:00"
+   }
+  },
+  "NEAR": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 2.988,
+    "composite": -2,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 26,
+     "win": 38.5,
+     "avgR": 0.034
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 2.988,
+    "composite": -1,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 26,
+     "win": 50,
+     "avgR": 0.009
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 2.988,
+    "composite": -1,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 84,
+     "win": 45.2,
+     "avgR": 0.132
+    },
+    "side": "шорт",
+    "entry": 3.661,
+    "stop": 3.661,
+    "t1": 2.75425,
+    "t2": 0.940742,
+    "half_taken": true,
+    "r_now": 0.71,
+    "entered_utc": "2026-11-05 00:00"
+   }
+  },
+  "ADA": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.1454,
+    "composite": -3,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 24,
+     "win": 50,
+     "avgR": 0.027
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.1454,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 24,
+     "win": 62.5,
+     "avgR": 0.182
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.1454,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 114,
+     "win": 44.7,
+     "avgR": 0.113
+    },
+    "side": "шорт",
+    "entry": 0.2196,
+    "stop": 0.2196,
+    "t1": 0.18731,
+    "t2": 0.122729,
+    "half_taken": true,
+    "r_now": 2.2,
+    "entered_utc": "2026-10-17 00:00"
+   }
+  },
+  "ALGO": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.0785,
+    "composite": -4,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 25,
+     "win": 56,
+     "avgR": 0.05
+    },
+    "side": "шорт",
+    "entry": 0.0801,
+    "stop": 0.081683,
+    "t1": 0.078517,
+    "t2": 0.0753509,
+    "half_taken": false,
+    "r_now": 0.88,
+    "entered_utc": "2026-11-28 02:00"
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.0785,
+    "composite": -3,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 22,
+     "win": 50,
+     "avgR": -0.049
+    },
+    "side": "шорт",
+    "entry": 0.0801,
+    "stop": 0.0841869,
+    "t1": 0.0760131,
+    "t2": 0.0678393,
+    "half_taken": false,
+    "r_now": 0.2,
+    "entered_utc": "2026-11-28 00:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.0785,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 112,
+     "win": 43.8,
+     "avgR": -0.012
+    },
+    "side": "шорт",
+    "entry": 0.0933,
+    "stop": 0.0933,
+    "t1": 0.0778398,
+    "t2": 0.0469195,
+    "half_taken": true,
+    "r_now": 0.78,
+    "entered_utc": "2026-10-29 00:00"
+   }
+  },
+  "TRX": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.3005,
+    "composite": -5,
+    "htf_composite": -6,
+    "bt_coin": {
+     "n": 17,
+     "win": 52.9,
+     "avgR": 0.059
+    },
+    "side": "шорт",
+    "entry": 0.3031,
+    "stop": 0.3031,
+    "t1": 0.301328,
+    "t2": 0.297783,
+    "half_taken": true,
+    "r_now": 1.41,
+    "entered_utc": "2026-11-27 14:00"
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.3006,
+    "composite": -6,
+    "htf_composite": -6,
+    "bt_coin": {
+     "n": 20,
+     "win": 60,
+     "avgR": 0.107
+    },
+    "side": "шорт",
+    "entry": 0.3035,
+    "stop": 0.3035,
+    "t1": 0.299246,
+    "t2": 0.290739,
+    "half_taken": true,
+    "r_now": 0.63,
+    "entered_utc": "2026-11-25 12:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.3006,
+    "composite": -6,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 131,
+     "win": 36.6,
+     "avgR": -0.018
+    },
+    "side": "шорт",
+    "entry": 0.3272,
+    "stop": 0.3272,
+    "t1": 0.311299,
+    "t2": 0.279497,
+    "half_taken": true,
+    "r_now": 1.65,
+    "entered_utc": "2026-10-30 00:00"
+   }
+  },
+  "JUP": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.242,
+    "composite": -3,
+    "htf_composite": 1,
+    "bt_coin": {
+     "n": 24,
+     "win": 41.7,
+     "avgR": -0.205
+    }
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ЛОНГ",
+    "price": 0.242,
+    "composite": 1,
+    "htf_composite": 1,
+    "bt_coin": {
+     "n": 25,
+     "win": 40,
+     "avgR": -0.021
+    },
+    "side": "лонг",
+    "entry": 0.2522,
+    "stop": 0.236724,
+    "t1": 0.267676,
+    "t2": 0.298629,
+    "half_taken": false,
+    "r_now": -0.5,
+    "entered_utc": "2026-11-27 08:00"
+   },
+   "1d": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.242,
+    "composite": 1,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 43,
+     "win": 39.5,
+     "avgR": -0.018
+    }
+   }
+  },
+  "EGLD": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 2.22,
+    "composite": -5,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 19,
+     "win": 63.2,
+     "avgR": 0.271
+    },
+    "side": "шорт",
+    "entry": 2.271,
+    "stop": 2.31609,
+    "t1": 2.22591,
+    "t2": 2.13573,
+    "half_taken": false,
+    "r_now": 0.71,
+    "entered_utc": "2026-11-27 14:00"
+   },
+   "4h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 2.22,
+    "composite": -4,
+    "htf_composite": -6,
+    "bt_coin": {
+     "n": 22,
+     "win": 36.4,
+     "avgR": -0.126
+    },
+    "side": "шорт",
+    "entry": 2.322,
+    "stop": 2.46886,
+    "t1": 2.17514,
+    "t2": 1.88143,
+    "half_taken": false,
+    "r_now": 0.42,
+    "entered_utc": "2026-11-26 04:00"
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 2.22,
+    "composite": -6,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 81,
+     "win": 49.4,
+     "avgR": 0.145
+    },
+    "side": "шорт",
+    "entry": 3.701,
+    "stop": 3.701,
+    "t1": 3.07227,
+    "t2": 1.81482,
+    "half_taken": true,
+    "r_now": 2.25,
+    "entered_utc": "2026-10-12 00:00"
+   }
+  },
+  "INJ": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 6.173,
+    "composite": -1,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 25,
+     "win": 20,
+     "avgR": -0.271
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 6.173,
+    "composite": 0,
+    "htf_composite": -2,
+    "bt_coin": {
+     "n": 32,
+     "win": 40.6,
+     "avgR": -0.083
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 6.173,
+    "composite": -2,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 79,
+     "win": 48.1,
+     "avgR": 0.059
+    },
+    "side": "шорт",
+    "entry": 6.296,
+    "stop": 7.77416,
+    "t1": 4.81784,
+    "t2": 1.86152,
+    "half_taken": false,
+    "r_now": -0.03,
+    "entered_utc": "2026-11-23 00:00"
+   }
+  },
+  "DOT": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.649,
+    "composite": -6,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 32,
+     "win": 43.8,
+     "avgR": -0.004
+    },
+    "side": "шорт",
+    "entry": 0.666,
+    "stop": 0.666,
+    "t1": 0.652642,
+    "t2": 0.625925,
+    "half_taken": true,
+    "r_now": 1.12,
+    "entered_utc": "2026-11-28 00:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.649,
+    "composite": -1,
+    "htf_composite": -5,
+    "bt_coin": {
+     "n": 23,
+     "win": 47.8,
+     "avgR": 0.11
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.649,
+    "composite": -5,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 80,
+     "win": 48.8,
+     "avgR": 0.113
+    },
+    "side": "шорт",
+    "entry": 0.909,
+    "stop": 0.909,
+    "t1": 0.749179,
+    "t2": 0.429537,
+    "half_taken": true,
+    "r_now": 1.5,
+    "entered_utc": "2026-10-29 00:00"
+   }
+  },
+  "VET": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.004823,
+    "composite": -2,
+    "htf_composite": -2,
+    "bt_coin": {
+     "n": 28,
+     "win": 46.4,
+     "avgR": 0.134
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.004823,
+    "composite": -2,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 19,
+     "win": 68.4,
+     "avgR": 0.502
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.004823,
+    "composite": -4,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 97,
+     "win": 60.8,
+     "avgR": 0.359
+    },
+    "side": "шорт",
+    "entry": 0.005774,
+    "stop": 0.005774,
+    "t1": 0.00472922,
+    "t2": 0.00263966,
+    "half_taken": true,
+    "r_now": 0.74,
+    "entered_utc": "2026-10-29 00:00"
+   }
+  },
+  "PUMP": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.002551,
+    "composite": 0,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 32,
+     "win": 40.6,
+     "avgR": -0.052
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.002551,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 20,
+     "win": 60,
+     "avgR": 0.184
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.002551,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 8,
+     "win": 62.5,
+     "avgR": 0.334
+    },
+    "side": "шорт",
+    "entry": 0.003619,
+    "stop": 0.003619,
+    "t1": 0.00274481,
+    "t2": 0.000996436,
+    "half_taken": true,
+    "r_now": 1.17,
+    "entered_utc": "2026-11-09 00:00"
+   }
+  },
+  "APT": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.3768,
+    "composite": -2,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 26,
+     "win": 46.2,
+     "avgR": 0.126
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.3768,
+    "composite": 0,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 22,
+     "win": 36.4,
+     "avgR": -0.091
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.3768,
+    "composite": -4,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 50,
+     "win": 46,
+     "avgR": 0.088
+    },
+    "side": "шорт",
+    "entry": 0.6168,
+    "stop": 0.6168,
+    "t1": 0.484234,
+    "t2": 0.219103,
+    "half_taken": true,
+    "r_now": 1.68,
+    "entered_utc": "2026-10-29 00:00"
+   }
+  },
+  "HBAR": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.05306,
+    "composite": -2,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 25,
+     "win": 44,
+     "avgR": 0.179
+    },
+    "side": "шорт",
+    "entry": 0.05361,
+    "stop": 0.0547957,
+    "t1": 0.0524243,
+    "t2": 0.0500528,
+    "half_taken": false,
+    "r_now": 0.21,
+    "entered_utc": "2026-11-27 22:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.05306,
+    "composite": 0,
+    "htf_composite": -4,
+    "bt_coin": {
+     "n": 23,
+     "win": 60.9,
+     "avgR": 0.129
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.05306,
+    "composite": -4,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 89,
+     "win": 55.1,
+     "avgR": 0.172
+    },
+    "side": "шорт",
+    "entry": 0.08544,
+    "stop": 0.08544,
+    "t1": 0.0729389,
+    "t2": 0.0479367,
+    "half_taken": true,
+    "r_now": 2.52,
+    "entered_utc": "2026-10-18 00:00"
+   }
+  },
+  "ONDO": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.2807,
+    "composite": -5,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 27,
+     "win": 40.7,
+     "avgR": -0.041
+    },
+    "side": "шорт",
+    "entry": 0.2823,
+    "stop": 0.287847,
+    "t1": 0.276753,
+    "t2": 0.265659,
+    "half_taken": false,
+    "r_now": 0.13,
+    "entered_utc": "2026-11-28 05:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.2807,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 24,
+     "win": 50,
+     "avgR": 0.073
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.2807,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 15,
+     "win": 40,
+     "avgR": 0.088
+    },
+    "side": "шорт",
+    "entry": 0.4099,
+    "stop": 0.4099,
+    "t1": 0.340033,
+    "t2": 0.200298,
+    "half_taken": true,
+    "r_now": 1.75,
+    "entered_utc": "2026-10-24 00:00"
+   }
+  },
+  "SUI": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.6622,
+    "composite": -2,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 16,
+     "win": 56.3,
+     "avgR": 0.142
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.6622,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 22,
+     "win": 54.5,
+     "avgR": 0.095
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.6622,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 39,
+     "win": 61.5,
+     "avgR": 0.227
+    },
+    "side": "шорт",
+    "entry": 0.9387,
+    "stop": 0.9387,
+    "t1": 0.796368,
+    "t2": 0.511704,
+    "half_taken": true,
+    "r_now": 1.86,
+    "entered_utc": "2026-10-24 00:00"
+   }
+  },
+  "FIL": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.5113,
+    "composite": -5,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 23,
+     "win": 56.5,
+     "avgR": 0.093
+    },
+    "side": "шорт",
+    "entry": 0.5312,
+    "stop": 0.5312,
+    "t1": 0.518472,
+    "t2": 0.493016,
+    "half_taken": true,
+    "r_now": 1.37,
+    "entered_utc": "2026-11-28 00:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.5113,
+    "composite": -3,
+    "htf_composite": -6,
+    "bt_coin": {
+     "n": 24,
+     "win": 50,
+     "avgR": 0.201
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.5113,
+    "composite": -6,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 77,
+     "win": 54.5,
+     "avgR": 0.108
+    },
+    "side": "шорт",
+    "entry": 0.908,
+    "stop": 0.908,
+    "t1": 0.731538,
+    "t2": 0.378613,
+    "half_taken": true,
+    "r_now": 2.12,
+    "entered_utc": "2026-10-27 00:00"
+   }
+  },
+  "RSR": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.001247,
+    "composite": -5,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 24,
+     "win": 50,
+     "avgR": -0.001
+    },
+    "side": "шорт",
+    "entry": 0.001252,
+    "stop": 0.00127477,
+    "t1": 0.00122923,
+    "t2": 0.00118368,
+    "half_taken": false,
+    "r_now": 0.31,
+    "entered_utc": "2026-11-28 07:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.001247,
+    "composite": -1,
+    "htf_composite": -5,
+    "bt_coin": {
+     "n": 29,
+     "win": 37.9,
+     "avgR": -0.078
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.001247,
+    "composite": -5,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 84,
+     "win": 47.6,
+     "avgR": -0.068
+    },
+    "side": "шорт",
+    "entry": 0.001486,
+    "stop": 0.00182006,
+    "t1": 0.00115194,
+    "t2": 0.000483828,
+    "half_taken": false,
+    "r_now": 0.61,
+    "entered_utc": "2026-11-12 00:00"
+   }
+  },
+  "ZIL": {
+   "1h": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 0.000846,
+    "composite": -3,
+    "htf_composite": -1,
+    "bt_coin": {
+     "n": 21,
+     "win": 52.4,
+     "avgR": 0.069
+    },
+    "side": "шорт",
+    "entry": 0.000855,
+    "stop": 0.000885338,
+    "t1": 0.000824662,
+    "t2": 0.000763986,
+    "half_taken": false,
+    "r_now": -0.07,
+    "entered_utc": "2026-11-28 05:00"
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.000846,
+    "composite": -1,
+    "htf_composite": -5,
+    "bt_coin": {
+     "n": 21,
+     "win": 61.9,
+     "avgR": 0.284
+    }
+   },
+   "1d": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 0.000846,
+    "composite": -5,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 92,
+     "win": 45.7,
+     "avgR": 0.063
+    }
+   }
+  },
+  "LINK": {
+   "1h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 9.155,
+    "composite": -2,
+    "htf_composite": 0,
+    "bt_coin": {
+     "n": 26,
+     "win": 30.8,
+     "avgR": 0.087
+    }
+   },
+   "4h": {
+    "state": "wait",
+    "title": "СЕТАПУ НЕМАЄ — ОЧІКУВАННЯ",
+    "price": 9.155,
+    "composite": 0,
+    "htf_composite": -3,
+    "bt_coin": {
+     "n": 23,
+     "win": 52.2,
+     "avgR": -0.052
+    }
+   },
+   "1d": {
+    "state": "open",
+    "title": "ВІДКРИТА ПОЗИЦІЯ ЗА ПРАВИЛАМИ: ШОРТ",
+    "price": 9.155,
+    "composite": -3,
+    "htf_composite": null,
+    "bt_coin": {
+     "n": 107,
+     "win": 45.8,
+     "avgR": 0.039
+    },
+    "side": "шорт",
+    "entry": 10.411,
+    "stop": 10.411,
+    "t1": 9.04998,
+    "t2": 6.32794,
+    "half_taken": true,
+    "r_now": 0.76,
+    "entered_utc": "2026-11-08 00:00"
+   }
+  }
+ },
+ "errors": []
+}
